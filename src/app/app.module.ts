@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DocComponent } from './doc/doc.component';
 import { MlComponent } from './ml/ml.component';
+import { IntroductionComponent } from './introduction/introduction.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { MlComponent } from './ml/ml.component';
     HomeComponent,
     DocComponent,
     MlComponent,
+    IntroductionComponent,
+    ContactsComponent,
   ],
   imports: [
     BrowserModule,
