@@ -1,3 +1,23 @@
-<div class="iframe">
-<iframe  src="https://www.st4rsend.net/ml" name="app"  height="100%" width="100%" frameBorder="0"></iframe>
+<div class="checkbox">
+	<mat-checkbox [(ngModel)]="linkType" (change)="linkTypeChange()">
+		Ouvrir dans une fenêtre dédiée
+	</mat-checkbox>
 </div>
+<div *ngIf="linkType ; else integratedView" class="card-container">
+	<a class="card link" href="https://www.st4rsend.net/ml/explo" target ="_blank">
+		Data exploration (autonome)
+	</a>
+	<a class="card link" href="https://www.st4rsend.net/ml/kaggle-survey" target ="_blank">
+		Kaggle survey (autonome)
+	</a>
+</div>
+<ng-template #integratedView>
+<div class="card-container">
+	<a class="card link" routerLink="/explo">
+		data exploration
+	</a>
+	<a class="card link" routerLink="/kaggle-survey">
+		Kaggle survey
+	</a>
+</div>
+</ng-template>
