@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactsComponent implements OnInit {
 
+	apropos: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+	aproposClick(): void {
+		this.apropos = !this.apropos;
+	}
 
 }

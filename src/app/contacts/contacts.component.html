@@ -1,3 +1,21 @@
-<div>
+<div class="container">
+
+<H2>Contacts</H2>
+<p>St4Rsend est joignable par e-mail à l'adresse: vince.dumetz@gmail.com</p>
+<p>Le CV de l'auteur est téléchargeable au format pdf via le lien ci-dessous:<BR>
+
 <a href="https://www.st4rsend.net/cv/CV_VincentDumetz.pdf" target="_blank">CV au format pdf</a>
+</p>
+<div class="card-container">
+	<div class="card link" (click)="aproposClick()">
+		A propos
+	</div>
+</div>
+
+<div *ngIf="apropos">
+<H3>A propos</H3>
+<p>Site Internet de l'Entreprise St4rsend</p>
+<p>Version prototype</p>
+<p>Administrateur: Vincent Dumetz : vince.dumetz@gmail.com</p>
+</div>
 </div>
