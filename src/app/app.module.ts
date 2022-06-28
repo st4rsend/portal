@@ -35,7 +35,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		MatCheckboxModule,
   ],
   //providers: [ {provide: APP_BASE_HREF, useValue: '/portal'} ],
-  providers: [ {provide: APP_BASE_HREF, useValue: environment.baseURL} ],
+  providers: [ {provide: APP_BASE_HREF, useValue: environment.baseURL},
+							{provide: Window, useValue: window}
+						 ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

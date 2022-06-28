@@ -10,6 +10,5 @@ export class IntroductionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-
+	}
 }

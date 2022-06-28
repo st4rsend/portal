@@ -1,13 +1,22 @@
 .container
-	height: 100%
-	width: 90%
-	margin-left: auto
-	margin-right: auto
-	margin-top: 1em
+	margin-top: 1rem
 	display: grid
 	//overflow: hidden
-	grid-template-columns: 1fr 12em 
+	grid-template-columns: 1fr 180px
 	grid-template-rows: 10rem 18rem 12rem 1fr
+
+.left
+	grid-column-start: 1
+	grid-column-end: 2
+	grid-row-start: 1
+	grid-row-end: 5
+
+.animation
+	overflow-x: hidden
+	grid-column-start: 2
+	grid-column-end: 3
+	grid-row-start: 1
+	grid-row-end: 2
 
 .portrait
 	//width: 90%
@@ -19,24 +28,6 @@
 	grid-row-start: 2
 	grid-row-end: 3
 	filter: drop-shadow(30px 10px 4px #dddddd)
-
-.animation
-	width: 90%
-	margin-left: auto
-	margin-right: 0
-	grid-column-start: 2
-	grid-column-end: 3
-	grid-row-start: 1
-	grid-row-end: 2
-
-
-
-.left
-	height: 50em
-	grid-column-start: 1
-	grid-column-end: 2
-	grid-row-start: 1
-	grid-row-end: 5
 
 .item-solution
 	justify-content: center

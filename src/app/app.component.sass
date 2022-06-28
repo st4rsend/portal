@@ -2,11 +2,11 @@
 	height: 100%
 	display: grid
 	grid-template-columns: 1fr 1fr 1fr
-	grid-template-rows: 5rem 6rem 1fr 1rem
-	overflow: auto
+	grid-template-rows: 5rem 6rem 1fr 
+	margin-left: 2rem
+	margin-right: 1rem
 
 .main-body
-	height: 100%
 	border-width: 0
 	grid-column-start: 1
 	grid-column-end: 4
@@ -14,6 +14,14 @@
 	grid-row-end: 4
 	z-index: 3
 	//background-color: #ffffff
+
+.title 
+	grid-column-start: 2
+	grid-column-end: 3
+	grid-row-start: 1
+	grid-row-end: 2
+	//color: #ffffff
+	z-index: 2
 
 .logo
 	filter: invert(11%) sepia(100%) saturate(5695%) hue-rotate(296deg) brightness(41%) contrast(106%)
@@ -26,26 +34,18 @@
 	grid-row-end: 3
 	z-index: 1
 
-.home
+.button-home
 	grid-column-start: 1
 	grid-column-end: 2
 	grid-row-start: 1
 	grid-row-end: 2
 	z-index: 2
 
-.contact
+.button-contact
 	grid-column-start: 3
 	grid-column-end: 4
 	grid-row-start: 2
 	grid-row-end: 3
-	z-index: 2
-
-.title 
-	grid-column-start: 2
-	grid-column-end: 3
-	grid-row-start: 1
-	grid-row-end: 2
-	//color: #ffffff
 	z-index: 2
 
 //.item-documentation 
@@ -55,14 +55,14 @@
 //	grid-row-end: 3
 //	z-index: 2
 
-.item-home
+.button-intro
 	grid-column-start: 3
 	grid-column-end: 4
 	grid-row-start: 1
 	grid-row-end: 2
 	z-index: 2
 
-.item-ml
+.button-ml
 	grid-column-start: 1
 	grid-column-end: 2
 	grid-row-start: 2
