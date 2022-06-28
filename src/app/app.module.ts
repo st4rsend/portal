@@ -15,6 +15,8 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { KaggleSurveyComponent } from './ml/kaggle-survey/kaggle-survey.component';
 import { DataExplorationComponent } from './ml/data-exploration/data-exploration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainBodyComponent } from './main-body/main-body.component';
+import { FixedPanelComponent } from './fixed-panel/fixed-panel.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ContactsComponent,
     KaggleSurveyComponent,
     DataExplorationComponent,
+    MainBodyComponent,
+    FixedPanelComponent,
   ],
   imports: [
     BrowserModule,
