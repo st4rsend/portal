@@ -17,6 +17,7 @@ import { DataExplorationComponent } from './ml/data-exploration/data-exploration
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainBodyComponent } from './main-body/main-body.component';
 import { FixedPanelComponent } from './fixed-panel/fixed-panel.component';
+import { CartpoleComponent } from './fixed-panel/cartpole/cartpole.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FixedPanelComponent } from './fixed-panel/fixed-panel.component';
     DataExplorationComponent,
     MainBodyComponent,
     FixedPanelComponent,
+    CartpoleComponent,
   ],
   imports: [
     BrowserModule,

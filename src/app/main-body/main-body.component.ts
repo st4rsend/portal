@@ -16,6 +16,6 @@ export class MainBodyComponent {
 
   constructor(private globalService: GlobalService) {
 		this.panelSub$ = this.globalService.getDisplayPanel().subscribe(
-			value => { this.panelDisplay = value;	});
+			value => { this.panelDisplay = value;});
 	}
 }

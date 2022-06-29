@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import { GlobalService } from './global.service';
@@ -11,17 +12,20 @@ import { GlobalService } from './global.service';
 })
 export class AppComponent implements OnInit {
 
+  title = 'St4rsend';
+
+	panelDisplay: boolean=true;
+	panelDisplaySub$: Subscription;
+	resizedFinished: any;
+
 	constructor(
 				private router: Router,
 				private window: Window,
 				private globalService: GlobalService) {
+		this.panelDisplaySub$ = this.globalService.getDisplayPanel().subscribe(
+			value => { this.panelDisplay=value; });
+	}
 
-}
-
-  title = 'St4rsend';
-
-	panelDisplay: boolean=true;
-	resizedFinished: any;
 
 	ngOnInit() {
 		this.router.events.pipe(
@@ -40,10 +44,9 @@ export class AppComponent implements OnInit {
 
 	panelStrat() {
 		if (window.matchMedia("(min-width: 800px)").matches) {
-			this.panelDisplay = true;
+			this.globalService.setDisplayPanel(true);
 		} else {
-			this.panelDisplay = false;
+			this.globalService.setDisplayPanel(false);
 		}
-		this.globalService.setDisplayPanel(this.panelDisplay);
 	}
 }

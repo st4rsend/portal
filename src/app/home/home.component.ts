@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private globalService: GlobalService) { 
+		this.globalService.displayWish = true;
+		this.globalService.addPanelItems("cartpole", true);
+	}
 
   ngOnInit(): void {
   }
-
+	
 }

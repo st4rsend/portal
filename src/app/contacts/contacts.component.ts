@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-contacts',
@@ -9,7 +10,10 @@ export class ContactsComponent implements OnInit {
 
 	apropos: boolean = false;
 
-  constructor() { }
+  constructor(private globalService: GlobalService) { 
+		this.globalService.displayWish = true;
+		this.globalService.addPanelItems("cartpole", true);
+	}
 
   ngOnInit(): void {
   }
