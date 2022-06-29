@@ -2,7 +2,21 @@
 
 .fixed-panel
 	position: fixed
-	//top: 14rem
-	top: $menu-row-1 + $menu-row-2 + 2rem
+	top: 0
 	right: 0
 	width: $sticky-panel-size
+	z-index: 0
+	height: 100%
+
+.menu-off
+	position: relative
+	top: 2rem
+	height: $menu-row-2 
+	margin: auto auto auto auto
+	width: 50%
+
+.items
+	position: relative
+	top: 4rem
+
+.item

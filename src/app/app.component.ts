@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
 	onResize(event: any) {
 		clearTimeout(this.resizedFinished);
 		this.resizedFinished = setTimeout(()=>{
-			this.panelStrat();}, 1000);
+			this.panelStrat();}, 350);
 	}
 
 	panelStrat() {
