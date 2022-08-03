@@ -5,8 +5,7 @@
 	display: grid
 	grid-template-columns: 1fr 1fr 1fr
 	grid-template-rows: $menu-row-1 $menu-row-2 1fr 
-	margin-left: 4%
-	margin-right: 4%
+	margin: 0 4% 0 4%
 
 .main-body
 	border-width: 0
@@ -15,6 +14,7 @@
 	grid-row-start: 3
 	grid-row-end: 4
 	z-index: 3
+	margin: 1rem 0 0 0 
 	//background-color: #ffffff
 
 .title 
@@ -22,16 +22,25 @@
 	grid-column-end: 3
 	grid-row-start: 1
 	grid-row-end: 2
-	margin-top: auto
-	margin-bottom: auto
-	//color: #ffffff
+	//font-size: 3rem
+	//margin: 1.1rem auto 1rem auto
+	//text-align: center
+	//vertical-align: middle
+	//color: #733374
+	display: flex
+	align-items: center
+	justify-content: center
 	z-index: 2
+
+img
+	max-width: 100%
+	max-height: 100%
+
 
 .logo
 	//filter: invert(11%) sepia(100%) saturate(5695%) hue-rotate(296deg) brightness(41%) contrast(106%)
 	//opacity: .75
-	margin-left: auto
-	margin-right: auto
+	margin: .5rem auto .5rem auto
 	grid-column-start: 2
 	grid-column-end: 3
 	grid-row-start: 2
@@ -48,8 +57,8 @@
 .button-contact
 	grid-column-start: 3
 	grid-column-end: 4
-	grid-row-start: 2
-	grid-row-end: 3
+	grid-row-start: 1
+	grid-row-end: 2
 	z-index: 2
 
 //.item-documentation 
@@ -60,15 +69,15 @@
 //	z-index: 2
 
 .button-intro
-	grid-column-start: 3
-	grid-column-end: 4
-	grid-row-start: 1
-	grid-row-end: 2
+	grid-column-start: 1
+	grid-column-end: 2
+	grid-row-start: 2
+	grid-row-end: 3
 	z-index: 2
 
 .button-ml
-	grid-column-start: 1
-	grid-column-end: 2
+	grid-column-start: 3
+	grid-column-end: 4
 	grid-row-start: 2
 	grid-row-end: 3
 	z-index: 2
