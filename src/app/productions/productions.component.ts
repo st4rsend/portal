@@ -4,13 +4,15 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { GlobalService } from '../global.service';
 
 @Component({
-  selector: 'app-ml',
-  templateUrl: './ml.component.html',
-  styleUrls: ['./ml.component.sass']
+  selector: 'app-productions',
+  templateUrl: './productions.component.html',
+  styleUrls: ['./productions.component.sass']
 })
-export class MlComponent implements OnInit {
+export class ProductionsComponent implements OnInit {
 
 	public linkType: boolean = false;
+	public content = false;
+	public ml = false;
 
   constructor(private globalService: GlobalService) { 
 		this.globalService.displayWish = false;
@@ -23,4 +25,11 @@ export class MlComponent implements OnInit {
 		console.log(this.linkType);
 	}
 
+	contenuClick(): void {
+		this.content = !this.content;
+	}
+
+	mlClick(): void {
+		this.ml = ! this.ml;
+	}
 }

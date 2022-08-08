@@ -9,11 +9,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DocComponent } from './doc/doc.component';
-import { MlComponent } from './ml/ml.component';
+import { ProductionsComponent } from './productions/productions.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { KaggleSurveyComponent } from './ml/kaggle-survey/kaggle-survey.component';
-import { DataExplorationComponent } from './ml/data-exploration/data-exploration.component';
+import { KaggleSurveyComponent } from './productions/kaggle-survey/kaggle-survey.component';
+import { DataExplorationComponent } from './productions/data-exploration/data-exploration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainBodyComponent } from './main-body/main-body.component';
 import { FixedPanelComponent } from './fixed-panel/fixed-panel.component';
@@ -24,7 +24,7 @@ import { CartpoleComponent } from './fixed-panel/cartpole/cartpole.component';
     AppComponent,
     HomeComponent,
     DocComponent,
-    MlComponent,
+    ProductionsComponent,
     IntroductionComponent,
     ContactsComponent,
     KaggleSurveyComponent,
