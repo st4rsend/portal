@@ -7,6 +7,7 @@ import { DocComponent } from './doc/doc.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ProductionsComponent } from './productions/productions.component';
+import { StaticComponent } from './productions/static/static.component';
 import { KaggleSurveyComponent } from './productions/kaggle-survey/kaggle-survey.component';
 import { DataExplorationComponent } from './productions/data-exploration/data-exploration.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
 	{ path: 'intro', component: IntroductionComponent },
 	{ path: 'contacts', component: ContactsComponent },
 	{ path: 'productions', component: ProductionsComponent },
+	{ path: 'static/:id', component: StaticComponent },
 	{ path: 'kaggle-survey', component: KaggleSurveyComponent },
 	{ path: 'explo', component: DataExplorationComponent },
 ];

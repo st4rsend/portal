@@ -5,6 +5,9 @@ import { APP_BASE_HREF } from '@angular/common';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -18,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainBodyComponent } from './main-body/main-body.component';
 import { FixedPanelComponent } from './fixed-panel/fixed-panel.component';
 import { CartpoleComponent } from './fixed-panel/cartpole/cartpole.component';
+import { StaticComponent } from './productions/static/static.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +36,17 @@ import { CartpoleComponent } from './fixed-panel/cartpole/cartpole.component';
     MainBodyComponent,
     FixedPanelComponent,
     CartpoleComponent,
+    StaticComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
 		FormsModule,
+		HttpClientModule,
 		MatCheckboxModule,
+		MatTreeModule,
+		MatIconModule,
   ],
   //providers: [ {provide: APP_BASE_HREF, useValue: '/portal'} ],
   providers: [ {provide: APP_BASE_HREF, useValue: environment.baseURL},

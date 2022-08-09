@@ -1,60 +1,35 @@
-<div class="card-container">
-	<div class="card link tree-selector" (click)="contenuClick()">
-		<span class="material-icons tree-item">
-		more_vert
-		</span>
-		<div class="tree-item">
-		Contenu
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="productions-tree">
+	<mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+		<div class="mat-tree-node  card-container adjust">
+<!--
+			<a *ngIf="node.path" class="card link" [routerLink]=node.path>
+-->
+			<a *ngIf="node.path" class="card link" [routerLink]="['/static/', node.path]">
+				{{node.name}}
+			</a>
+			<a *ngIf="node.url" class="card link" [href]=node.url target="_blank">
+				{{node.name}}
+			</a>
 		</div>
-	</div>
-	<div class="tree-content" *ngIf="content">
-		<a class="card link" routerLink="/science">
-			<div>
-			Science des données
+	</mat-tree-node>
+	<mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+		<div class="mat-tree-node card-container">
+			<div class="card tree-selector" matTreeNodeToggle >
+				<mat-icon class="mat-icon-rtl-mirror tree-item">
+					{{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+				</mat-icon>
+				<span class="tree-item">
+					{{node.name}}
+				</span>
 			</div>
-		</a>
-		<a class="card link" routerLink="/gestion">
-			Gestion des données
-		</a>
-		<a class="card link" routerLink="/valeur">
-			Valeur des données
-		</a>
-	</div>
-</div>
-<div class="card-container">
-<div class="card link tree-selector" (click)="mlClick()">
-		<span class="material-icons tree-item">
-		more_vert
-		</span>
-		<div class="tree-item">
-			Machine Learning
 		</div>
-</div>
-<div *ngIf="ml">
-	<div class="checkbox">
-		<mat-checkbox [(ngModel)]="linkType" (change)="linkTypeChange()">
-			Ouvrir dans une fenêtre dédiée
-		</mat-checkbox>
-	</div>
-	<div *ngIf="linkType ; else integratedView" class="card-container">
-		<a class="card link" href="https://www.st4rsend.net/ml/explo" target ="_blank">
-			Data exploration (autonome)
-		</a>
-		<a class="card link" href="https://www.st4rsend.net/ml/kaggle-survey" target ="_blank">
-			Kaggle survey (autonome)
-		</a>
-	</div>
-	<ng-template #integratedView>
-	<div class="card-container">
-		<a class="card link" routerLink="/explo">
-			data exploration
-		</a>
-		<a class="card link" routerLink="/kaggle-survey">
-			Kaggle survey
-		</a>
-	</div>
-	</ng-template>
-</div>
+		<div [class.productions-tree-invisible]="!treeControl.isExpanded(node)" role="group">
+			<ng-container matTreeNodeOutlet></ng-container>
+		</div>
+	</mat-nested-tree-node>
+</mat-tree>
+
+
 <div class="image">
 	<img src="https://www.st4rsend.net/global-arch.svg" width="100%">
 </div>
