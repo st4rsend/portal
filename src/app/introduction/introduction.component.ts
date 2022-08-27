@@ -10,7 +10,7 @@ export class IntroductionComponent implements OnInit {
 
   constructor(private globalService: GlobalService) {
 		this.globalService.displayWish = true;
-		this.globalService.addPanelItems("cartpole", false);
+		this.globalService.addPanelItems("cartpole", true);
 	}
 
   ngOnInit(): void {
