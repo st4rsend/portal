@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
 	baseURL: '/',
+	treeFile: 'test-tree.json',
 };
 
 /*

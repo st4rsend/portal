@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { environment } from '../../environments/environment';
 
 
 import { GlobalService } from '../global.service';
@@ -22,6 +23,9 @@ interface ProductionNode {
 
 export class ProductionsComponent implements OnInit {
 
+
+	private assetsURL: string = "assets/";
+
 	public treeControl = new NestedTreeControl<ProductionNode>(node => node.children);
 	public dataSource = new MatTreeNestedDataSource<ProductionNode>();
 
@@ -36,7 +40,7 @@ export class ProductionsComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.httpClient.get("assets/production-tree.json").subscribe(data => {
+		this.httpClient.get(this.assetsURL + environment.treeFile).subscribe(data => {
 			for ( let item of Object.values(data)) {
 				this.dataSource.data.push(item as ProductionNode);
 			}

@@ -2,28 +2,28 @@
   {
     "name": "Science des données",
     "children": [
-      {"name": "Distributions", "path": "wip"},
-      {"name": "Statistiques", "path": "wip"},
-      {"name": "Probabilités", "path": "wip"},
-      {"name":"Logique", "path": ""}
+      {"name": "Distributions", "path": "test"},
+      {"name": "Statistiques", "path": "test"},
+      {"name": "Probabilités", "path": "test"},
+      {"name":"Logique", "path": "logique"}
     ]
   },
   {
     "name": "Gestion des données",
     "children": [
-      {"name": "Stockage", "path": "wip"},
-      {"name": "Sauvegarde", "path": "wip"},
-      {"name": "Rétention", "path": "wip"}
+      {"name": "Stockage", "path": "stockage"},
+      {"name": "Sauvegarde", "path": "sauvegarde"},
+      {"name": "Rétention", "path": "retention"}
     ]
   },
   {
     "name": "Valeur des données",
     "children": [
-      {"name": "Neural Networks", "path": "wip"},
+      {"name": "Neural Networks", "path": "neuralnet"},
       {"name": "Rank 2 (test)",
       "children": [
-        {"name": "Rank 2 A", "path": "wip"},
-        {"name": "Rank 2 B", "path": "wip"}
+        {"name": "Rank 2 A", "path": "test"},
+        {"name": "Rank 2 B", "path": "test"}
         ]
       }
     ]

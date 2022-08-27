@@ -27,7 +27,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-		RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
+		RouterModule.forRoot(routes, {
+			scrollPositionRestoration: 'enabled',
+			// Fix browser refresh 404
+			useHash: true}),
     CommonModule
   ],
 	exports: [
