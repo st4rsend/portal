@@ -5,7 +5,10 @@
 			<a *ngIf="node.path" class="card link" [routerLink]=node.path>
 -->
 			<a *ngIf="node.path" class="card link" [routerLink]="['/static/', node.path]">
-				{{node.name}}
+				__DEV__{{node.name}}
+			</a>
+			<a *ngIf="node.science" class="card link" [routerLink]="['/science/', node.science]">
+				__DEV__{{node.name}}
 			</a>
 			<a *ngIf="node.url" class="card link" [href]=node.url target="_blank">
 				{{node.name}}

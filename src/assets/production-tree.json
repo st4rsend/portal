@@ -2,10 +2,10 @@
   {
     "name": "Science des données",
     "children": [
-      {"name": "Distributions", "path": "wip"},
-      {"name": "Statistiques", "path": "wip"},
-      {"name": "Probabilités", "path": "wip"},
-      {"name":"Logique", "path": ""}
+      {"name": "Distributions", "science": "distributions"},
+      {"name": "Statistiques", "science": "statistiques"},
+      {"name": "Probabilités", "science": "probabilites"},
+      {"name":"Logique", "path": "wip"}
     ]
   },
   {

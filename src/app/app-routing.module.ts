@@ -8,6 +8,7 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ProductionsComponent } from './productions/productions.component';
 import { StaticComponent } from './productions/static/static.component';
+import { ScienceComponent } from './productions/science/science.component';
 import { KaggleSurveyComponent } from './productions/kaggle-survey/kaggle-survey.component';
 import { DataExplorationComponent } from './productions/data-exploration/data-exploration.component';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
 	{ path: 'contacts', component: ContactsComponent },
 	{ path: 'productions', component: ProductionsComponent },
 	{ path: 'static/:id', component: StaticComponent },
+	{ path: 'science/:id', component: ScienceComponent },
 	{ path: 'kaggle-survey', component: KaggleSurveyComponent },
 	{ path: 'explo', component: DataExplorationComponent },
 ];

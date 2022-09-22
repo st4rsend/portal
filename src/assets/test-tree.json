@@ -2,9 +2,9 @@
   {
     "name": "Science des données",
     "children": [
-      {"name": "Distributions", "path": "test"},
-      {"name": "Statistiques", "path": "test"},
-      {"name": "Probabilités", "path": "test"},
+      {"name": "Distributions", "science": "distributions"},
+      {"name": "Statistiques", "science": "statistiques"},
+      {"name": "Probabilités", "science": "statistiques"},
       {"name":"Logique", "path": "logique"}
     ]
   },
