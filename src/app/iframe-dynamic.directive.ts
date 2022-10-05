@@ -34,6 +34,7 @@ export class IframeDynamicDirective implements OnInit, OnDestroy {
       	//console.log('Mutation happened', this.contentHeight);
       	this.setFrameHeight(this.contentHeight);
     	});
+			console.log(this.element.contentWindow.body);
 			if (this.element.contentDocument) {
     		this.observer.observe(this.element.contentDocument.body, {
       		attributes: true,

@@ -2,6 +2,7 @@
   {
     "name": "Science des données",
     "children": [
+      {"name": "Introduction", "science": "introduction"},
       {"name": "Distributions", "science": "distributions"},
       {"name": "Statistiques", "science": "statistiques"},
       {"name": "Probabilités", "science": "probabilites"},

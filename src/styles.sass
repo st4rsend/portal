@@ -1,10 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'cards'
+@import 'variables'
+@import '../../st4rsend.sass'
 
-@import "app/variables.sass"
-
-.card-container
-	background-color: #ffffff
 
 html
 	height: 100%
@@ -16,57 +14,13 @@ html
 body
 	margin: 0
 	height: 100%
-	font-family:  Roboto, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 	//text-size-adjust: auto
-	font-size: 1.3rem
-	color: #333
-	box-sizing: border-box
-	-webkit-font-smoothing: antialiased
-	-moz-osx-font-smoothing: grayscale
+//	color: #333
 
-p
-	text-indent: 1rem
-	margin-block-start: .5rem
-	margin-block-end: .5rem
-	text-align: justify
-p+p
-	text-indent: 1rem
-	margin-block-start: 0
-	
-H1
-	//background-color: #FC81FF
-	background-color: $light-color
-	background-image: linear-gradient(to right, $primary-color, 62%, white 95%)
-	border-radius: 12px
-	color: #ffffff
-	font-size: 2rem
-	letter-spacing: .1rem
-	margin-block-start: 2rem
-	margin-block-end: 1rem
-	padding-left: 1rem
-	padding-right: 8rem
-	padding-top: .5rem
-	padding-bottom: .5rem
-	text-align: left
-	//opacity: 0.80
 
-H2
-	color: $primary-color
-	margin-block-start: .5rem
-	margin-block-end: .5rem
-	font-weight: normal
-	text-align: left
+.card-container
+	background-color: #ffffff
 
-H3
-	font-style: italic
-	font-weight: normal
-	margin-block-start: .5rem
-	margin-block-end: 0
-	text-indent: 3rem
-	text-align: left
-
-.button-link
-	justify-content: center
 
 .logo-filter
 	filter: invert(11%) sepia(100%) saturate(5695%) hue-rotate(296deg) brightness(41%) contrast(106%)
