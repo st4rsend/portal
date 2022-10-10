@@ -7,6 +7,9 @@ export class IframeDynamicDirective implements OnInit, OnDestroy {
 
 	private listener!: () => void;
 	private observer!: MutationObserver;
+	private resize_obs!: ResizeObserver;
+
+	private timer!: ReturnType<typeof setInterval>;
 
   get element() {
     return this.elementRef.nativeElement;
@@ -16,34 +19,28 @@ export class IframeDynamicDirective implements OnInit, OnDestroy {
 		if (this.element.contentDocument) {
     	return this.element.contentDocument.body.scrollHeight;
 		} 
-/*
-	else {
-			console.log("4000");
-			return 4000
-		}
-*/
   }
+
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
 	ngOnInit() {
+
   	this.listener = this.renderer.listen(this.element, 'load', () => {
 			this.setFrameHeight(this.contentHeight);
-
+			this.timer = setInterval(
+				() => { this.setFrameHeight(this.contentHeight);},
+				2000);
     	this.observer = new MutationObserver((mutations) => {
-      	//console.log('Mutation happened', this.contentHeight);
       	this.setFrameHeight(this.contentHeight);
     	});
-			console.log(this.element.contentWindow.body);
 			if (this.element.contentDocument) {
     		this.observer.observe(this.element.contentDocument.body, {
       		attributes: true,
       		childList: true,
       		characterData: true,
-      		//subtree: true
+      		subtree: false
     		});
-			} else {
-				console.log("SNIFF");
 			}
   	});
  	}
@@ -57,6 +54,7 @@ export class IframeDynamicDirective implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy() {
+		if (this.timer) {	clearInterval(this.timer); }
 		this.observer.disconnect();
 		this.listener();
 	}
