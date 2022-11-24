@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { APP_BASE_HREF } from '@angular/common';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
