@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -51,6 +52,7 @@ import { IframeDynamicDirective } from './iframe-dynamic.directive';
 		MatCheckboxModule,
 		MatTreeModule,
 		MatIconModule,
+		MatSlideToggleModule,
   ],
   //providers: [ {provide: APP_BASE_HREF, useValue: '/portal'} ],
   providers: [ {provide: APP_BASE_HREF, useValue: environment.baseURL},

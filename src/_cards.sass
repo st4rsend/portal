@@ -1,4 +1,12 @@
-@import "variables"
+@mixin card-theme($theme)
+	$primary-color: map-get($theme, primary-color)
+	$secondary-color: map-get($theme, secondary-color)
+	.card
+		background-color: $primary-color
+	.card.highlight-card
+		//background-color: #1976d2
+		background-color: $secondary-color
+		
 
 .card
 	all: unset
@@ -8,7 +16,7 @@
 	font-size: max(min(3.5vw, 1.6rem), 1rem)
 	border-radius: 8px
 	border: 1px solid #eee
-	background-color: $light-color
+	//background-color: $light-color
 	height: 3rem
 	display: flex
 	flex-direction: row
@@ -29,7 +37,6 @@
 
 .card.highlight-card
 	//background-color: #1976d2
-	background-color: $dark-color
 	color: white
 	font-weight: 600
 	border: none

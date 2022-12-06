@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
 	panelDisplay: boolean=true;
 	panelDisplaySub$: Subscription;
 	resizedFinished: any;
+	darkTheme: boolean=false;
 
 	constructor(
 				private router: Router,
