@@ -1,59 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@use '@angular/material' as mat
-//@include mat.core()
-
-//$light-primary: mat.define-palette(mat.$indigo-palette, 500)
-//$light-accent:  mat.define-palette(mat.$pink-palette, A200, A100, A400)
-//$light-warn:    mat.define-palette(mat.$red-palette)
-
-//$light-theme: mat.define-light-theme(
-//	color: (
-//		primary: $light-primary,
-//		acccent: $light-accent,
-//		warn: $light-warn,
-//		),
-//	typography: mat.define-typographie-config(),
-//	density: 0
-//)
-
-
-//$dark-primary: mat.define-palette(mat.$blue-palette, 500)
-//$dark-accent:  mat.define-palette(mat.$blue-palette, A200, A100, A400)
-//$dark-warn:    mat.define-palette(mat.$red-palette)
-//$dark-theme: mat.define-light-theme((
-//	color: (
-//		primary: $dark-primary,
-//		accent:  $dark-accent,
-//		warn:  $dark-warn,
-//	)
-//	typography: mat.define-typographie-config(),
-//	density: 0
-//))
-
-//@import 'cards'
-//@import 'st4rsend.sass'
-
-//@mixin custom-theme($theme)
-//	@include card-theme($theme)
-//	@include st4rsend-theme($theme)
-
-//@media (prefers-color-scheme: light)
-//	@include angular-material-theme($light-theme)
-//	@include custom-theme($light-theme)
-//	$primary-color: #733373
-//	$light-color: #eee6ee
-//	$secondary-color: #391a39
-
-//@media (prefers-color-scheme: dark)
-//	@include angular-material-theme($dark-theme)
-//	@include custom-theme($dark-theme)
-//	$primary-color: #433373
-//	$light-color: #7ee6ee
-//	$secondary-color: #091a39
-
-
-@import 'variables'
-
 
 html
 	height: 100%
@@ -66,11 +11,65 @@ body
 	margin: 0
 	height: 100%
 	//text-size-adjust: auto
-//	color: #333
+	font-family:  Roboto, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+	font-size: 1.3rem
+	box-sizing: border-box
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+p
+	text-indent: 2rem
+	margin-block-start: .5rem
+	margin-block-end: .5rem
+	text-align: justify
+p+p
+	text-indent: 2rem
+	margin-block-start: 0
+
+ul
+	margin-block-start: .5rem
+	margin-left: 3rem
+	margin-block-end: 1rem
+
+H1
+	border-radius: 12px
+	font-size: 2rem
+	letter-spacing: .1rem
+	padding-left: 1rem
+	padding-right: 8rem
+	padding-top: .5rem
+	padding-bottom: .5rem
+	margin-block-end: 1rem
+	text-align: left
+
+H2
+	font-size: 1.7rem
+	text-indent: 1rem
+	margin-block-start: 0
+	margin-block-end: .5rem
+	font-weight: normal
+	text-align: left
+
+H3
+	//color: $foreground-color
+	font-size: 1.5rem
+	font-style: italic
+	font-weight: normal
+	margin-block-start: 1rem
+	margin-block-end: 0
+	text-indent: 4rem
+	text-align: left
+
+H4
+	margin-block-start: .5rem
+	margin-block-end: 0
+	font-weight: bold
+	text-indent: 3rem
+	text-align: left
 
 
 .card-container
-	background-color: #ffffff
+	//background-color: #ffffff
 
 
 .logo-filter

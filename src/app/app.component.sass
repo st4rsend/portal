@@ -1,18 +1,18 @@
 @import "../variables.sass"
 
 .container
-	height: 100%
 	display: grid
 	grid-template-columns: 1fr 1fr 1fr
-	grid-template-rows: $menu-row-1 $menu-row-2 1fr 
-	margin: 0 4% 0 4%
+	grid-template-rows: 1rem $menu-row-1 $menu-row-2 1fr 
+	//margin: 0 4% 0 4%
+	padding: 0 4% 0 4%
 
 .main-body
 	border-width: 0
 	grid-column-start: 1
 	grid-column-end: 4
-	grid-row-start: 3
-	grid-row-end: 4
+	grid-row-start: 4
+	grid-row-end: 5
 	z-index: 3
 	margin: 1rem 0 0 0 
 	//background-color: #ffffff
@@ -20,8 +20,8 @@
 .title 
 	grid-column-start: 2
 	grid-column-end: 3
-	grid-row-start: 1
-	grid-row-end: 2
+	grid-row-start: 2
+	grid-row-end: 3
 	//font-size: 3rem
 	//margin: 1.1rem auto 1rem auto
 	//text-align: center
@@ -43,24 +43,24 @@ img
 	margin: .5rem auto .5rem auto
 	grid-column-start: 2
 	grid-column-end: 3
-	grid-row-start: 2
-	grid-row-end: 3
+	grid-row-start: 3
+	grid-row-end: 4
 	z-index: 1
 
-.logo mat-slide-toggle
+//.logo mat-slide-toggle
 
 .button-home
 	grid-column-start: 1
 	grid-column-end: 2
-	grid-row-start: 1
-	grid-row-end: 2
+	grid-row-start: 2
+	grid-row-end: 3
 	z-index: 2
 
 .button-contact
 	grid-column-start: 3
 	grid-column-end: 4
-	grid-row-start: 1
-	grid-row-end: 2
+	grid-row-start: 2
+	grid-row-end: 3
 	z-index: 2
 
 //.item-documentation 
@@ -73,13 +73,21 @@ img
 .button-intro
 	grid-column-start: 1
 	grid-column-end: 2
-	grid-row-start: 2
-	grid-row-end: 3
+	grid-row-start: 3
+	grid-row-end: 4
 	z-index: 2
 
 .button-productions
 	grid-column-start: 3
 	grid-column-end: 4
-	grid-row-start: 2
-	grid-row-end: 3
+	grid-row-start: 3
+	grid-row-end: 4
 	z-index: 2
+
+.theme
+	grid-column-start: 2
+	grid-column-end: 3
+	grid-row-start: 1
+	grid-row-end: 2
+	z-index: 2
+
