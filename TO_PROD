@@ -1,1 +1,0 @@
-gsutil -m cp -r /var/local/publish/html/portal gs://st4rsend-www
