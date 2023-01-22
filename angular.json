@@ -36,16 +36,18 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
             	"src/styles.sass",
-							{
-								"input": "src/st4rsend-light-theme.sass",
-								"bundleName": "light-theme",
-								"inject":true 
-							},
-							{
-								"input": "src/st4rsend-dark-theme.sass",
-								"bundleName": "dark-theme",
-								"inject": true
-							}
+							"src/st4rsend-light-theme.sass",
+//							{
+//								"input": "src/st4rsend-light-theme.sass",
+//								"bundleName": "light-theme",
+//								"inject":true 
+//							},
+							"src/st4rsend-dark-theme.sass",
+//							{
+//								"input": "src/st4rsend-dark-theme.sass",
+//								"bundleName": "dark-theme",
+//								"inject": true
+//							}
             ],
             "scripts": []
           },

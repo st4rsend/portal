@@ -18,9 +18,9 @@ const routes: Routes = [
 	{ path: 'doc', component: DocComponent },
 	{ path: 'intro', component: IntroductionComponent },
 	{ path: 'contacts', component: ContactsComponent },
-	{ path: 'productions', component: ProductionsComponent },
+	{ path: 'productions/:theme', component: ProductionsComponent },
 	{ path: 'static/:id', component: StaticComponent },
-	{ path: 'science/:id', component: ScienceComponent },
+	{ path: 'science/:id/:theme', component: ScienceComponent },
 	{ path: 'kaggle-survey', component: KaggleSurveyComponent },
 	{ path: 'explo', component: DataExplorationComponent },
 ];

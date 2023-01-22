@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MatLegacyCheckboxChange as MatCheckboxChange } from '@angular/material/legacy-checkbox';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
@@ -25,7 +26,9 @@ export class ProductionsComponent implements OnInit {
 
 
 	private assetsURL: string = "assets/";
+	private sub: any;
 
+	public appTheme: string = "light-theme";
 	public treeControl = new NestedTreeControl<ProductionNode>(node => node.children);
 	public dataSource = new MatTreeNestedDataSource<ProductionNode>();
 
@@ -34,12 +37,16 @@ export class ProductionsComponent implements OnInit {
 	public ml = false;
 
   constructor(
+			private route: ActivatedRoute,
 			private httpClient: HttpClient, 
 			private globalService: GlobalService) { 
 		this.globalService.displayWish = false;
 	}
 
 	ngOnInit() {
+		this.sub = this.route.params.subscribe(params => {
+			this.appTheme = params['theme'];
+		});
 		this.httpClient.get(this.assetsURL + environment.treeFile).subscribe(data => {
 			for ( let item of Object.values(data)) {
 				this.dataSource.data.push(item as ProductionNode);

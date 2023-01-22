@@ -1,5 +1,4 @@
 <div [ngClass]="appTheme" class="container">
-	<!-- <div class="background-repeat"></div> -->
 	<div class="button-home card-container">
 		<a class="card" routerLink="/home">Accueil</a>
 	</div>
@@ -18,7 +17,7 @@
 		<a class="card" routerLink="/intro">Production</a>
 	</div>
 	<div class="button-productions card-container">
-		<a class="card" routerLink="/productions">Outils</a>
+		<a class="card" [routerLink]="['/productions', appTheme]">Outils</a>
 	</div>
 	<div class="logo logo-filter">
 		<img src="https://www.st4rsend.net/medias/St4rsend_logo_large_1.svg">
@@ -27,7 +26,7 @@
 		<mat-slide-toggle
 			labelPosition='before' 
 			[(ngModel)]="darkTheme"
-			(change)='themeSet()'>Theme</mat-slide-toggle>
+			(change)='themeSet()'> Dark theme</mat-slide-toggle>
 	</div>	
 	<div class="main-body">
 	<!--
