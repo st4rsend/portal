@@ -1,3 +1,27 @@
+<!-- <div [ngClass]="appTheme" [ngClass]="menuStyle"> -->
+<div [ngClass]="[appTheme, menuStyle]">
+	<button mat-button [matMenuTriggerFor]="menu" aria-label="Aria label">
+		<mat-icon>menu</mat-icon>
+	</button>
+	<mat-menu #menu="matMenu" class="mat-menu-overflow">
+		<button mat-menu-item>
+			<mat-slide-toggle
+				labelPosition='before' 
+				[(ngModel)]="darkTheme"
+				(click)="$event.stopPropagation();"
+				(change)='themeSet()'> Dark mode
+			</mat-slide-toggle>
+		</button>
+		<button mat-menu-item>
+			<mat-slide-toggle
+				labelPosition='before' 
+				[(ngModel)]="fixedMenu"
+				(change)='menuSet()'>Fixed menu 
+			</mat-slide-toggle>
+		</button>
+	</mat-menu>
+</div>
+
 <div [ngClass]="appTheme" class="container">
 	<div class="button-home card-container">
 		<a class="card" routerLink="/home">Accueil</a>
@@ -22,12 +46,6 @@
 	<div class="logo logo-filter">
 		<img src="https://www.st4rsend.net/medias/St4rsend_logo_large_1.svg">
 	</div>
-	<div class="theme">
-		<mat-slide-toggle
-			labelPosition='before' 
-			[(ngModel)]="darkTheme"
-			(change)='themeSet()'> Dark theme</mat-slide-toggle>
-	</div>	
 	<div class="main-body">
 	<!--
 		<router-outlet></router-outlet>

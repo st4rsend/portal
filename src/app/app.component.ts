@@ -3,6 +3,7 @@ import { DOCUMENT } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 import { GlobalService } from './global.service';
@@ -18,11 +19,13 @@ export class AppComponent implements OnInit {
 
 	//appTheme: string="light-theme";
 	appTheme: string="dark-theme";
+	menuStyle: string="menu-scroll";
 
 	panelDisplay: boolean=true;
 	panelDisplaySub$: Subscription;
 	resizedFinished: any;
 	darkTheme: boolean=false;
+	fixedMenu: boolean=false;
 
 	constructor(
 				@Inject(DOCUMENT) private document: Document,
@@ -60,6 +63,14 @@ export class AppComponent implements OnInit {
 			this.appTheme='dark-theme';
 		} else {
 			this.appTheme='light-theme';
+		}
+	}
+
+	menuSet() {
+		if (this.fixedMenu) {
+			this.menuStyle='menu-fixed';
+		} else {
+			this.menuStyle='menu-scroll';
 		}
 	}
 
