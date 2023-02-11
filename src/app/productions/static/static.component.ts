@@ -50,7 +50,7 @@ export class StaticComponent implements OnInit {
 								 data;
 				}
 				this.buf = this.sanitizer.bypassSecurityTrustHtml(this.buf);
-				console.log(this.buf);
+//				console.log(this.buf);
 				this.inner = this.buf;
 			});
 		});
@@ -61,7 +61,7 @@ export class StaticComponent implements OnInit {
 	}
 
 	ngAfterViewChecked (){
-		console.log("afterviewcheck");
+//		console.log("afterviewcheck");
 		if(this.elementRef.nativeElement.querySelector('#button-test')){
 			this.elementRef.nativeElement.querySelector('#button-test').addEventListener('click', this.clickTest.bind(this));
 		}

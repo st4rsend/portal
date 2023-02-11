@@ -17,8 +17,8 @@ export class AppComponent implements OnInit {
 
   title = 'St4rsend';
 
-	//appTheme: string="light-theme";
-	appTheme: string="dark-theme";
+	appTheme: string="light-theme";
+	//appTheme: string="dark-theme";
 	menuStyle: string="menu-scroll";
 
 	panelDisplay: boolean=true;
