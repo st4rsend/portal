@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '../global.service';
 
 @Component({
@@ -9,12 +10,20 @@ import { GlobalService } from '../global.service';
 
 export class HomeComponent implements OnInit {
 
-  constructor(private globalService: GlobalService) { 
+	private sub: any;
+	public appTheme: string="light-theme";
+
+
+  constructor(
+			private route: ActivatedRoute,
+			private globalService: GlobalService) { 
 		this.globalService.displayWish = true;
 		this.globalService.addPanelItems("cartpole", true);
 	}
 
   ngOnInit(): void {
+		this.sub = this.route.params.subscribe(params => {
+			this.appTheme = params['theme'];
+		});
   }
-	
 }
