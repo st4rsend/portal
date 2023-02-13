@@ -40,7 +40,7 @@ export class ProductionsComponent implements OnInit {
 			private route: ActivatedRoute,
 			private httpClient: HttpClient, 
 			private globalService: GlobalService) { 
-		this.globalService.displayWish = false;
+		this.globalService.displayWish = true;
 	}
 
 	ngOnInit() {

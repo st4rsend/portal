@@ -17,7 +17,7 @@ export class IntroductionComponent implements OnInit {
 			private route: ActivatedRoute,
 			private globalService: GlobalService) {
 		this.globalService.displayWish = true;
-		this.globalService.addPanelItems("cartpole", true);
+		this.globalService.addPanelItems("cartpole", false);
 	}
 
   ngOnInit(): void {
