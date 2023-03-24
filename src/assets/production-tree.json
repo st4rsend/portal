@@ -3,7 +3,7 @@
     "name": "Science des données",
     "children": [
       {"name": "Introduction", "science": "introduction"},
-      {"name": "Distributions", "science": "distributions"},
+      {"name": "Variables", "science": "variables"},
       {"name": "Statistiques", "science": "statistiques"},
       {"name": "Probabilités", "science": "probabilites"},
       {"name":"Logique", "path": "wip"}
