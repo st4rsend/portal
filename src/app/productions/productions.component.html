@@ -6,7 +6,7 @@
 <!--
 			<a *ngIf="node.path" class="card link" [routerLink]=node.path>
 -->
-			<a *ngIf="node.path" class="card link" [routerLink]="['/static/', node.path]">
+			<a *ngIf="node.path" class="card link" [routerLink]="['/static/', node.path, appTheme]">
 				__DEV__{{node.name}}
 			</a>
 			<a *ngIf="node.science" class="card link" [routerLink]="['/science/', node.science, appTheme]">

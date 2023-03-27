@@ -1,5 +1,8 @@
 [
   {
+    "name": "Liminaire", "path": "liminaire" 
+  },
+  {
     "name": "Science des données",
     "children": [
       {"name": "Introduction", "science": "introduction"},

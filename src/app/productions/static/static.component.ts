@@ -21,6 +21,9 @@ const BASE_URL: string = 'https://www.st4rsend.net/static/';
 })
 export class StaticComponent implements OnInit {
 	private sub: any;
+
+	public appTheme: string = "light-theme";
+
 	buf: any = "buf";
 	inner: string = "Hi";
 	public text: string = "Hello interpolated string";
@@ -34,11 +37,12 @@ export class StaticComponent implements OnInit {
 
   ngOnInit(): void {
 		this.sub = this.route.params.subscribe(params => {
+			this.appTheme = params['theme'];
 			//console.log(params['id']);
 			let url = BASE_URL.concat(params['id'].concat(".html"));
 			this.httpClient.get(url, { headers: headers, responseType: 'text'}).subscribe(data => {
 				//this.inner = data;
-				console.log(data);
+				//console.log(data);
 				try {
 					this.buf = eval("`" + data + "`");
 				} catch(e) {

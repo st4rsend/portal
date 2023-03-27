@@ -1,8 +1,14 @@
-<div>
-TEXT: {{text}}
-<DIV>
-<button (click)="clickTest();">ClickTest</button>
-</DIV>
-</div>
-<div [innerHTML]="inner">
+<div class="container">
+	<div [innerHTML]="inner">
+	</div>
+	<div class="card-container">
+		<a class="card" [routerLink]="['/productions', appTheme]">Menu</a>
+	</div>
+	<H4>___DEV___</H4>
+	<p>
+	TEXT: {{text}}
+	</p>
+	<p>
+		<button (click)="clickTest();">ClickTest</button>
+	</p>
 </div>
