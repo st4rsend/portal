@@ -14,17 +14,44 @@
     "children": [
       {"name": "Stockage", "path": "wip"},
       {"name": "Sauvegarde", "path": "wip"},
-      {"name": "Rétention", "path": "wip"}
+      {"name": "Rétention", "path": "wip"},
+      {"name": "Disponibilité", "path": "wip"},
+      {"name": "Sécurité", "path": "wip"},
+      {"name": "Loi", "path": "wip"}
     ]
   },
   {
-    "name": "Valeur des données",
+    "name": "Les IA",
     "children": [
       {"name": "Neural Networks", "path": "wip"},
       {"name": "Rank 2 (test)",
       "children": [
         {"name": "Rank 2 A", "path": "wip"},
         {"name": "Rank 2 B", "path": "wip"}
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bac à sable",
+    "children": [
+      {"name": "Présentation", "path": "wip",
+      "children": [
+        {"name": "Introduction", "path": "wip"},
+        {"name": "Objectifs", "path": "wip"},
+        {"name": "Moyens", "path": "wip"},
+        {"name": "Prérequis", "path": "wip"}
+        ]
+			},
+      {"name": "Architecture",
+      "children": [
+        {"name": "Collecte", "path": "wip"},
+        {"name": "Stockage", "path": "wip"},
+        {"name": "Analyse", "path": "wip"},
+        {"name": "Préparation", "path": "wip"},
+        {"name": "Entrainenemnt", "path": "wip"},
+        {"name": "contrôle", "path": "wip"},
+        {"name": "tuning", "path": "wip"}
         ]
       }
     ]

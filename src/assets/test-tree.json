@@ -2,29 +2,56 @@
   {
     "name": "Science des données",
     "children": [
-			{"name": "Introduction", "science": "introduction"},
-      {"name": "Distributions", "science": "distributions"},
+      {"name": "Introduction", "science": "introduction"},
+      {"name": "Variables", "science": "variables"},
       {"name": "Statistiques", "science": "statistiques"},
-      {"name": "Probabilités", "science": "statistiques"},
-      {"name":"Logique", "path": "logique"}
+      {"name": "Probabilités", "science": "probabilites"},
+      {"name":"Logique", "path": "wip"}
     ]
   },
   {
     "name": "Gestion des données",
     "children": [
-      {"name": "Stockage", "path": "stockage"},
-      {"name": "Sauvegarde", "path": "sauvegarde"},
-      {"name": "Rétention", "path": "retention"}
+      {"name": "Stockage", "path": "wip"},
+      {"name": "Sauvegarde", "path": "wip"},
+      {"name": "Rétention", "path": "wip"},
+      {"name": "Disponibilité", "path": "wip"},
+      {"name": "Sécurité", "path": "wip"},
+      {"name": "Loi", "path": "wip"}
     ]
   },
   {
-    "name": "Valeur des données",
+    "name": "Les IA",
     "children": [
-      {"name": "Neural Networks", "path": "neuralnet"},
+      {"name": "Neural Networks", "path": "wip"},
       {"name": "Rank 2 (test)",
       "children": [
-        {"name": "Rank 2 A", "path": "test"},
-        {"name": "Rank 2 B", "path": "test"}
+        {"name": "Rank 2 A", "path": "wip"},
+        {"name": "Rank 2 B", "path": "wip"}
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bac à sable",
+    "children": [
+      {"name": "Présentation", "path": "wip",
+      "children": [
+        {"name": "Introduction", "path": "wip"},
+        {"name": "Objectifs", "path": "wip"},
+        {"name": "Moyens", "path": "wip"},
+        {"name": "Prérequis", "path": "wip"}
+        ]
+			},
+      {"name": "Architecture",
+      "children": [
+        {"name": "Collecte", "path": "wip"},
+        {"name": "Stockage", "path": "wip"},
+        {"name": "Analyse", "path": "wip"},
+        {"name": "Préparation", "path": "wip"},
+        {"name": "Entrainenemnt", "path": "wip"},
+        {"name": "contrôle", "path": "wip"},
+        {"name": "tuning", "path": "wip"}
         ]
       }
     ]

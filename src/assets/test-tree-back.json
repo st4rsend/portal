@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Science des données",
+    "children": [
+			{"name": "Introduction", "science": "introduction"},
+      {"name": "Distributions", "science": "distributions"},
+      {"name": "Statistiques", "science": "statistiques"},
+      {"name": "Probabilités", "science": "statistiques"},
+      {"name":"Logique", "path": "logique"}
+    ]
+  },
+  {
+    "name": "Gestion des données",
+    "children": [
+      {"name": "Stockage", "path": "stockage"},
+      {"name": "Sauvegarde", "path": "sauvegarde"},
+      {"name": "Rétention", "path": "retention"}
+    ]
+  },
+  {
+    "name": "Valeur des données",
+    "children": [
+      {"name": "Neural Networks", "path": "neuralnet"},
+      {"name": "Rank 2 (test)",
+      "children": [
+        {"name": "Rank 2 A", "path": "test"},
+        {"name": "Rank 2 B", "path": "test"}
+        ]
+      }
+    ]
+  },
+  {"name": "Essais (Nouvelle page)",
+  "children": [
+    {"name": "Kaggle survey analysis", "url":"https://www.st4rsend.net/ml/kaggle-survey"},
+    {"name": "Documentation / websocket", "url":"https://www.st4rsend.net/documentation"}
+    ]
+  }
+]
