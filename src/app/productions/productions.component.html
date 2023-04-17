@@ -3,13 +3,10 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="productions-tree">
 	<mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
 		<div class="mat-tree-node  card-container adjust">
-<!--
-			<a *ngIf="node.path" class="card link" [routerLink]=node.path>
--->
-			<a *ngIf="node.path" class="card link" [routerLink]="['/static/', node.path, appTheme]">
+			<a *ngIf="node.path" class="card link" [routerLink]="['/static/' + appTheme + '/' + node.path]">
 				__DEV__{{node.name}}
 			</a>
-			<a *ngIf="node.science" class="card link" [routerLink]="['/science/', node.science, appTheme]">
+			<a *ngIf="node.science" class="card link" [routerLink]="['/science/' + appTheme + '/' + node.science]">
 				__DEV__{{node.name}}
 			</a>
 			<a *ngIf="node.url" class="card link" [href]=node.url target="_blank">

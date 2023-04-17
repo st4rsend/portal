@@ -1,14 +1,12 @@
 <div class="container">
-	<div [innerHTML]="inner">
+	<div class="content" [innerHTML]="inner">
 	</div>
-	<div class="card-container">
-		<a class="card" [routerLink]="['/productions', appTheme]">Menu</a>
+	<div class="bottom-section" [ngClass]="bottomStyle">
+		<div class="card-container bottom-button">
+			<a class="card" (click)='buttonTop()'>Top</a>
+		</div>
+		<div class="card-container bottom-button">
+			<a class="card" [routerLink]="['/productions', appTheme]">Liste</a>
+		</div>
 	</div>
-	<H4>___DEV___</H4>
-	<p>
-	TEXT: {{text}}
-	</p>
-	<p>
-		<button (click)="clickTest();">ClickTest</button>
-	</p>
 </div>

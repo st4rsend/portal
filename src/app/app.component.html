@@ -15,8 +15,15 @@
 		<button mat-menu-item>
 			<mat-slide-toggle
 				labelPosition='before' 
-				[(ngModel)]="fixedMenu"
-				(change)='menuSet()'>Fixed menu 
+				[(ngModel)]="stickyMenu"
+				(change)='menuSet()'>Sticky menu 
+			</mat-slide-toggle>
+		</button>
+		<button mat-menu-item>
+			<mat-slide-toggle
+				labelPosition='before' 
+				[(ngModel)]="stickyBottom"
+				(change)='bottomSet()'>Sticky bottom 
 			</mat-slide-toggle>
 		</button>
 	</mat-menu>

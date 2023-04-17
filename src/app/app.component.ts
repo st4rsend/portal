@@ -25,7 +25,8 @@ export class AppComponent implements OnInit {
 	panelDisplaySub$: Subscription;
 	resizedFinished: any;
 	darkTheme: boolean=false;
-	fixedMenu: boolean=false;
+	stickyMenu: boolean=false;
+	stickyBottom: boolean=false;
 
 	constructor(
 				@Inject(DOCUMENT) private document: Document,
@@ -67,11 +68,15 @@ export class AppComponent implements OnInit {
 	}
 
 	menuSet() {
-		if (this.fixedMenu) {
+		if (this.stickyMenu) {
 			this.menuStyle='menu-fixed';
 		} else {
 			this.menuStyle='menu-scroll';
 		}
+	}
+
+	bottomSet() {
+		this.globalService.setStickyBottom(this.stickyBottom);
 	}
 
 	panelStrat() {

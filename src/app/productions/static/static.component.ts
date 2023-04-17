@@ -6,6 +6,7 @@ import { SafeUrl } from '@angular/platform-browser';
 import { SafeHtml } from '@angular/platform-browser';
 import { SafeScript } from '@angular/platform-browser';
 
+import { GlobalService } from '../../global.service';
 
 const headers = new HttpHeaders ({
   'Access-Control-Allow-Origin': 'https://storage.googleapis.com',
@@ -21,8 +22,12 @@ const BASE_URL: string = 'https://www.st4rsend.net/static/';
 })
 export class StaticComponent implements OnInit {
 	private sub: any;
+	private listenerApplied: boolean=false;
+	private innerReady: boolean=false;
 
 	public appTheme: string = "light-theme";
+	public stickyBottom: boolean=false;
+	public bottomStyle: string="bottom-scroll";
 
 	buf: any = "buf";
 	inner: string = "Hi";
@@ -32,17 +37,16 @@ export class StaticComponent implements OnInit {
 			private route: ActivatedRoute,
 			private httpClient: HttpClient,
 			private elementRef: ElementRef,
-			private sanitizer: DomSanitizer
-			) { }
+			private sanitizer: DomSanitizer,
+			private globalService: GlobalService
+			) { 
+	}
 
   ngOnInit(): void {
 		this.sub = this.route.params.subscribe(params => {
 			this.appTheme = params['theme'];
-			//console.log(params['id']);
-			let url = BASE_URL.concat(params['id'].concat(".html"));
+			let url = BASE_URL.concat(params['id'].replace(/-/g, "/").concat(".html"));
 			this.httpClient.get(url, { headers: headers, responseType: 'text'}).subscribe(data => {
-				//this.inner = data;
-				//console.log(data);
 				try {
 					this.buf = eval("`" + data + "`");
 				} catch(e) {
@@ -53,22 +57,41 @@ export class StaticComponent implements OnInit {
 								"<BR>----------------------------------------------------------<BR>" +
 								 data;
 				}
-				this.buf = this.sanitizer.bypassSecurityTrustHtml(this.buf);
-//				console.log(this.buf);
-				this.inner = this.buf;
+				this.inner = this.sanitizer.bypassSecurityTrustHtml(this.buf) as string;
+				this.innerReady=true;
 			});
 		});
+		this.globalService.getStickyBottom().subscribe(
+			value => {
+				if (value) {
+					this.bottomStyle="bottom-fixed";
+				} else {
+					this.bottomStyle="bottom-scroll";
+				}
+			});
   }
+
+	ngAfterViewChecked (){
+		if (!this.listenerApplied && this.innerReady) {
+			this.addEventListeners();
+		}
+	}
+	addEventListeners(): void {
+		if(this.elementRef.nativeElement.querySelector('#button-test')){
+			this.elementRef.nativeElement.querySelector('#button-test').addEventListener('click', this.clickTest.bind(this));
+		}
+		this.listenerApplied=true;
+	}
+
 
 	clickTest() {
 		console.log("Click Test");
 	}
 
-	ngAfterViewChecked (){
-//		console.log("afterviewcheck");
-		if(this.elementRef.nativeElement.querySelector('#button-test')){
-			this.elementRef.nativeElement.querySelector('#button-test').addEventListener('click', this.clickTest.bind(this));
-		}
+	buttonTop() {
+		console.log("button top");
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
+
 
 }

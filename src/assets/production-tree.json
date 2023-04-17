@@ -15,12 +15,12 @@
   {
     "name": "Gestion des données",
     "children": [
-      {"name": "Stockage", "path": "wip"},
-      {"name": "Sauvegarde", "path": "wip"},
-      {"name": "Rétention", "path": "wip"},
-      {"name": "Disponibilité", "path": "wip"},
-      {"name": "Sécurité", "path": "wip"},
-      {"name": "Loi", "path": "wip"}
+      {"name": "Stockage", "path": "gestion-stockage"},
+      {"name": "Sauvegarde", "path": "gestion-sauvegarde"},
+      {"name": "Rétention", "path": "gestion-retention"},
+      {"name": "Disponibilité", "path": "gestion-disponibilite"},
+      {"name": "Sécurité", "path": "gestion-securite"},
+      {"name": "Loi", "path": "gestion-loi"}
     ]
   },
   {
@@ -30,7 +30,8 @@
       {"name": "Rank 2 (test)",
       "children": [
         {"name": "Rank 2 A", "path": "wip"},
-        {"name": "Rank 2 B", "path": "wip"}
+        {"name": "Rank 2 A", "path": "wip"},
+        {"name": "Prompt", "path": "IA-prompt"}
         ]
       }
     ]

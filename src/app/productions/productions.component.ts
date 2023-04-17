@@ -53,6 +53,7 @@ export class ProductionsComponent implements OnInit {
 			}
 			// Force MatTree redesign
 			this.dataSource.data = [...this.dataSource.data];
+			//console.log(this.dataSource.data);
 		});
 	}
 

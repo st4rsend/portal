@@ -23,8 +23,11 @@ export class GlobalService {
 		return this._panelItems$.asObservable();
 	}
 
-	private displayPanel = new Subject<boolean>();
-	public displayWish:boolean = true
+	private displayPanelSub = new Subject<boolean>();
+	public displayWish:boolean = true;
+
+	private stickyBottomSub = new BehaviorSubject<boolean>(false);
+	public stickyBottom:boolean = false;
 
 
 	addPanelItems(app: string, value: boolean) {
@@ -41,12 +44,21 @@ export class GlobalService {
 
 	setDisplayPanel(val: boolean) {
 		if ( this.displayWish ) {
-			this.displayPanel.next(val);
+			this.displayPanelSub.next(val);
 		} else {
-			this.displayPanel.next(false);
+			this.displayPanelSub.next(false);
 		}
 	}
 	getDisplayPanel(): Observable<boolean> {
-		return this.displayPanel.asObservable();
+		return this.displayPanelSub.asObservable();
 	} 
+
+	setStickyBottom(val: boolean) {
+		this.stickyBottomSub.next(val);
+	}
+	getStickyBottom(): Observable<boolean> {
+		return this.stickyBottomSub.asObservable();
+	}
+
+
 }
