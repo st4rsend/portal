@@ -22,12 +22,15 @@ const BASE_URL: string = 'https://www.st4rsend.net/static/';
 })
 export class StaticComponent implements OnInit {
 	private sub: any;
-	private listenerApplied: boolean=false;
-	private innerReady: boolean=false;
+	private listenerApplied: boolean = false;
+	private innerReady: boolean = false;
 
 	public appTheme: string = "light-theme";
-	public stickyBottom: boolean=false;
-	public bottomStyle: string="bottom-scroll";
+	public stickyBottom: boolean = false;
+	public bottomStyle: string = "bottom-scroll";
+
+	public overlayContent = 'OVERLAY';
+	public showOverlay = false;
 
 	buf: any = "buf";
 	inner: string = "Hi";
@@ -77,10 +80,16 @@ export class StaticComponent implements OnInit {
 		}
 	}
 	addEventListeners(): void {
-		if(this.elementRef.nativeElement.querySelector('#button-test')){
-			this.elementRef.nativeElement.querySelector('#button-test').addEventListener('click', this.clickTest.bind(this));
+		if(this.elementRef.nativeElement.querySelector('.button-test')){
+			this.elementRef.nativeElement.querySelector('.button-test').addEventListener('click', this.clickTest.bind(this));
 		}
-		this.listenerApplied=true;
+		const overlayElems = this.elementRef.nativeElement.querySelectorAll('.overlay');
+		if (overlayElems) {
+			overlayElems.forEach((overlayElem: HTMLElement) => {
+				overlayElem.addEventListener('click', (event: MouseEvent) => this.requestOverlay(event));
+			});
+		}
+		this.listenerApplied = true;
 	}
 
 
@@ -88,10 +97,31 @@ export class StaticComponent implements OnInit {
 		console.log("Click Test");
 	}
 
+	requestOverlay(event: MouseEvent) {
+		const target = event.target as Element;
+		if (target instanceof Element) {
+			this.overlayContent = target.getAttribute('text') || 'text attribute missing';
+			
+/*
+			const overlay = document.querySelector('.overlay-content') as HTMLElement;
+			const x = event.clientX;
+			const y = event.clientY;
+			console.log(y);
+			if (overlay) {
+				console.log(overlay);
+				overlay.style.top = y - overlay.offsetHeight + 'px';
+			}
+*/
+			this.showOverlay=true;
+		}
+	}
+
 	buttonTop() {
-		console.log("button top");
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 
+	hideOverlay() {
+		this.showOverlay=false;
+	}
 
 }

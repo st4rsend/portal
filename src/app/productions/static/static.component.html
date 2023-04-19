@@ -10,3 +10,11 @@
 		</div>
 	</div>
 </div>
+<div class="overlay-container" [ngClass]="{ 'show': showOverlay, 'hide': !showOverlay }" 
+	style="display: {{showOverlay ? 'block' : 'none' }}"
+	(click)="hideOverlay()">
+	<div class="overlay-content">
+	{{ overlayContent }}
+	</div>
+</div>
+
