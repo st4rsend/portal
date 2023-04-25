@@ -1,69 +1,75 @@
 [
-  {
-    "name": "Liminaire", "path": "liminaire" 
-  },
-  {
-    "name": "Science des données",
-    "children": [
-      {"name": "Introduction", "science": "introduction"},
-      {"name": "Variables", "science": "variables"},
-      {"name": "Statistiques", "science": "statistiques"},
-      {"name": "Probabilités", "science": "probabilites"},
-      {"name":"Logique", "path": "wip"}
-    ]
-  },
-  {
-    "name": "Gestion des données",
-    "children": [
-      {"name": "Stockage", "path": "gestion-stockage"},
-      {"name": "Sauvegarde", "path": "gestion-sauvegarde"},
-      {"name": "Rétention", "path": "gestion-retention"},
-      {"name": "Disponibilité", "path": "gestion-disponibilite"},
-      {"name": "Sécurité", "path": "gestion-securite"},
-      {"name": "Loi", "path": "gestion-loi"}
-    ]
-  },
-  {
-    "name": "Les IA",
-    "children": [
-      {"name": "Neural Networks", "path": "wip"},
-      {"name": "Rank 2 (test)",
-      "children": [
-        {"name": "Rank 2 A", "path": "wip"},
-        {"name": "Rank 2 A", "path": "wip"},
-        {"name": "Prompt", "path": "IA-prompt"}
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Bac à sable",
-    "children": [
-      {"name": "Présentation", "path": "wip",
-      "children": [
-        {"name": "Introduction", "path": "wip"},
-        {"name": "Objectifs", "path": "wip"},
-        {"name": "Moyens", "path": "wip"},
-        {"name": "Prérequis", "path": "wip"}
-        ]
-			},
-      {"name": "Architecture",
-      "children": [
-        {"name": "Collecte", "path": "wip"},
-        {"name": "Stockage", "path": "wip"},
-        {"name": "Analyse", "path": "wip"},
-        {"name": "Préparation", "path": "wip"},
-        {"name": "Entrainenemnt", "path": "wip"},
-        {"name": "contrôle", "path": "wip"},
-        {"name": "tuning", "path": "wip"}
-        ]
-      }
-    ]
-  },
-  {"name": "Essais (Nouvelle page)",
+  {"name": "Introductions",
   "children": [
-    {"name": "Kaggle survey analysis", "url":"https://www.st4rsend.net/ml/kaggle-survey"},
-    {"name": "Documentation / websocket", "url":"https://www.st4rsend.net/documentation"}
-    ]
-  }
+  	{"name": "Liminaire", "path": "liminaire"},
+		{"name": "Science des données", "path": "introduction"}
+	]},
+	{"name": "Connaissances",
+	"children": [
+  	{"name": "Science des données",
+    "children": [
+    	{"name": "Variables", "science": "variables"},
+    	{"name": "Statistiques", "science": "statistiques"},
+    	{"name": "Probabilités", "science": "probabilites"},
+    	{"name":"Logique", "path": "wip"}
+    ]},
+  	{"name": "Gestion des données",
+    "children": [
+    	{"name": "Stockage", "path": "gestion-stockage"},
+    	{"name": "Sauvegarde", "path": "gestion-sauvegarde"},
+    	{"name": "Rétention", "path": "gestion-retention"},
+    	{"name": "Disponibilité", "path": "gestion-disponibilite"},
+    	{"name": "Sécurité", "path": "gestion-securite"},
+    	{"name": "Loi", "path": "gestion-loi"}
+    ]},
+  	{"name": "Les IA",
+    "children": [
+    	{"name": "Neural Networks", "path": "wip"}
+    ]}
+	]},
+  {"name": "Outils",
+	"children": [
+		{"name": "Bac à sable",
+  		"children": [
+   		{"name": "Présentation", "path": "wip",
+			"children": [
+	    	{"name": "Introduction", "path": "wip"},
+  	  	{"name": "Objectifs", "path": "wip"},
+    		{"name": "Moyens", "path": "wip"},
+    		{"name": "Prérequis", "path": "wip"}
+    	]},
+    	{"name": "Architecture",
+    	"children": [
+    		{"name": "Collecte", "path": "wip"},
+     		{"name": "Stockage", "path": "wip"},
+     		{"name": "Analyse", "path": "wip"},
+     		{"name": "Préparation", "path": "wip"},
+     		{"name": "Entrainenemnt", "path": "wip"},
+     		{"name": "contrôle", "path": "wip"},
+     		{"name": "tuning", "path": "wip"}
+    	]}
+  	]},
+		{"name": "Dev corner",
+		"children": [
+			{"name": "st4rsend",
+			"children": [
+				{"name":"terminus", "path": "doc-st4rsend-terminus"},
+				{"name":"www", "path": "doc-st4rsend-www"},
+				{"name":"kalgan", "path": "doc-st4rsend-kalgan"},
+				{"name":"dijkstra", "path": "doc-st4rsend-dijkstra"},
+				{"name":"deb", "path": "doc-st4rsend-deb"}
+			]},
+			{"name": "frameworks",
+			"children": [
+				{"name":"angular", "path": "doc-framework-angular"},
+				{"name":"git", "path": "doc-framework-git"},
+				{"name":"rxjs", "path": "doc-framework-rxjs"},
+				{"name":"go", "path": "doc-framework-go"}
+			]},
+			{"name": "cloud",
+			"children": [
+				{"name":"google", "path": "doc-cloud-google"}
+			]}
+		]}
+	]}
 ]

@@ -8,7 +8,7 @@
   {"name": "Introductions",
   "children": [
   	{"name": "Liminaire", "path": "liminaire"},
-		{"name": "Science des données", "science": "introduction"}
+		{"name": "Science des données", "path": "introduction"}
 	]},
 	{"name": "Connaissances",
 	"children": [
@@ -55,29 +55,27 @@
      		{"name": "tuning", "path": "wip"}
     	]}
   	]},
-		{"name": "Doc",
+		{"name": "Dev corner",
 		"children": [
 			{"name": "st4rsend",
 			"children": [
 				{"name":"terminus", "path": "doc-st4rsend-terminus"},
 				{"name":"www", "path": "doc-st4rsend-www"},
-				{"name":"kalgan", "path": "doc-st4rsend-kalgan"}
+				{"name":"kalgan", "path": "doc-st4rsend-kalgan"},
+				{"name":"dijkstra", "path": "doc-st4rsend-dijkstra"},
+				{"name":"deb", "path": "doc-st4rsend-deb"}
 			]},
 			{"name": "frameworks",
 			"children": [
 				{"name":"angular", "path": "doc-framework-angular"},
 				{"name":"git", "path": "doc-framework-git"},
-				{"name":"rxjs", "path": "doc-framework-rxjs"}
+				{"name":"rxjs", "path": "doc-framework-rxjs"},
+				{"name":"go", "path": "doc-framework-go"}
 			]},
 			{"name": "cloud",
 			"children": [
 				{"name":"google", "path": "doc-cloud-google"}
 			]}
-		]},
-  	{"name": "Essais (Nouvelle page)",
-  	"children": [
-    	{"name": "Kaggle survey analysis", "url":"https://www.st4rsend.net/ml/kaggle-survey"},
-    	{"name": "Documentation / websocket", "url":"https://www.st4rsend.net/documentation"}
-    ]}
+		]}
 	]}
 ]

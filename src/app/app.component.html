@@ -7,14 +7,6 @@
 		<button mat-menu-item>
 			<mat-slide-toggle
 				labelPosition='before' 
-				[(ngModel)]="darkTheme"
-				(click)="$event.stopPropagation();"
-				(change)='themeSet()'> Dark mode
-			</mat-slide-toggle>
-		</button>
-		<button mat-menu-item>
-			<mat-slide-toggle
-				labelPosition='before' 
 				[(ngModel)]="stickyMenu"
 				(change)='menuSet()'>Sticky menu 
 			</mat-slide-toggle>
@@ -24,6 +16,14 @@
 				labelPosition='before' 
 				[(ngModel)]="stickyBottom"
 				(change)='bottomSet()'>Sticky bottom 
+			</mat-slide-toggle>
+		</button>
+		<button mat-menu-item>
+			<mat-slide-toggle
+				labelPosition='before' 
+				[(ngModel)]="darkTheme"
+				(click)="$event.stopPropagation();"
+				(change)='themeSet()'> Dark mode
 			</mat-slide-toggle>
 		</button>
 	</mat-menu>

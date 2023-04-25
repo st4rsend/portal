@@ -14,7 +14,8 @@ $light-foreground:  mat.define-palette($st4rsend-light-foreground)
 
 $background-color: mat.get-color-from-palette($light-background,50)
 $background2-color: mat.get-color-from-palette($light-background,100)
-$foreground-color: mat.get-color-from-palette($light-foreground,700)
+$foreground-color: mat.get-color-from-palette($light-foreground,800)
+$foreground2-color: mat.get-color-from-palette($light-foreground,900)
 
 @import 'st4rsend-light.scss'
 //@include mat.all-component-colors($light-theme)
@@ -36,14 +37,16 @@ $foreground-color: mat.get-color-from-palette($light-foreground,700)
 	H1
 		background-image: linear-gradient(to right, $foreground-color, 62%, $background-color 95%)
 		color: mat.get-color-from-palette($light-background,50)
+	H2
+		color: mat.get-color-from-palette($light-foreground,A200)
 	H3
-		color: mat.get-color-from-palette($light-foreground,A400)
+		color: $foreground2-color
 	pre
 		background-color: $background2-color
 
 	.card
 		background-color: mat.get-color-from-palette($light-background,100)
-		color: mat.get-color-from-palette($light-foreground,900)
+		color: mat.get-color-from-palette($light-foreground,800)
 
 	.card.highlight-card
 		background-color: mat.get-color-from-palette($light-background,200)

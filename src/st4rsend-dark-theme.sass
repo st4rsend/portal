@@ -15,6 +15,7 @@ $dark-foreground:  mat.define-palette($st4rsend-dark-foreground)
 $background-color: mat.get-color-from-palette($dark-background,900)
 $background2-color: mat.get-color-from-palette($dark-background,800)
 $foreground-color: mat.get-color-from-palette($dark-foreground,300)
+$foreground2-color: mat.get-color-from-palette($dark-foreground,200)
 
 @import 'st4rsend-dark.scss'
 //@include mat.all-component-colors($dark-theme)
@@ -36,10 +37,12 @@ $foreground-color: mat.get-color-from-palette($dark-foreground,300)
 	color: $foreground-color
 
 	H1
-		color: mat.get-color-from-palette($dark-background,500)
 		background-image: linear-gradient(to right, $foreground-color, 62%, $background-color 95%)
-	H3
+		color: mat.get-color-from-palette($dark-background,500)
+	H2
 		color: mat.get-color-from-palette($dark-foreground,A400)
+	H3
+		color: $foreground2-color
 
 	pre
 		background-color: $background2-color

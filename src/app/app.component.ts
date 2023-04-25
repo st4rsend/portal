@@ -80,7 +80,7 @@ export class AppComponent implements OnInit {
 	}
 
 	panelStrat() {
-		if (window.matchMedia("(min-width: 1024px)").matches) {
+		if (window.matchMedia("(min-width: 1280px)").matches) {
 			this.globalService.setDisplayPanel(true);
 		} else {
 			this.globalService.setDisplayPanel(false);
