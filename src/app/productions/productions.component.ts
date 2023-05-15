@@ -43,6 +43,8 @@ export class ProductionsComponent implements OnInit {
 		this.globalService.displayWish = true;
 	}
 
+	hasChild = (_: number, node: ProductionNode) => !!node.children && node.children.length > 0;
+
 	ngOnInit() {
 		this.sub = this.route.params.subscribe(params => {
 			this.appTheme = params['theme'];
@@ -51,12 +53,38 @@ export class ProductionsComponent implements OnInit {
 			for ( let item of Object.values(data)) {
 				this.dataSource.data.push(item as ProductionNode);
 			}
+			// tree expoand state management
+			this.dataSource.data.forEach(node => {
+				this.expandNodes(node, this.globalService.expandedNodeIds);
+			});
 			// Force MatTree redesign
 			this.dataSource.data = [...this.dataSource.data];
 			//console.log(this.dataSource.data);
 		});
 	}
 
-	hasChild = (_: number, node: ProductionNode) => !!node.children && node.children.length > 0;
+	expandNodes(node: ProductionNode, expandedNodeIds: string[]) {
+		if (expandedNodeIds.includes(node.name)) {
+			this.treeControl.expand(node);
+		}
 
+		if (node.children) {
+			node.children.forEach(child => {
+				this.expandNodes(child, expandedNodeIds);
+			});
+		}
+	}
+
+	trackByName(index: number, item: ProductionNode) {
+		return item.name;
+	}
+
+	onToggle(node: ProductionNode, isExpanded: boolean) {
+		const index = this.globalService.expandedNodeIds.indexOf(node.name);
+		if (isExpanded && index === -1) {
+			this.globalService.expandedNodeIds.push(node.name);
+		} else if (!isExpanded && index !== -1) {
+			this.globalService.expandedNodeIds.splice(index, 1);
+		}
+	}
 }

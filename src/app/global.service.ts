@@ -29,6 +29,7 @@ export class GlobalService {
 	private stickyBottomSub = new BehaviorSubject<boolean>(false);
 	public stickyBottom:boolean = false;
 
+  public expandedNodeIds: string[] = [];
 
 	addPanelItems(app: string, value: boolean) {
 		const panelItem: PanelItem = {
