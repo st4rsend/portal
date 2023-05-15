@@ -1,16 +1,6 @@
 @import "../variables.sass"
 
-.menu-fixed
-	position: fixed
-	margin-top: 1.5rem
-	margin-left: .66rem
-	z-index: 10000
 
-.menu-scroll
-	position: absolute
-	margin-top: 1.5rem
-	margin-left: .66rem
-	z-index: 10000
 
 .container
 	display: grid
@@ -30,13 +20,8 @@
 .title 
 	grid-column-start: 2
 	grid-column-end: 3
-	grid-row-start: 1
-	grid-row-end: 2
-	//font-size: 3rem
-	//margin: 1.1rem auto 1rem auto
-	//text-align: center
-	//vertical-align: middle
-	//color: #733374
+	grid-row-start: 2
+	grid-row-end: 3
 	display: flex
 	align-items: center
 	justify-content: center
@@ -47,15 +32,36 @@ img
 	max-height: 100%
 
 
-.logo
-	//filter: invert(11%) sepia(100%) saturate(5695%) hue-rotate(296deg) brightness(41%) contrast(106%)
-	//opacity: .75
+.logo-container
 	margin: .5rem auto .5rem auto
 	grid-column-start: 2
 	grid-column-end: 3
-	grid-row-start: 2
-	grid-row-end: 3
+	grid-row-start: 1
+	grid-row-end: 2
 	z-index: 1
+	width: 100%
+	display: flex
+	flex-direction: row-reverse
+	align-items: center
+	z-index: 10
+
+.logo
+	height: 100%
+	width: 50%
+
+.menu-scroll
+	width: 50%
+	display: flex
+	justify-content: center
+	margin: auto
+	z-index: 10000
+
+.menu-fixed
+	left: 33%
+	position: fixed
+	margin-top: .5rem
+	margin-left: .66rem
+	z-index: 10
 
 //.logo mat-slide-toggle
 
@@ -65,8 +71,6 @@ img
 	grid-row-start: 1
 	grid-row-end: 2
 	z-index: 2
-	margin-left: 2rem
-	margin-right: .5rem
 
 .button-contact
 	grid-column-start: 3
@@ -74,13 +78,6 @@ img
 	grid-row-start: 1
 	grid-row-end: 2
 	z-index: 2
-
-//.item-documentation 
-//	grid-column-start: 4
-//	grid-column-end: 5
-//	grid-row-start: 2
-//	grid-row-end: 3
-//	z-index: 2
 
 .button-intro
 	grid-column-start: 1
