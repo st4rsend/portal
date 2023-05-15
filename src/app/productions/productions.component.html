@@ -3,13 +3,19 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="productions-tree">
 	<mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
 		<div class="mat-tree-node  card-container adjust">
-			<a *ngIf="node.path" class="card link" [routerLink]="['/static/' + appTheme + '/' + node.path]">
+			<a *ngIf="node.path" class="card link" 
+				[routerLink]="['/static/' + appTheme + '/' + node.path]" 
+				(click)="onProductionClick()">
 				{{node.name}}
 			</a>
-			<a *ngIf="node.science" class="card link" [routerLink]="['/science/' + appTheme + '/' + node.science]">
+			<a *ngIf="node.science" class="card link" 
+				[routerLink]="['/science/' + appTheme + '/' + node.science]"
+				(click)="onProductionClick()">
 				{{node.name}}
 			</a>
-			<a *ngIf="node.url" class="card link" [href]=node.url target="_blank">
+			<a *ngIf="node.url" class="card link" 
+				[href]=node.url target="_blank"
+				(click)="onProductionClick()">
 				{{node.name}}
 			</a>
 		</div>

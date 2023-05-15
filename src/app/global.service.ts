@@ -30,6 +30,7 @@ export class GlobalService {
 	public stickyBottom:boolean = false;
 
   public expandedNodeIds: string[] = [];
+	public productionScrollPosition: {x: number, y: number} = {x: 0, y: 0};
 
 	addPanelItems(app: string, value: boolean) {
 		const panelItem: PanelItem = {

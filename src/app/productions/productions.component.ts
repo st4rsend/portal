@@ -60,6 +60,9 @@ export class ProductionsComponent implements OnInit {
 			// Force MatTree redesign
 			this.dataSource.data = [...this.dataSource.data];
 			//console.log(this.dataSource.data);
+			setTimeout(() => {
+				window.scrollTo(this.globalService.productionScrollPosition.x, this.globalService.productionScrollPosition.y);
+			}, 0);
 		});
 	}
 
@@ -86,5 +89,9 @@ export class ProductionsComponent implements OnInit {
 		} else if (!isExpanded && index !== -1) {
 			this.globalService.expandedNodeIds.splice(index, 1);
 		}
+	}
+
+	onProductionClick() {
+		this.globalService.productionScrollPosition = {x: window.scrollX, y: window.scrollY};
 	}
 }
