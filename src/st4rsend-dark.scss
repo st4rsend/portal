@@ -5,3 +5,16 @@ $dark-theme: mat.define-dark-theme((
     warn:  $dark-warn,
   ),
 ));
+
+@mixin dark-mixin-theme($theme) {
+	$background: map-get($theme, background);
+	$foreground: map-get($theme, foreground);
+
+	.mat-menu-content {
+		background-color: mat-color($dark-background, background);
+	}
+
+	.mat-menu-item {
+		color: mat-color($dark-foreground, text);
+	}
+}

@@ -1,3 +1,5 @@
+@import '@angular/material/theming';
+
 $light-theme: mat.define-light-theme((
   color: (
     primary: $light-primary,
@@ -8,3 +10,19 @@ $light-theme: mat.define-light-theme((
   density: 0,
 ));
 
+@mixin light-mixin-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .mat-menu-content {
+    background-color: mat-color($light-background, background);
+  }
+
+  .mat-menu-panel {
+    background-color: mat-color($light-background, background);
+  }
+
+  .mat-menu-item {
+    color: mat-color($light-foreground, text);
+  }
+}

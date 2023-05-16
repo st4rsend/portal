@@ -9,6 +9,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -55,6 +56,7 @@ import { IframeDynamicDirective } from './iframe-dynamic.directive';
 		MatIconModule,
 		MatSlideToggleModule,
 		MatMenuModule,
+		MatButtonModule,
   ],
   //providers: [ {provide: APP_BASE_HREF, useValue: '/portal'} ],
   providers: [ {provide: APP_BASE_HREF, useValue: environment.baseURL},
