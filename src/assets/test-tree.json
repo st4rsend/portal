@@ -1,9 +1,9 @@
 [
-  {"name": "test", "path": "test"},
+  {"name": "test", "path": "test-test"},
   {"name": "Rank 2 (test)",
  	"children": [
- 		{"name": "Rank 2 A", "path": "test1"},
- 		{"name": "Rank 2 B", "path": "test2"}
+ 		{"name": "Rank 2 A", "path": "test-test1"},
+ 		{"name": "Rank 2 B", "path": "test-test2"}
  	]},
   {"name": "Introductions",
   "children": [

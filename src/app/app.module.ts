@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
+import { Injectable } from '@angular/core';
+
 import { AppRoutingModule } from './app-routing.module';
 import { APP_BASE_HREF } from '@angular/common';
 import { environment } from '../environments/environment';
@@ -27,6 +29,27 @@ import { CartpoleComponent } from './fixed-panel/cartpole/cartpole.component';
 import { StaticComponent } from './productions/static/static.component';
 import { ScienceComponent } from './productions/science/science.component';
 import { IframeDynamicDirective } from './iframe-dynamic.directive';
+
+import { MathjaxModule } from 'mathjax-angular';
+
+let mathjaxConfig = {
+  config: {
+    loader: {
+      //load: ["output/svg", "[tex]/require", "[tex]/ams"]
+      load: ["output/chtml", "[tex]/require", "[tex]/ams"]
+    },
+    tex: {
+      inlineMath: [["$", "$"]],
+      packages: ["base", "require", "ams"]
+    },
+    svg: { "fontCache": "global" }
+  },
+  //src: "https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/startup.js",
+  src: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js",
+	options: {
+		enableMenu: true
+	}
+}
 
 @NgModule({
   declarations: [
@@ -57,10 +80,11 @@ import { IframeDynamicDirective } from './iframe-dynamic.directive';
 		MatSlideToggleModule,
 		MatMenuModule,
 		MatButtonModule,
+		MathjaxModule.forRoot(mathjaxConfig),
   ],
   //providers: [ {provide: APP_BASE_HREF, useValue: '/portal'} ],
   providers: [ {provide: APP_BASE_HREF, useValue: environment.baseURL},
-							{provide: Window, useValue: window}
+							{provide: Window, useValue: window},
 						 ],
   bootstrap: [AppComponent]
 })

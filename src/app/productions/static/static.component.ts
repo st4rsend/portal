@@ -1,10 +1,12 @@
-import { Component, OnInit, AfterViewChecked, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ElementRef, SecurityContext } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
+import * as DOMPurify from 'dompurify';
 import { SafeHtml } from '@angular/platform-browser';
-import { SafeScript } from '@angular/platform-browser';
+//import { SafeResourceUrl } from '@angular/platform-browser';
+//import { SafeUrl } from '@angular/platform-browser';
+//import { SafeScript } from '@angular/platform-browser';
 
 import { GlobalService } from '../../global.service';
 
@@ -14,6 +16,9 @@ const headers = new HttpHeaders ({
  })
 
 const BASE_URL: string = 'https://www.st4rsend.net/static/';
+
+declare var MathJax: any;
+
 
 @Component({
   selector: 'app-static',
@@ -51,7 +56,9 @@ export class StaticComponent implements OnInit {
 			let url = BASE_URL.concat(params['id'].replace(/-/g, "/").concat(".html"));
 			this.httpClient.get(url, { headers: headers, responseType: 'text'}).subscribe(data => {
 				try {
-					this.buf = eval("`" + data + "`");
+					//this.buf = eval("`" + data + "`");
+					this.buf = data;
+					//this.buf = eval("`" + data.replace("`","aaa") + "`");
 				} catch(e) {
 					console.log(e);
 					this.buf = "<BR><BR>!!! <b>WARNING: Interpolation error</b> !!!" +
@@ -60,7 +67,17 @@ export class StaticComponent implements OnInit {
 								"<BR>----------------------------------------------------------<BR>" +
 								 data;
 				}
+				//this.buf = this.sanitizer.sanitize(SecurityContext.HTML, this.buf);
+				this.buf = DOMPurify.sanitize(this.buf, { 
+					ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'i', 'b', 'p', 'li', 'ul', 'pre', 'button'], 
+					ADD_ATTR: ['click']
+				});
 				this.inner = this.sanitizer.bypassSecurityTrustHtml(this.buf) as string;
+				setTimeout(() => {
+					if (typeof MathJax !== 'undefined') {
+						MathJax.typeset();
+					}
+				}, 0);
 				this.innerReady=true;
 			});
 		});
@@ -74,14 +91,29 @@ export class StaticComponent implements OnInit {
 			});
   }
 
+/*
+	ngAfterViewInit() {
+		if (typeof MathJax !== 'undefined') {
+			MathJax.typesetPromise().then(() => {
+			// MathJax has finished typesetting
+			}).catch((err: any) => {
+				// MathJax typesetting failed
+				console.error('MathJax typesetting failed: ', err);
+			});
+		}
+	}
+*/
 	ngAfterViewChecked (){
 		if (!this.listenerApplied && this.innerReady) {
 			this.addEventListeners();
 		}
 	}
 	addEventListeners(): void {
-		if(this.elementRef.nativeElement.querySelector('.button-test')){
-			this.elementRef.nativeElement.querySelector('.button-test').addEventListener('click', this.clickTest.bind(this));
+		const eventA = this.elementRef.nativeElement.querySelectorAll('.eventA');
+		if(eventA) {
+			eventA.forEach((eventA: HTMLElement) => {
+				eventA.addEventListener('click', (event: MouseEvent) => this.clickTest(eventA.getAttribute('value')));
+			});
 		}
 		const overlayElems = this.elementRef.nativeElement.querySelectorAll('.overlay');
 		if (overlayElems) {
@@ -93,14 +125,15 @@ export class StaticComponent implements OnInit {
 	}
 
 
-	clickTest() {
-		console.log("Click Test");
+	clickTest(value: any) {
+		console.log("Click Test value:", value);
+		//alert(value);
 	}
 
 	requestOverlay(event: MouseEvent) {
 		const target = event.target as Element;
 		if (target instanceof Element) {
-			this.overlayContent = target.getAttribute('text') || 'text attribute missing';
+			this.overlayContent = target.getAttribute('value') || target.getAttribute('title') || 'text attribute missing';
 			
 /*
 			const overlay = document.querySelector('.overlay-content') as HTMLElement;
