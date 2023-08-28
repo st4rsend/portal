@@ -70,7 +70,7 @@ export class StaticComponent implements OnInit {
 				//this.buf = this.sanitizer.sanitize(SecurityContext.HTML, this.buf);
 				this.buf = DOMPurify.sanitize(this.buf, { 
 					ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'i', 'b', 'p', 'li', 'ul', 'pre', 'button'], 
-					ADD_ATTR: ['click']
+					ADD_ATTR: []
 				});
 				this.inner = this.sanitizer.bypassSecurityTrustHtml(this.buf) as string;
 				setTimeout(() => {
