@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { APP_BASE_HREF } from '@angular/common';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
-import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';

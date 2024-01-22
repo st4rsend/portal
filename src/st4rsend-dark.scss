@@ -10,11 +10,11 @@ $dark-theme: mat.define-dark-theme((
 	$background: map-get($theme, background);
 	$foreground: map-get($theme, foreground);
 
-	.mat-menu-content {
+	.mat-mdc-menu-content {
 		background-color: mat-color($dark-background, background);
 	}
 
-	.mat-menu-item {
+	.mat-mdc-menu-item {
 		color: mat-color($dark-foreground, text);
 	}
 }

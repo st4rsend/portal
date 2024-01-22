@@ -14,15 +14,15 @@ $light-theme: mat.define-light-theme((
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  .mat-menu-content {
+  .mat-mdc-menu-content {
     background-color: mat-color($light-background, background);
   }
 
-  .mat-menu-panel {
+  .mat-mdc-menu-panel {
     background-color: mat-color($light-background, background);
   }
 
-  .mat-menu-item {
+  .mat-mdc-menu-item {
     color: mat-color($light-foreground, text);
   }
 }
