@@ -1,0 +1,70 @@
+@use '@angular/material' as mat;
+@use 'src/cards';
+
+@use 'st4rsend-dark-palette' as palette;
+
+$dark-primary: mat.define-palette(palette.$st4rsend-dark-primary, 500);
+$dark-accent:  mat.define-palette(palette.$st4rsend-dark-primary, A200, A100, A400);
+$dark-warn:    mat.define-palette(mat.$red-palette);
+$dark-background:  mat.define-palette(palette.$st4rsend-dark-background);
+$dark-foreground:  mat.define-palette(palette.$st4rsend-dark-foreground);
+
+$background-color: mat.get-color-from-palette($dark-background,900);
+$background2-color: mat.get-color-from-palette($dark-background,800);
+$foreground-color: mat.get-color-from-palette($dark-foreground,300);
+$foreground2-color: mat.get-color-from-palette($dark-foreground,200);
+
+$dark-theme: mat.define-dark-theme((
+	color: (
+		primary: $dark-primary,
+		accent: $dark-accent,
+		warn: $dark-warn
+	),
+	typography: mat.define-typography-config(),
+	density: 0,
+));
+
+.dark-theme {
+	@include mat.core-theme($dark-theme);
+	//@include mat.all-component-themes($dark-theme);
+	@include mat.button-theme($dark-theme);
+
+	label {
+		color: $foreground-color;
+	}
+	.ngx-charts g.tick text {
+		fill: mat.get-color-from-palette($dark-foreground,A400);
+	}
+	.ngx-charts .axis>g>text {
+		fill: $foreground-color;
+	}
+	background-color: $background-color;
+	color: $foreground-color;
+
+	H1 {
+		background-image: linear-gradient(to right, $foreground-color, 62%, $background-color 95%);
+		color: mat.get-color-from-palette($dark-background,500);
+	}
+	H2 {
+		color: mat.get-color-from-palette($dark-foreground,A400);
+	}
+	H3 {
+		color: $foreground2-color;
+	}
+	pre {
+		background-color: $background2-color;
+	}
+	.card {
+		background-color: mat.get-color-from-palette($dark-background,500);
+		color: mat.get-color-from-palette($dark-foreground,A400);
+	}
+	.card.highlight-card {
+		background-color: mat.get-color-from-palette($dark-background,700);
+	}
+	.card-container {
+		background-color: $background-color;
+	}
+	.mat-tree {
+		background-color: $background-color;
+	}
+}
