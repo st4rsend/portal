@@ -3,24 +3,24 @@
 
 @use 'st4rsend-dark-palette' as palette;
 
-$dark-primary: mat.define-palette(palette.$st4rsend-dark-primary, 500);
-$dark-accent:  mat.define-palette(palette.$st4rsend-dark-primary, A200, A100, A400);
-$dark-warn:    mat.define-palette(mat.$red-palette);
-$dark-background:  mat.define-palette(palette.$st4rsend-dark-background);
-$dark-foreground:  mat.define-palette(palette.$st4rsend-dark-foreground);
+$dark-primary: mat.m2-define-palette(palette.$st4rsend-dark-primary, 500);
+$dark-accent:  mat.m2-define-palette(palette.$st4rsend-dark-primary, A200, A100, A400);
+$dark-warn:    mat.m2-define-palette(mat.$m2-red-palette);
+$dark-background:  mat.m2-define-palette(palette.$st4rsend-dark-background);
+$dark-foreground:  mat.m2-define-palette(palette.$st4rsend-dark-foreground);
 
-$background-color: mat.get-color-from-palette($dark-background,900);
-$background2-color: mat.get-color-from-palette($dark-background,800);
-$foreground-color: mat.get-color-from-palette($dark-foreground,300);
-$foreground2-color: mat.get-color-from-palette($dark-foreground,200);
+$background-color: mat.m2-get-color-from-palette($dark-background,900);
+$background2-color: mat.m2-get-color-from-palette($dark-background,800);
+$foreground-color: mat.m2-get-color-from-palette($dark-foreground,300);
+$foreground2-color: mat.m2-get-color-from-palette($dark-foreground,200);
 
-$dark-theme: mat.define-dark-theme((
+$dark-theme: mat.m2-define-dark-theme((
 	color: (
 		primary: $dark-primary,
 		accent: $dark-accent,
 		warn: $dark-warn
 	),
-	typography: mat.define-typography-config(),
+	typography: mat.m2-define-typography-config(),
 	density: 0,
 ));
 
@@ -33,7 +33,7 @@ $dark-theme: mat.define-dark-theme((
 		color: $foreground-color;
 	}
 	.ngx-charts g.tick text {
-		fill: mat.get-color-from-palette($dark-foreground,A400);
+		fill: mat.m2-get-color-from-palette($dark-foreground,A400);
 	}
 	.ngx-charts .axis>g>text {
 		fill: $foreground-color;
@@ -43,10 +43,10 @@ $dark-theme: mat.define-dark-theme((
 
 	H1 {
 		background-image: linear-gradient(to right, $foreground-color, 62%, $background-color 95%);
-		color: mat.get-color-from-palette($dark-background,500);
+		color: mat.m2-get-color-from-palette($dark-background,500);
 	}
 	H2 {
-		color: mat.get-color-from-palette($dark-foreground,A400);
+		color: mat.m2-get-color-from-palette($dark-foreground,A400);
 	}
 	H3 {
 		color: $foreground2-color;
@@ -55,11 +55,11 @@ $dark-theme: mat.define-dark-theme((
 		background-color: $background2-color;
 	}
 	.card {
-		background-color: mat.get-color-from-palette($dark-background,500);
-		color: mat.get-color-from-palette($dark-foreground,A400);
+		background-color: mat.m2-get-color-from-palette($dark-background,500);
+		color: mat.m2-get-color-from-palette($dark-foreground,A400);
 	}
 	.card.highlight-card {
-		background-color: mat.get-color-from-palette($dark-background,700);
+		background-color: mat.m2-get-color-from-palette($dark-background,700);
 	}
 	.card-container {
 		background-color: $background-color;
