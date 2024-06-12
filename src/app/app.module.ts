@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -51,41 +51,32 @@ let mathjaxConfig = {
 	}
 }
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    DocComponent,
-    ProductionsComponent,
-    IntroductionComponent,
-    ContactsComponent,
-    KaggleSurveyComponent,
-    DataExplorationComponent,
-    MainBodyComponent,
-    FixedPanelComponent,
-    CartpoleComponent,
-    StaticComponent,
-    ScienceComponent,
-    IframeDynamicDirective,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-		FormsModule,
-		HttpClientModule,
-		MatCheckboxModule,
-		MatTreeModule,
-		MatIconModule,
-		MatSlideToggleModule,
-		MatMenuModule,
-		MatButtonModule,
-		MathjaxModule.forRoot(mathjaxConfig),
-  ],
-  //providers: [ {provide: APP_BASE_HREF, useValue: '/portal'} ],
-  providers: [ {provide: APP_BASE_HREF, useValue: environment.baseURL},
-							{provide: Window, useValue: window},
-						 ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HomeComponent,
+        DocComponent,
+        ProductionsComponent,
+        IntroductionComponent,
+        ContactsComponent,
+        KaggleSurveyComponent,
+        DataExplorationComponent,
+        MainBodyComponent,
+        FixedPanelComponent,
+        CartpoleComponent,
+        StaticComponent,
+        ScienceComponent,
+        IframeDynamicDirective,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatCheckboxModule,
+        MatTreeModule,
+        MatIconModule,
+        MatSlideToggleModule,
+        MatMenuModule,
+        MatButtonModule,
+        MathjaxModule.forRoot(mathjaxConfig)], providers: [{ provide: APP_BASE_HREF, useValue: environment.baseURL },
+        { provide: Window, useValue: window }, provideHttpClient(withInterceptorsFromDi()),] })
 export class AppModule { }
