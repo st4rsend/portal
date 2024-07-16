@@ -2,7 +2,7 @@
 
 <div [ngClass]="appTheme" class="container">
 	<div class="button-home card-container">
-		<a class="card" routerLink="/home">Accueil</a>
+		<a class="card" routerLink="/home">Préparation aux IA</a>
 	</div>
 	<div class="title">
 		<img src="https://www.st4rsend.net/medias/St4rsend_logo_20220803-Text.png">
@@ -11,17 +11,17 @@
 		<a class="card" routerLink="/contacts">Contacts</a>
 	</div>
 	<div class="button-intro card-container">
-		<a class="card" [routerLink]="['/intro', appTheme]">Présentation</a>
+		<a class="card" [routerLink]="['/intro', appTheme]">Focus sur les données</a>
 	</div>
 	<div class="button-productions card-container">
 		<a class="card" [routerLink]="['/productions', appTheme]">Ressources</a>
 	</div>
-	<div class="logo-container">
-		<div class="logo">
-			<img src="https://www.st4rsend.net/medias/St4rsend_logo_large_1.svg">
-		</div>
+	<div class="menu-container">
 		<div [ngClass]="[appTheme, menuStyle]">
-			<button mat-button [matMenuTriggerFor]="menu" aria-label="Aria label">
+			<button mat-icon-button routerLink="/home" aria-label="Aria label">
+				<mat-icon>home</mat-icon>
+			</button>
+			<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Aria label">
 				<mat-icon>menu</mat-icon>
 			</button>
 			<mat-menu #menu="matMenu" class="mat-menu-overflow">
@@ -48,6 +48,11 @@
 					</mat-slide-toggle>
 				</button>
 			</mat-menu>
+		</div>
+	</div>
+	<div class="logo-container">
+		<div class="logo">
+			<img src="https://www.st4rsend.net/medias/St4rsend_logo_large_1.svg">
 		</div>
 	</div>
 	<div class="main-body">
