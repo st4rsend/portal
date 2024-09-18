@@ -27,6 +27,7 @@ import { MainBodyComponent } from './main-body/main-body.component';
 import { FixedPanelComponent } from './fixed-panel/fixed-panel.component';
 import { CartpoleComponent } from './fixed-panel/cartpole/cartpole.component';
 import { StaticComponent } from './productions/static/static.component';
+import { SvgComponent } from './productions/svg/svg.component';
 import { ScienceComponent } from './productions/science/science.component';
 import { IframeDynamicDirective } from './iframe-dynamic.directive';
 
@@ -64,6 +65,7 @@ let mathjaxConfig = {
         FixedPanelComponent,
         CartpoleComponent,
         StaticComponent,
+        SvgComponent,
         ScienceComponent,
         IframeDynamicDirective,
     ],

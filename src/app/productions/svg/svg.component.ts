@@ -2,12 +2,8 @@ import { Component, OnInit, AfterViewChecked, ElementRef, SecurityContext } from
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-//import * as DOMPurify from 'dompurify';
 import DOMPurify from 'dompurify';
 import { SafeHtml } from '@angular/platform-browser';
-//import { SafeResourceUrl } from '@angular/platform-browser';
-//import { SafeUrl } from '@angular/platform-browser';
-//import { SafeScript } from '@angular/platform-browser';
 
 import { GlobalService } from '../../global.service';
 
@@ -16,17 +12,15 @@ const headers = new HttpHeaders ({
 	'content-type': 'xml'
  })
 
-const BASE_URL: string = 'https://www.st4rsend.net/static/';
-
-declare var MathJax: any;
+const BASE_URL: string = 'https://www.st4rsend.net/svg/';
 
 
 @Component({
-  selector: 'app-static',
-  templateUrl: './static.component.html',
-  styleUrls: ['./static.component.sass']
+  selector: 'app-svg',
+  templateUrl: './svg.component.html',
+  styleUrls: ['./svg.component.sass']
 })
-export class StaticComponent implements OnInit {
+export class SvgComponent implements OnInit {
 	private sub: any;
 	private listenerApplied: boolean = false;
 	private innerReady: boolean = false;
@@ -54,9 +48,10 @@ export class StaticComponent implements OnInit {
   ngOnInit(): void {
 		this.sub = this.route.params.subscribe(params => {
 			this.appTheme = params['theme'];
-			let url = BASE_URL.concat(params['id'].replace(/-/g, "/").concat(".html"));
+			let url = BASE_URL.concat(params['id'].replace(/-/g, "/").concat(".svg"));
 			this.httpClient.get(url, { headers: headers, responseType: 'text'}).subscribe(data => {
 				try {
+					console.log(data);
 					this.buf = data;
 				} catch(e) {
 					console.log(e);
@@ -66,16 +61,19 @@ export class StaticComponent implements OnInit {
 								"<BR>----------------------------------------------------------<BR>" +
 								 data;
 				}
+				//this.buf = this.sanitizer.sanitize(SecurityContext.HTML, this.buf);
 				this.buf = DOMPurify.sanitize(this.buf, { 
-					ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'i', 'b', 'p', 'li', 'ul', 'pre', 'button'], 
-					ADD_ATTR: []
+					//ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'i', 'b', 'p', 'li', 'ul', 'pre', 'button'], 
+					//ADD_ATTR: []
 				});
 				this.inner = this.sanitizer.bypassSecurityTrustHtml(this.buf) as string;
+/*
 				setTimeout(() => {
 					if (typeof MathJax !== 'undefined') {
 						MathJax.typeset();
 					}
 				}, 0);
+*/
 				this.innerReady=true;
 			});
 		});
@@ -89,13 +87,12 @@ export class StaticComponent implements OnInit {
 			});
   }
 
-
 /*
 	ngAfterViewInit() {
 		if (typeof MathJax !== 'undefined') {
 			MathJax.typesetPromise().then(() => {
 			// MathJax has finished typesetting
-			}).catch((err: any) => {
+			04}).catch((err: any) => {
 				// MathJax typesetting failed
 				console.error('MathJax typesetting failed: ', err);
 			});
@@ -106,6 +103,18 @@ export class StaticComponent implements OnInit {
 		if (!this.listenerApplied && this.innerReady) {
 			this.addEventListeners();
 		}
+				var svgId = document.getElementById('svg-id');
+				if (svgId) {
+					var svgElem = svgId.querySelector('svg');
+					if (svgElem) {
+						console.log("VB: ", svgElem.getAttribute("viewBox"));
+						console.log("Height: ", svgElem.getAttribute("height"));
+						console.log("Width: ", svgElem.getAttribute("width"));
+						//svgElem.setAttribute("viewBox", "0 0 720 904");
+						//svgElem.setAttribute("width", "600px");
+						//svgElem.setAttribute("height", "600px");
+					}
+				}
 	}
 	addEventListeners(): void {
 		const eventA = this.elementRef.nativeElement.querySelectorAll('.eventA');

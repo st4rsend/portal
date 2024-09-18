@@ -8,6 +8,7 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ProductionsComponent } from './productions/productions.component';
 import { StaticComponent } from './productions/static/static.component';
+import { SvgComponent } from './productions/svg/svg.component';
 import { ScienceComponent } from './productions/science/science.component';
 import { KaggleSurveyComponent } from './productions/kaggle-survey/kaggle-survey.component';
 import { DataExplorationComponent } from './productions/data-exploration/data-exploration.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
 	{ path: 'contacts', component: ContactsComponent },
 	{ path: 'productions/:theme', component: ProductionsComponent },
 	{ path: 'static/:theme/:id', component: StaticComponent },
+	{ path: 'svg/:theme/:id', component: SvgComponent },
 	{ path: 'science/:theme/:id', component: ScienceComponent },
 	{ path: 'kaggle-survey', component: KaggleSurveyComponent },
 	{ path: 'explo', component: DataExplorationComponent },

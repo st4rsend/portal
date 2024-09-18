@@ -8,6 +8,11 @@
 				(click)="onProductionClick()">
 				{{node.name}}
 			</a>
+			<a *ngIf="node.svg" class="card link" 
+				[routerLink]="['/svg/' + appTheme + '/' + node.svg]" 
+				(click)="onProductionClick()">
+				{{node.name}}
+			</a>
 			<a *ngIf="node.science" class="card link" 
 				[routerLink]="['/science/' + appTheme + '/' + node.science]"
 				(click)="onProductionClick()">

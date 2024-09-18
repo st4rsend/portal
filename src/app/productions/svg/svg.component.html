@@ -1,0 +1,20 @@
+<div class="container">
+	<div id="svg-id" class="content" [innerHTML]="inner">
+	</div>
+	<div class="bottom-section" [ngClass]="bottomStyle">
+		<div class="card-container bottom-button">
+			<a class="card" (click)='buttonTop()'>Top</a>
+		</div>
+		<div class="card-container bottom-button">
+			<a class="card" [routerLink]="['/productions', appTheme]">Liste</a>
+		</div>
+	</div>
+</div>
+<div class="overlay-container" [ngClass]="{ 'show': showOverlay, 'hide': !showOverlay }" 
+	style="display: {{showOverlay ? 'block' : 'none' }}"
+	(click)="hideOverlay()">
+	<div class="overlay-content">
+	{{ overlayContent }}
+	</div>
+</div>
+

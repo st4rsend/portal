@@ -1,5 +1,5 @@
 [
-  {"name": "test", "path": "test-test"},
+  {"name": "test-svg", "svg": "test-testsvg"},
   {"name": "Rank 2 (test)",
  	"children": [
  		{"name": "Rank 2 A", "path": "test-test1"},
