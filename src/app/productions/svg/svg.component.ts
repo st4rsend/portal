@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked, ElementRef, SecurityContext } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ElementRef, SecurityContext, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -18,7 +18,8 @@ const BASE_URL: string = 'https://www.st4rsend.net/svg/';
 @Component({
   selector: 'app-svg',
   templateUrl: './svg.component.html',
-  styleUrls: ['./svg.component.sass']
+  styleUrls: ['./svg.component.sass'],
+	encapsulation: ViewEncapsulation.None,
 })
 export class SvgComponent implements OnInit {
 	private sub: any;
