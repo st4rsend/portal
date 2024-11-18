@@ -46,7 +46,7 @@ $light-theme: mat.m2-define-light-theme((
 		color: mat.m2-get-color-from-palette($light-background,50);
 	}
 	H2 {
-		color: mat.m2-get-color-from-palette($light-foreground,A200);
+		color: mat.m2-get-color-from-palette($light-foreground,A400);
 	}
 	H3 {
 		color: $foreground2-color;
