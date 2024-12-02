@@ -42,13 +42,16 @@ $dark-theme: mat.m2-define-dark-theme((
 	color: $foreground-color;
 
 	H1 {
+		color: $foreground2-color;
+	}
+	H2 {
 		background-image: linear-gradient(to right, $foreground-color, 62%, $background-color 95%);
 		color: mat.m2-get-color-from-palette($dark-background,500);
 	}
-	H2 {
+	H3 {
 		color: mat.m2-get-color-from-palette($dark-foreground,A400);
 	}
-	H3 {
+	H4 {
 		color: $foreground2-color;
 	}
 	pre {
