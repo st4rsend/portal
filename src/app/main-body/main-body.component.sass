@@ -1,9 +1,9 @@
-@import "../../variables.sass"
+@use "../../variables.sass" as vars
 
 .grid-panel
 	margin: 0
 	display: grid
-	grid-template-columns: 1fr $sticky-panel-size
+	grid-template-columns: 1fr vars.$sticky-panel-size
 	grid-template-rows: 1fr
 	margin-bottom: 2rem
 

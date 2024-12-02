@@ -22,9 +22,10 @@ declare var MathJax: any;
 
 
 @Component({
-  selector: 'app-static',
-  templateUrl: './static.component.html',
-  styleUrls: ['./static.component.sass']
+    selector: 'app-static',
+    templateUrl: './static.component.html',
+    styleUrls: ['./static.component.sass'],
+    standalone: false
 })
 export class StaticComponent implements OnInit {
 	private sub: any;

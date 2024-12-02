@@ -1,4 +1,4 @@
-@import "../../../variables.sass"
+@use "../../../variables.sass" as vars
 
 
 .overlay-container
@@ -68,5 +68,5 @@ switch>text
 .bottom-fixed
 	position: fixed
 	bottom: 0
-	width: calc(100% - $sticky-panel-size)
-	right: $sticky-panel-size
+	width: calc(100% - vars.$sticky-panel-size)
+	right: vars.$sticky-panel-size

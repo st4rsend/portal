@@ -1,4 +1,4 @@
-@import "../variables.sass"
+@use "../variables.sass" as vars
 
 img
 	max-width: 100%
@@ -7,7 +7,7 @@ img
 .container
 	display: grid
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
-	grid-template-rows: $menu-row-1 $menu-row-2 $menu-row-2 $menu-row-2 1fr 
+	grid-template-rows: vars.$menu-row-1 vars.$menu-row-2 vars.$menu-row-2 vars.$menu-row-2 1fr 
 	min-height: 100%
 
 .logo-container

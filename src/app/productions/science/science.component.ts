@@ -3,9 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-science',
-  templateUrl: './science.component.html',
-  styleUrls: ['./science.component.sass']
+    selector: 'app-science',
+    templateUrl: './science.component.html',
+    styleUrls: ['./science.component.sass'],
+    standalone: false
 })
 export class ScienceComponent implements OnInit {
 	private sub: any;

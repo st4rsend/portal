@@ -25,6 +25,9 @@ $light-theme: mat.m2-define-light-theme((
 ));
 
 .light-theme {
+	background-color: $background-color;
+	color: $foreground-color;
+
 	@include mat.core-theme($light-theme);
 	//@include mat.all-component-themes($light-theme)
 	@include mat.button-theme($light-theme);
@@ -38,8 +41,6 @@ $light-theme: mat.m2-define-light-theme((
 	.ngx-charts .axis>g>text{
 		fill: $foreground-color
 	}
-	background-color: $background-color;
-	color: $foreground-color;
 
 	H1 {
 		color: mat.m2-get-color-from-palette($light-foreground,800);

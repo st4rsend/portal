@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
 
 @Component({
-  selector: 'app-contacts',
-  templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.sass']
+    selector: 'app-contacts',
+    templateUrl: './contacts.component.html',
+    styleUrls: ['./contacts.component.sass'],
+    standalone: false
 })
 export class ContactsComponent implements OnInit {
 

@@ -3,9 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '../global.service';
 
 @Component({
-  selector: 'app-introduction',
-  templateUrl: './introduction.component.html',
-  styleUrls: ['./introduction.component.sass']
+    selector: 'app-introduction',
+    templateUrl: './introduction.component.html',
+    styleUrls: ['./introduction.component.sass'],
+    standalone: false
 })
 export class IntroductionComponent implements OnInit {
 

@@ -25,6 +25,8 @@ $dark-theme: mat.m2-define-dark-theme((
 ));
 
 .dark-theme {
+	background-color: $background-color;
+	color: $foreground-color;
 	@include mat.core-theme($dark-theme);
 	//@include mat.all-component-themes($dark-theme);
 	@include mat.button-theme($dark-theme);
@@ -38,8 +40,6 @@ $dark-theme: mat.m2-define-dark-theme((
 	.ngx-charts .axis>g>text {
 		fill: $foreground-color;
 	}
-	background-color: $background-color;
-	color: $foreground-color;
 
 	H1 {
 		color: $foreground2-color;

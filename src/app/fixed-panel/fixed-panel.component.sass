@@ -1,18 +1,18 @@
-@import "../../variables.sass"
+@use "../../variables.sass" as vars
 
 .fixed-panel
 	position: fixed
 	top: 0
 	right: 1%
-	width: $sticky-panel-size
+	width: vars.$sticky-panel-size
 	z-index: 0
 	height: 100%
 	margin: 1rem 0 0 0 
 
 .menu-off
 	position: relative
-	top: $menu-row-1
-	height: $menu-row-1 
+	top: vars.$menu-row-1
+	height: vars.$menu-row-1 
 	margin: auto auto auto auto
 	width: 50%
 

@@ -4,9 +4,10 @@ import { Subscription } from 'rxjs';
 import { GlobalService } from '../global.service';
 
 @Component({
-  selector: 'app-fixed-panel',
-  templateUrl: './fixed-panel.component.html',
-  styleUrls: ['./fixed-panel.component.sass']
+    selector: 'app-fixed-panel',
+    templateUrl: './fixed-panel.component.html',
+    styleUrls: ['./fixed-panel.component.sass'],
+    standalone: false
 })
 export class FixedPanelComponent implements OnInit {
 

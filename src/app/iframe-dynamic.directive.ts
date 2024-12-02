@@ -1,7 +1,8 @@
 import { Directive, ElementRef, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[appIframeDynamic]'
+    selector: '[appIframeDynamic]',
+    standalone: false
 })
 export class IframeDynamicDirective implements OnInit, OnDestroy {
 

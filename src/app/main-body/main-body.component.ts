@@ -4,9 +4,10 @@ import { Subscription } from 'rxjs';
 import { GlobalService } from '../global.service';
 
 @Component({
-  selector: 'app-main-body',
-  templateUrl: './main-body.component.html',
-  styleUrls: ['./main-body.component.sass']
+    selector: 'app-main-body',
+    templateUrl: './main-body.component.html',
+    styleUrls: ['./main-body.component.sass'],
+    standalone: false
 })
 
 export class MainBodyComponent {

@@ -17,9 +17,10 @@ interface ProductionNode {
 }
 
 @Component({
-  selector: 'app-productions',
-  templateUrl: './productions.component.html',
-  styleUrls: ['./productions.component.sass']
+    selector: 'app-productions',
+    templateUrl: './productions.component.html',
+    styleUrls: ['./productions.component.sass'],
+    standalone: false
 })
 
 export class ProductionsComponent implements OnInit {

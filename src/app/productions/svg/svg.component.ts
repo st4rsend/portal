@@ -16,10 +16,11 @@ const BASE_URL: string = 'https://www.st4rsend.net/svg/';
 
 
 @Component({
-  selector: 'app-svg',
-  templateUrl: './svg.component.html',
-  styleUrls: ['./svg.component.sass'],
-	encapsulation: ViewEncapsulation.None,
+    selector: 'app-svg',
+    templateUrl: './svg.component.html',
+    styleUrls: ['./svg.component.sass'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SvgComponent implements OnInit {
 	private sub: any;
