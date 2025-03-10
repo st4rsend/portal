@@ -31,6 +31,12 @@ import { SvgComponent } from './productions/svg/svg.component';
 import { ScienceComponent } from './productions/science/science.component';
 import { IframeDynamicDirective } from './iframe-dynamic.directive';
 
+import {initializeApp,provideFirebaseApp} from '@angular/fire/app';
+import {provideAuth, getAuth} from '@angular/fire/auth';
+import {provideFirestore, getFirestore} from '@angular/fire/firestore';
+import {api} from '../environments/shadow';
+
+
 import { MathjaxModule } from 'mathjax-angular';
 
 let mathjaxConfig = {
@@ -79,6 +85,20 @@ let mathjaxConfig = {
         MatSlideToggleModule,
         MatMenuModule,
         MatButtonModule,
-        MathjaxModule.forRoot(mathjaxConfig)], providers: [{ provide: APP_BASE_HREF, useValue: environment.baseURL },
-        { provide: Window, useValue: window }, provideHttpClient(withInterceptorsFromDi()),] })
+        MathjaxModule.forRoot(mathjaxConfig)
+		],
+		providers: [
+			{ provide: APP_BASE_HREF, useValue: environment.baseURL },
+			{ provide: Window, useValue: window },
+			provideHttpClient(withInterceptorsFromDi()),
+			provideFirebaseApp(() => initializeApp(api.firebase)),
+			provideAuth(() => {
+				const auth = getAuth();
+				return auth;
+			}),
+			provideFirestore(() => {
+				const firestore = getFirestore();
+				return firestore;
+			}),
+		]})
 export class AppModule { }

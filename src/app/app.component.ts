@@ -8,6 +8,9 @@ import {MatMenuModule} from '@angular/material/menu';
 
 
 import { GlobalService } from './global.service';
+import {AuthService} from './services/auth.service';
+
+import {UserEnv} from './interfaces';
 
 @Component({
     selector: 'app-root',
@@ -30,11 +33,14 @@ export class AppComponent implements OnInit {
 	stickyMenu: boolean=false;
 	stickyBottom: boolean=false;
 
+	public userEnv: UserEnv | null = null;
+
 	constructor(
 				@Inject(DOCUMENT) private document: Document,
 				private router: Router,
 				private window: Window,
-				private globalService: GlobalService) {
+				private globalService: GlobalService,
+				private authService: AuthService,) {
 		this.panelDisplaySub$ = this.globalService.getDisplayPanel().subscribe(
 			value => { this.panelDisplay=value; });
 	}
@@ -51,6 +57,16 @@ export class AppComponent implements OnInit {
 				filter(event => event instanceof NavigationEnd)
 			).subscribe((evt) => {
 				this.panelStrat();
+		});
+
+		let sub = this.authService.getAuthState();
+		sub.subscribe((userEnv: UserEnv|null) => {
+			this.userEnv = userEnv;
+			console.log("userEnv: ", this.userEnv);
+			if (this.userEnv == null) {
+				console.log('logging');
+				this.authService.signInAnonymously();
+			}
 		});
 	}
 
