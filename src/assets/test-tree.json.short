@@ -1,0 +1,7 @@
+[
+  {"name": "Introductions",
+  "children": [
+  	{"name": "Liminaire", "path": "liminaire"},
+		{"name": "Science des données", "path": "introduction"}
+	]}
+]

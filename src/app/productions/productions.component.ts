@@ -9,11 +9,14 @@ import { environment } from '../../environments/environment';
 import { GlobalService } from '../global.service';
 import { HttpClient } from '@angular/common/http';
 
-interface ProductionNode {
+import {AuthService} from '../services/auth.service';
+import {FirestoreService} from '../services/firestore.service';
+import {UserEnv} from '../interfaces';
+
+interface TreeNode {
 	name: string;
 	path?: string;
-	url?: string;
-	children?: ProductionNode[];
+	children: TreeNode[];
 }
 
 @Component({
@@ -30,44 +33,67 @@ export class ProductionsComponent implements OnInit {
 	private sub: any;
 
 	public appTheme: string = "light-theme";
-	public treeControl = new NestedTreeControl<ProductionNode>(node => node.children);
-	public dataSource = new MatTreeNestedDataSource<ProductionNode>();
+	public treeControl = new NestedTreeControl<TreeNode>(node => node.children);
+	public dataSource = new MatTreeNestedDataSource<TreeNode>();
 
 	public linkType: boolean = false;
 	public content = false;
 	public ml = false;
 
+	public userEnv: UserEnv | null = null;
+
   constructor(
 			private route: ActivatedRoute,
 			private httpClient: HttpClient, 
-			private globalService: GlobalService) { 
+			private globalService: GlobalService,
+			private authService: AuthService,
+			private firestoreService: FirestoreService,
+		) { 
 		this.globalService.displayWish = true;
 	}
 
-	hasChild = (_: number, node: ProductionNode) => !!node.children && node.children.length > 0;
+	hasChild = (_: number, node: TreeNode) => !!node.children && node.children.length > 0;
 
 	ngOnInit() {
 		this.sub = this.route.params.subscribe(params => {
 			this.appTheme = params['theme'];
 		});
 		this.httpClient.get(this.assetsURL + environment.treeFile).subscribe(data => {
-			for ( let item of Object.values(data)) {
-				this.dataSource.data.push(item as ProductionNode);
-			}
-			// tree expoand state management
+			const cleanData = (nodes: any[]): TreeNode[] => {
+				return nodes.map(node => ({
+					name: node.name,
+					path: node.path || undefined,
+					children: Array.isArray(node.children) ? cleanData(node.children) : []
+				}));
+			};
+
+			const cleanedData = cleanData(Object.values(data));
+			//console.log('Cleaned Data:', JSON.stringify(cleanedData, null, 2));
+			this.dataSource.data = cleanedData;
+
 			this.dataSource.data.forEach(node => {
 				this.expandNodes(node, this.globalService.expandedNodeIds);
 			});
-			// Force MatTree redesign
-			this.dataSource.data = [...this.dataSource.data];
-			//console.log(this.dataSource.data);
+
 			setTimeout(() => {
 				window.scrollTo(this.globalService.productionScrollPosition.x, this.globalService.productionScrollPosition.y);
 			}, 0);
 		});
+
+		let sub = this.authService.getAuthState();
+		sub.subscribe((userEnv: UserEnv|null) => {
+			this.userEnv = userEnv;
+			//console.log("userEnv: ", this.userEnv);
+			if (this.userEnv == null) {
+				console.log('logging');
+				this.authService.signInAnonymously();
+			} else {
+				console.log("logged");
+			}
+		});
 	}
 
-	expandNodes(node: ProductionNode, expandedNodeIds: string[]) {
+	expandNodes(node: TreeNode, expandedNodeIds: string[]) {
 		if (expandedNodeIds.includes(node.name)) {
 			this.treeControl.expand(node);
 		}
@@ -79,17 +105,24 @@ export class ProductionsComponent implements OnInit {
 		}
 	}
 
-	trackByName(index: number, item: ProductionNode) {
+	trackByName(index: number, item: TreeNode) {
 		return item.name;
 	}
 
-	onToggle(node: ProductionNode, isExpanded: boolean) {
+	//onToggle(node: TreeNode, isExpanded: boolean) {
+	async onToggle(node: TreeNode, isExpanded: boolean) {
 		const index = this.globalService.expandedNodeIds.indexOf(node.name);
 		if (isExpanded && index === -1) {
 			this.globalService.expandedNodeIds.push(node.name);
 		} else if (!isExpanded && index !== -1) {
 			this.globalService.expandedNodeIds.splice(index, 1);
 		}
+
+		let datatest = "new line 121 test getdoc to remove and implement as intended"; 
+		//datatest = await this.firestoreService.asyncReadConv('4rjqoGnSJxtCIGUOAXIP');
+		console.log(datatest);
+
+
 	}
 
 	onProductionClick() {

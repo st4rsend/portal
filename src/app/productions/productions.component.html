@@ -1,7 +1,7 @@
 <div class="container">
 <H1>Ressources</H1>
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="productions-tree">
-	<mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+	<mat-nested-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
 		<div class="mat-tree-node  card-container adjust">
 			<a *ngIf="node.path" class="card link" 
 				[routerLink]="['/static/' + appTheme + '/' + node.path]" 
@@ -24,7 +24,7 @@
 				{{node.name}}
 			</a>
 		</div>
-	</mat-tree-node>
+	</mat-nested-tree-node>
 	<mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
 		<div class="mat-tree-node card-container">
 			<div class="card tree-selector" matTreeNodeToggle (click)="onToggle(node, treeControl.isExpanded(node))">
