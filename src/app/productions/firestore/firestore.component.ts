@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 //import { AuthService } from '../../services/auth.service';
 import { FirestoreService } from '../../services/firestore.service';
 //import { UserEnv } from '../../interfaces';
-import { PlotlyModule } from 'angular-plotly.js';
+//import { PlotlyModule } from 'angular-plotly.js';
 
 
 @Component({
