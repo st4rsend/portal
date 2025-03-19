@@ -29,6 +29,7 @@ import { CartpoleComponent } from './fixed-panel/cartpole/cartpole.component';
 import { StaticComponent } from './productions/static/static.component';
 import { SvgComponent } from './productions/svg/svg.component';
 import { ScienceComponent } from './productions/science/science.component';
+//import { FirestoreComponent } from './productions/firestore/firestore.component';
 import { IframeDynamicDirective } from './iframe-dynamic.directive';
 
 import {initializeApp,provideFirebaseApp} from '@angular/fire/app';
@@ -82,7 +83,7 @@ let mathjaxConfig = {
         ScienceComponent,
         IframeDynamicDirective,
     ],
-    bootstrap: [AppComponent],
+    bootstrap: [AppComponent,],
 		 imports: [BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
@@ -93,6 +94,7 @@ let mathjaxConfig = {
         MatSlideToggleModule,
         MatMenuModule,
         MatButtonModule,
+//				PlotlyChartComponent,
 //        MathjaxModule.forRoot(mathjaxConfig),
 				//PlotlyModule.forRoot(Plotly),
 //				PlotlyModule,
