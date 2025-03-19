@@ -5,13 +5,12 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { environment } from '../../environments/environment';
 
-
 import { GlobalService } from '../global.service';
 import { HttpClient } from '@angular/common/http';
 
-import {AuthService} from '../services/auth.service';
-import {FirestoreService} from '../services/firestore.service';
-import {UserEnv} from '../interfaces';
+import { AuthService } from '../services/auth.service';
+import { FirestoreService } from '../services/firestore.service';
+import { UserEnv } from '../interfaces';
 
 interface TreeNode {
 	name: string;
@@ -42,12 +41,12 @@ export class ProductionsComponent implements OnInit {
 
 	public userEnv: UserEnv | null = null;
 
+
   constructor(
 			private route: ActivatedRoute,
 			private httpClient: HttpClient, 
 			private globalService: GlobalService,
 			private authService: AuthService,
-			private firestoreService: FirestoreService,
 		) { 
 		this.globalService.displayWish = true;
 	}
@@ -63,6 +62,8 @@ export class ProductionsComponent implements OnInit {
 				return nodes.map(node => ({
 					name: node.name,
 					path: node.path || undefined,
+					svg: node.svg || undefined,
+					firestore: node.firestore || undefined,
 					children: Array.isArray(node.children) ? cleanData(node.children) : []
 				}));
 			};
@@ -80,17 +81,19 @@ export class ProductionsComponent implements OnInit {
 			}, 0);
 		});
 
-		let sub = this.authService.getAuthState();
-		sub.subscribe((userEnv: UserEnv|null) => {
-			this.userEnv = userEnv;
-			//console.log("userEnv: ", this.userEnv);
-			if (this.userEnv == null) {
-				console.log('logging');
-				this.authService.signInAnonymously();
-			} else {
-				console.log("logged");
-			}
-		});
+    let subAuth = this.authService.getAuthState();
+    subAuth.subscribe((userEnv: UserEnv|null) => {
+      this.userEnv = userEnv;
+      //console.log("userEnv: ", this.userEnv);
+      if (this.userEnv == null) {
+        console.log('logging');
+        this.authService.signInAnonymously();
+      } else {
+        console.log("logged");
+      }
+    });
+
+
 	}
 
 	expandNodes(node: TreeNode, expandedNodeIds: string[]) {
@@ -117,12 +120,6 @@ export class ProductionsComponent implements OnInit {
 		} else if (!isExpanded && index !== -1) {
 			this.globalService.expandedNodeIds.splice(index, 1);
 		}
-
-		let datatest = "new line 121 test getdoc to remove and implement as intended"; 
-		//datatest = await this.firestoreService.asyncReadConv('4rjqoGnSJxtCIGUOAXIP');
-		console.log(datatest);
-
-
 	}
 
 	onProductionClick() {

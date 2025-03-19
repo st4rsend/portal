@@ -36,6 +36,11 @@ import {provideAuth, getAuth} from '@angular/fire/auth';
 import {provideFirestore, getFirestore} from '@angular/fire/firestore';
 import {api} from '../environments/shadow';
 
+import { PlotlyModule } from 'angular-plotly.js';
+import * as PlotlyJS from 'plotly.js-dist-min';
+//import * as PlotlyJS from 'plotly.js-dist';
+
+PlotlyModule.plotlyjs = PlotlyJS;
 
 import { MathjaxModule } from 'mathjax-angular';
 
@@ -75,7 +80,8 @@ let mathjaxConfig = {
         ScienceComponent,
         IframeDynamicDirective,
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent],
+		 imports: [BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         FormsModule,
@@ -85,7 +91,9 @@ let mathjaxConfig = {
         MatSlideToggleModule,
         MatMenuModule,
         MatButtonModule,
-        MathjaxModule.forRoot(mathjaxConfig)
+        MathjaxModule.forRoot(mathjaxConfig),
+				//PlotlyModule.forRoot(Plotly),
+				PlotlyModule,
 		],
 		providers: [
 			{ provide: APP_BASE_HREF, useValue: environment.baseURL },

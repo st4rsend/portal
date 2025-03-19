@@ -18,6 +18,11 @@
 				(click)="onProductionClick()">
 				{{node.name}}
 			</a>
+			<a *ngIf="node.firestore" class="card link" 
+				[routerLink]="['/firestore/' + appTheme + '/' + node.firestore]"
+				(click)="onProductionClick()">
+				{{node.name}}
+			</a>
 			<a *ngIf="node.url" class="card link" 
 				[href]=node.url target="_blank"
 				(click)="onProductionClick()">

@@ -9,6 +9,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { ProductionsComponent } from './productions/productions.component';
 import { StaticComponent } from './productions/static/static.component';
 import { SvgComponent } from './productions/svg/svg.component';
+import { FirestoreComponent } from './productions/firestore/firestore.component';
 import { ScienceComponent } from './productions/science/science.component';
 import { KaggleSurveyComponent } from './productions/kaggle-survey/kaggle-survey.component';
 import { DataExplorationComponent } from './productions/data-exploration/data-exploration.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
 	{ path: 'productions/:theme', component: ProductionsComponent },
 	{ path: 'static/:theme/:id', component: StaticComponent },
 	{ path: 'svg/:theme/:id', component: SvgComponent },
+	{ path: 'firestore/:theme/:id', component: FirestoreComponent },
 	{ path: 'science/:theme/:id', component: ScienceComponent },
 	{ path: 'kaggle-survey', component: KaggleSurveyComponent },
 	{ path: 'explo', component: DataExplorationComponent },
