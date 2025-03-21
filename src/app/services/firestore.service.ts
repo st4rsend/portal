@@ -27,10 +27,8 @@ export class FirestoreService {
 
 	constructor(private firestore: Firestore) { }
 
-	//async asyncReadConv(id: string): Promise<ConvUnit[]> {
 	async asyncReadConv(id: string): Promise<any> {
 		const docRef = doc(this.firestore, `${this.convDBPath}`, id);
-		console.log(docRef);
 		const ret = await getDoc(docRef);
 		return ret.data();
 	}

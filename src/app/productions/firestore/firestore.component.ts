@@ -1,49 +1,13 @@
 import { Component, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-//import { AuthService } from '../../services/auth.service';
+import { Data, Layout, Config } from 'plotly.js-dist-min';
+
 import { FirestoreService } from '../../services/firestore.service';
-//import { UserEnv } from '../../interfaces';
-//import { PlotlyModule } from 'angular-plotly.js';
-
-import * as Plotly from 'plotly.js-dist-min';
-
-@Component({
-  selector: 'app-plotly-chart',
-  template: `<div #plotlyChart style="width: 100%; height: 400px;"></div>`,
-})
-export class PlotlyChartComponent implements AfterViewInit {
-  @ViewChild('plotlyChart', { static: false }) plotlyChart!: ElementRef;
-	@Input() data!: any;
-	@Input() layout!: any;
-
-  async ngAfterViewInit() {
-		/*
-    const trace1: Partial<Plotly.Data> = {
-      x: [1, 2, 3, 4, 5],
-      y: [10, 15, 13, 17, 20],
-      type: 'scatter'
-    };
-
-    const layout = {
-      title: 'Simple Plotly Chart',
-      xaxis: { title: 'X Axis' },
-      yaxis: { title: 'Y Axis' }
-    };
-		*/
-		const PlotlyModule = await import('plotly.js-dist-min');
-
-    //Plotly.newPlot(this.plotlyChart.nativeElement, [trace1], layout);
-    Plotly.newPlot(
-			this.plotlyChart.nativeElement,
-			this.data,
-			this.layout );
-  }
-}
+import { PlotlyChartComponent } from '../plotly-chart/plotly-chart.component';
 
 @Component({
   selector: 'app-firestore',
   imports: [PlotlyChartComponent],
-  //imports: [],
   templateUrl: './firestore.component.html',
   styleUrl: './firestore.component.sass'
 })
@@ -53,9 +17,8 @@ export class FirestoreComponent {
 	private subAuth: any;
 	public docID: string = "";
 
-//	public userEnv: UserEnv | null = null;
 	
-	public graphData = [
+	public graphData: Data[] = [
     	{
       	x: [1, 2, 3, 4],
       	y: [10, 15, 13, 17],
@@ -63,11 +26,11 @@ export class FirestoreComponent {
     	}
   	];
 
-	public graphLayout = { title: 'Interactive Plotly Graph' };
+	public graphLayout: Partial<Layout> = { title: 'Interactive Plotly Graph' };
+	public graphConfig: Partial<Config> = {};
 
 	constructor(
 		private route: ActivatedRoute,
-//		private authService: AuthService,
 		private firestoreService: FirestoreService,
 	) {}
 
@@ -77,26 +40,17 @@ export class FirestoreComponent {
 			this.docID = params['id'];
 			console.log("DocID: ", this.docID);
 		});
-
-/*
-		let subAuth = this.authService.getAuthState();
-    subAuth.subscribe((userEnv: UserEnv|null) => {
-      this.userEnv = userEnv;
-      //console.log("userEnv: ", this.userEnv);
-      if (this.userEnv == null) {
-        console.log('logging');
-        this.authService.signInAnonymously();
-      } else {
-        console.log("logged");
-      }
-    });
-*/
 	}
 
 	async readDoc() {
-		console.log(this.docID);
-		let datatest = await this.firestoreService.asyncReadConv(this.docID);
-		console.log(datatest);
+		const jsonString= await this.firestoreService.asyncReadConv(this.docID);
+		try {
+			const next = JSON.parse(jsonString["plotly_json"]);
+			this.graphData = next.data;
+			this.graphLayout = next.layout;
+		} catch(e){
+			console.error("Error parsing Plotly data: ", e);
+		}
 	} 
 
 	onGraphClick(event: any) {
