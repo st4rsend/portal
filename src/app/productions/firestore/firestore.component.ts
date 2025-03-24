@@ -5,6 +5,13 @@ import { Data, Layout, Config } from 'plotly.js-dist-min';
 import { FirestoreService } from '../../services/firestore.service';
 import { PlotlyChartComponent } from '../plotly-chart/plotly-chart.component';
 
+interface FirestoreItem {
+	name: string;
+	selector: string;
+	raw_data: string;
+}
+
+
 @Component({
   selector: 'app-firestore',
   imports: [PlotlyChartComponent],
@@ -43,14 +50,20 @@ export class FirestoreComponent {
 	}
 
 	async readDoc() {
-		const jsonString= await this.firestoreService.asyncReadConv(this.docID);
+		const firestoreData : { [key: string]: FirestoreItem } = await this.firestoreService.asyncReadConv(this.docID);
 		try {
-			const next = JSON.parse(jsonString["plotly_json"]);
+			Object.keys(firestoreData)
+					.sort((a, b) => Number(a) - Number(b))
+					.forEach(key => {
+					console.log(key, ' => ', firestoreData[key]['selector']);
+			});
+			const next = JSON.parse(firestoreData[2]["raw_data"]);
 			this.graphData = next.data;
 			this.graphLayout = next.layout;
 		} catch(e){
 			console.error("Error parsing Plotly data: ", e);
 		}
+
 	} 
 
 	onGraphClick(event: any) {

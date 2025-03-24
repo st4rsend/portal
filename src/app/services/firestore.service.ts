@@ -23,7 +23,7 @@ import {Firestore,
 })
 export class FirestoreService {
 
-	convDBPath: string = '/Content/Xj2sEuNvzDtXlTkV2Xnp/Data/';
+	convDBPath: string = '/Content/Xj2sEuNvzDtXlTkV2Xnp/Docs/';
 
 	constructor(private firestore: Firestore) { }
 
