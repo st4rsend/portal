@@ -1,9 +1,18 @@
-import { Component, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
+import {
+	Component,
+	AfterViewInit,
+	ElementRef,
+	Input,
+	ViewChild,
+	ViewContainerRef,
+	ComponentFactoryResolver,
+	Type, } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Data, Layout, Config } from 'plotly.js-dist-min';
 
 import { FirestoreService } from '../../services/firestore.service';
-import { PlotlyChartComponent } from '../plotly-chart/plotly-chart.component';
+import { PlotlyComponent } from './plotly/plotly.component';
+import { TextComponent } from './text/text.component';
 
 interface FirestoreItem {
 	name: string;
@@ -11,14 +20,21 @@ interface FirestoreItem {
 	raw_data: string;
 }
 
+const COMPONENT_MAP: { [key: string]: Type<any> } = {
+	text: TextComponent,
+	plotly: PlotlyComponent
+}
 
 @Component({
   selector: 'app-firestore',
-  imports: [PlotlyChartComponent],
+  imports: [],
   templateUrl: './firestore.component.html',
   styleUrl: './firestore.component.sass'
 })
 export class FirestoreComponent {
+
+	@ViewChild('dynamicHost', {'read': ViewContainerRef, static: true})
+	viewContainerRef!: ViewContainerRef;
 
 	public appTheme: string = "light-theme";
 	private subAuth: any;
@@ -39,7 +55,10 @@ export class FirestoreComponent {
 	constructor(
 		private route: ActivatedRoute,
 		private firestoreService: FirestoreService,
+		private resolver: ComponentFactoryResolver
 	) {}
+
+
 
 	ngOnInit() {
 		let subRoute = this.route.params.subscribe(params => {
@@ -53,13 +72,25 @@ export class FirestoreComponent {
 		const firestoreData : { [key: string]: FirestoreItem } = await this.firestoreService.asyncReadConv(this.docID);
 		try {
 			Object.keys(firestoreData)
-					.sort((a, b) => Number(a) - Number(b))
-					.forEach(key => {
-					console.log(key, ' => ', firestoreData[key]['selector']);
+			.sort((a, b) => Number(a) - Number(b))
+			.forEach(key => {
+				console.log(key, ' => ', firestoreData[key]['selector']);
+				const comp = COMPONENT_MAP[firestoreData[key]['selector']];
+				if (!comp) {
+					console.warn(`Unknown selector "${firestoreData[key]['selector']}"`);
+				} else {
+					const factory = this.resolver.resolveComponentFactory(comp);
+					const compRef = this.viewContainerRef.createComponent(factory);
+					compRef.instance.data = firestoreData[key]['raw_data'];
+				};
 			});
+/*
 			const next = JSON.parse(firestoreData[2]["raw_data"]);
 			this.graphData = next.data;
 			this.graphLayout = next.layout;
+*/
+			console.log(firestoreData[1]['name'], firestoreData[1]['raw_data']);
+
 		} catch(e){
 			console.error("Error parsing Plotly data: ", e);
 		}

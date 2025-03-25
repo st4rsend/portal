@@ -3,15 +3,26 @@ import * as Plotly from 'plotly.js-dist-min';
 import { Data, Layout, Config } from 'plotly.js-dist-min';
 
 @Component({
-  selector: 'app-plotly-chart',
+  selector: 'app-plotly',
   imports: [],
-  templateUrl: './plotly-chart.component.html',
-  styleUrl: './plotly-chart.component.sass'
+  templateUrl: './plotly.component.html',
+  styleUrl: './plotly.component.sass'
 })
-export class PlotlyChartComponent implements OnChanges, AfterViewInit {
-	@Input() data: Data[] = [];
-	@Input() layout: Partial<Layout> = {};
-	@Input() config: Partial<Config> = {};
+export class PlotlyComponent implements OnChanges, AfterViewInit {
+	@Input() data: any;
+	public graphData: Data[] = [];
+	public layout: Partial<Layout> = {};
+	public config: Partial<Config> = {};
+
+/*
+public graphData: Data[] = [
+	{
+		x: [1, 2, 3, 4],
+		y: [10, 15, 13, 17],
+		type: 'scatter'
+	}
+];
+*/
 
 	private initialized = false;
 	private container!: HTMLElement;
@@ -31,12 +42,16 @@ export class PlotlyChartComponent implements OnChanges, AfterViewInit {
 	}
 
 	private renderPlot() {
+		const parsed = JSON.parse(this.data);
+		this.graphData = parsed.data;
+		this.layout = parsed.layout;
+		this.config = parsed.config ?? {};
 		const div = this.el.nativeElement.querySelector('.plot-container');
-		Plotly.react(this.container, this.data, this.layout, this.config);
+		Plotly.react(this.container, this.graphData, this.layout, this.config);
 	}
 
 	updatePlot(data: Data[], layout: Partial<Layout>, config?: Partial<Config>) {
-		this.data = data;
+		this.graphData = data;
 		this.layout = layout;
 		this.config = config ?? {};
 		this.renderPlot();

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlotlyChartComponent } from './plotly-chart.component';
+import { PlotlyComponent } from './plotly.component';
 
-describe('PlotlyChartComponent', () => {
-  let component: PlotlyChartComponent;
-  let fixture: ComponentFixture<PlotlyChartComponent>;
+describe('PlotlyComponent', () => {
+  let component: PlotlyComponent;
+  let fixture: ComponentFixture<PlotlyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PlotlyChartComponent]
+      imports: [PlotlyComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PlotlyChartComponent);
+    fixture = TestBed.createComponent(PlotlyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
