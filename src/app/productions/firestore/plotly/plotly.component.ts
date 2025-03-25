@@ -47,7 +47,11 @@ public graphData: Data[] = [
 		this.layout = parsed.layout;
 		this.config = parsed.config ?? {};
 		const div = this.el.nativeElement.querySelector('.plot-container');
-		Plotly.react(this.container, this.graphData, this.layout, this.config);
+		try {
+			Plotly.react(this.container, this.graphData, this.layout, this.config);
+		} catch(e) {
+			console.error("Error parsing Plotly data: ", e);
+		}
 	}
 
 	updatePlot(data: Data[], layout: Partial<Layout>, config?: Partial<Config>) {
@@ -55,5 +59,10 @@ public graphData: Data[] = [
 		this.layout = layout;
 		this.config = config ?? {};
 		this.renderPlot();
+	}
+
+	onGraphClick(event: any) {
+		console.log('Graph clicked:', event);
+		alert(`Clicked on point: x=${event.points[0].x}, y=${event.points[0].y}`);
 	}
 }

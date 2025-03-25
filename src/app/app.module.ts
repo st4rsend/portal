@@ -29,19 +29,13 @@ import { CartpoleComponent } from './fixed-panel/cartpole/cartpole.component';
 import { StaticComponent } from './productions/static/static.component';
 import { SvgComponent } from './productions/svg/svg.component';
 import { ScienceComponent } from './productions/science/science.component';
-//import { FirestoreComponent } from './productions/firestore/firestore.component';
+import { FirestoreComponent } from './productions/firestore/firestore.component';
 import { IframeDynamicDirective } from './iframe-dynamic.directive';
 
 import {initializeApp,provideFirebaseApp} from '@angular/fire/app';
 import {provideAuth, getAuth} from '@angular/fire/auth';
 import {provideFirestore, getFirestore} from '@angular/fire/firestore';
 import {api} from '../environments/shadow';
-
-//import { PlotlyModule } from 'angular-plotly.js';
-//import * as PlotlyJS from 'plotly.js-dist-min';
-//import * as PlotlyJS from 'plotly.js-dist';
-
-//PlotlyModule.plotlyjs = PlotlyJS;
 
 /*
 import { MathjaxModule } from 'mathjax-angular';
@@ -79,6 +73,7 @@ let mathjaxConfig = {
         FixedPanelComponent,
         CartpoleComponent,
         StaticComponent,
+				FirestoreComponent,
         SvgComponent,
         ScienceComponent,
         IframeDynamicDirective,
@@ -94,10 +89,7 @@ let mathjaxConfig = {
         MatSlideToggleModule,
         MatMenuModule,
         MatButtonModule,
-//				PlotlyChartComponent,
 //        MathjaxModule.forRoot(mathjaxConfig),
-				//PlotlyModule.forRoot(Plotly),
-//				PlotlyModule,
 		],
 		providers: [
 			{ provide: APP_BASE_HREF, useValue: environment.baseURL },

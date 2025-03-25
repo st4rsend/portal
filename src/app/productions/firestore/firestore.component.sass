@@ -1,0 +1,60 @@
+@use "../../../variables.sass" as vars
+
+.overlay-container
+	position: fixed
+	background-color: rgba(0,0,0,.5)
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	z-index: 9999
+	opacity: 0
+
+.overlay-content
+	//position: fixed
+	margin: 30% 10% 30% 10%
+	background-color: white
+	border: 1px solid black
+	padding: 20px
+	border-radius: 5px
+	max-width: 80%
+	min-height: 100px
+	align-items: center
+	text-align: center
+	transition: opacity 2s ease-in-out
+
+.overlay-container.show
+	opacity: 1
+	transition: opacity 2s ease-in-out
+.overlay-container.hide
+	opacity: 0
+	transition: opacity 2s ease-in-out
+
+.container
+	padding: 0 4% 0 4%
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	height: 100%
+.content
+	padding: 0 0 2rem 0
+	
+.bottom-section
+	//background-color: transparent
+	height: 4rem
+	display: flex
+	justify-content: space-between
+	align-items: center
+
+.bottom-button
+	background-color: transparent
+	flex: 1
+
+.bottom-scroll
+	position: relative
+
+.bottom-fixed
+	position: fixed
+	bottom: 0
+	width: calc(100% - vars.$sticky-panel-size)
+	right: vars.$sticky-panel-size
