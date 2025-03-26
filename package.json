@@ -25,6 +25,7 @@
     "dompurify": "^3.0.3",
     "firebase": "^11.4.0",
     "jwt-decode": "^4.0.0",
+    "katex": "^0.16.21",
     "plotly.js-dist-min": "^3.0.1",
     "rxjs": "~7.8.0",
     "sass": "^1.56.1",
