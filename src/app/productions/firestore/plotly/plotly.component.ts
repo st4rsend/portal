@@ -1,6 +1,19 @@
-import { Component, AfterViewInit, ElementRef, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+	Component,
+	AfterViewInit,
+	ElementRef,
+	ViewChild,
+	Input,
+	OnChanges,
+	SimpleChanges } from '@angular/core';
+import DOMPurify from 'dompurify';
 import * as Plotly from 'plotly.js-dist-min';
 import { Data, Layout, Config } from 'plotly.js-dist-min';
+
+interface SafeConfig extends Partial<Config> {
+	sanitize?: boolean;
+}
+
 
 @Component({
   selector: 'app-plotly',
@@ -41,11 +54,45 @@ public graphData: Data[] = [
 		}
 	}
 
+	enforcePlotlySanitize(config?: SafeConfig): SafeConfig {
+		return {
+			...config,
+			sanitize: true
+		}
+	}
+
+// TODO fix function or better find suitable alternate 
+	sanitizePlotlyObject(obj: any): any {
+		if (Array.isArray(obj)) {
+			return obj.map(this.sanitizePlotlyObject);
+		} else if (typeof obj === 'object' && obj !== null) {
+			const sanitizedObj: any = {};
+			for (const key of Object.keys(obj)) {
+				const value = obj[key];
+				if (typeof value === 'string') {
+					// Only sanitize known risky fields to avoid over-sanitizing labels etc.
+					if (['text', 'hovertext', 'title', 'annotation', 'name'].includes(key.toLowerCase())) {
+						sanitizedObj[key] = DOMPurify.sanitize(value);
+					} else {
+						sanitizedObj[key] = value;
+					} 
+				} else {
+					sanitizedObj[key] = this.sanitizePlotlyObject(value);
+				}
+			}
+			return sanitizedObj; 
+		} else {
+			return obj;
+		}
+	}
+
 	private renderPlot() {
+		//const aparsed = JSON.parse(this.data);
+		//const parsed = this.sanitizePlotlyObject(aparsed);
 		const parsed = JSON.parse(this.data);
 		this.graphData = parsed.data;
 		this.layout = parsed.layout;
-		this.config = parsed.config ?? {};
+		this.config = this.enforcePlotlySanitize(parsed.config ?? {});
 		const div = this.el.nativeElement.querySelector('.plot-container');
 		try {
 			Plotly.react(this.container, this.graphData, this.layout, this.config);
