@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from '../../services/firestore.service';
 import { PlotlyComponent } from './plotly/plotly.component';
 import { TextComponent } from './text/text.component';
+import { KatexComponent } from './katex/katex.component';
 
 interface FirestoreItem {
 	name: string;
@@ -20,7 +21,8 @@ interface FirestoreItem {
 
 const COMPONENT_MAP: { [key: string]: Type<any> } = {
 	text: TextComponent,
-	plotly: PlotlyComponent
+	plotly: PlotlyComponent,
+	katex: KatexComponent
 }
 
 @Component({
