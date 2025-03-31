@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, map, of} from 'rxjs';
+import {BehaviorSubject, Observable, map, of, firstValueFrom} from 'rxjs';
 import {Firestore,
 //	writeBatch,
 	collection,
 	query,
 	where,
 	doc,
-	getDoc,
+	docData,
+//	getDoc,
 //	addDoc,
 //	setDoc,
 	collectionData,
@@ -29,7 +30,8 @@ export class FirestoreService {
 
 	async asyncReadConv(id: string): Promise<any> {
 		const docRef = doc(this.firestore, `${this.convDBPath}`, id);
-		const ret = await getDoc(docRef);
-		return ret.data();
+		//const ret = await getDoc(docRef);
+		//return ret.data();
+		return firstValueFrom(docData(docRef));
 	}
 }

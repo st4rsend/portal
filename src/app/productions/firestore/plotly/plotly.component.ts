@@ -10,10 +10,13 @@ import DOMPurify from 'dompurify';
 import * as Plotly from 'plotly.js-dist-min';
 import { Data, Layout, Config } from 'plotly.js-dist-min';
 
-interface SafeConfig extends Partial<Config> {
+interface SafeLayout extends Partial<Layout> {
 	sanitize?: boolean;
 }
 
+interface SafeConfig extends Partial<Config> {
+	sanitize?: boolean;
+}
 
 @Component({
   selector: 'app-plotly',
@@ -54,13 +57,20 @@ public graphData: Data[] = [
 		}
 	}
 
-	enforcePlotlySanitize(config?: SafeConfig): SafeConfig {
+	enforcePlotlySanitizeLayout(layout?: SafeLayout): SafeLayout {
+		return {
+			...layout,
+			sanitize: true,
+			paper_bgcolor: 'rgba(0,0,0,0)',
+		}
+	}
+
+	enforcePlotlySanitizeConfig(config?: SafeConfig): SafeConfig {
 		return {
 			...config,
 			sanitize: true
 		}
 	}
-
 // TODO fix function or better find suitable alternate 
 	sanitizePlotlyObject(obj: any): any {
 		if (Array.isArray(obj)) {
@@ -87,12 +97,11 @@ public graphData: Data[] = [
 	}
 
 	private renderPlot() {
-		//const aparsed = JSON.parse(this.data);
-		//const parsed = this.sanitizePlotlyObject(aparsed);
-		const parsed = JSON.parse(this.data);
+		const aparsed = this.sanitizePlotlyObject(this.data);
+		const parsed = JSON.parse(aparsed);
 		this.graphData = parsed.data;
-		this.layout = parsed.layout;
-		this.config = this.enforcePlotlySanitize(parsed.config ?? {});
+		this.layout = this.enforcePlotlySanitizeLayout(parsed.layout);
+		this.config = this.enforcePlotlySanitizeConfig(parsed.config ?? {});
 		const div = this.el.nativeElement.querySelector('.plot-container');
 		try {
 			Plotly.react(this.container, this.graphData, this.layout, this.config);

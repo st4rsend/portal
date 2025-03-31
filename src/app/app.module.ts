@@ -37,29 +37,6 @@ import {provideAuth, getAuth} from '@angular/fire/auth';
 import {provideFirestore, getFirestore} from '@angular/fire/firestore';
 import {api} from '../environments/shadow';
 
-/*
-import { MathjaxModule } from 'mathjax-angular';
-
-let mathjaxConfig = {
-  config: {
-    loader: {
-      //load: ["output/svg", "[tex]/require", "[tex]/ams"]
-      load: ["output/chtml", "[tex]/require", "[tex]/ams"]
-    },
-    tex: {
-      inlineMath: [["$", "$"]],
-      packages: ["base", "require", "ams"]
-    },
-    svg: { "fontCache": "global" }
-  },
-  //src: "https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/startup.js",
-  src: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js",
-	options: {
-		enableMenu: true
-	}
-}
-*/
-
 @NgModule({ declarations: [
         AppComponent,
         HomeComponent,
@@ -89,13 +66,15 @@ let mathjaxConfig = {
         MatSlideToggleModule,
         MatMenuModule,
         MatButtonModule,
-//        MathjaxModule.forRoot(mathjaxConfig),
 		],
 		providers: [
 			{ provide: APP_BASE_HREF, useValue: environment.baseURL },
 			{ provide: Window, useValue: window },
 			provideHttpClient(withInterceptorsFromDi()),
 			provideFirebaseApp(() => initializeApp(api.firebase)),
+			provideAuth(() => getAuth()),
+			provideFirestore(() => getFirestore()),
+/*
 			provideAuth(() => {
 				const auth = getAuth();
 				return auth;
@@ -104,5 +83,6 @@ let mathjaxConfig = {
 				const firestore = getFirestore();
 				return firestore;
 			}),
+*/
 		]})
 export class AppModule { }
