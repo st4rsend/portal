@@ -67,14 +67,19 @@ export class FirestoreComponent {
 		Object.keys(firestoreData)
 		.sort((a, b) => Number(a) - Number(b))
 		.forEach(key => {
-			const comp = COMPONENT_MAP[firestoreData[key]['selector']];
-			if (!comp) {
-				console.warn(`Unknown selector "${firestoreData[key]['selector']}"`);
+			console.log("Key: ", key);
+			if(key=='0') {
+				console.log("Meta");
 			} else {
-				const factory = this.resolver.resolveComponentFactory(comp);
-				const compRef = this.viewContainerRef.createComponent(factory);
-				compRef.instance.data = firestoreData[key]['raw_data'];
-			};
+				const comp = COMPONENT_MAP[firestoreData[key]['selector']];
+				if (!comp) {
+					console.warn(`Unknown selector "${firestoreData[key]['selector']}"`);
+				} else {
+					const factory = this.resolver.resolveComponentFactory(comp);
+					const compRef = this.viewContainerRef.createComponent(factory);
+					compRef.instance.data = firestoreData[key]['raw_data'];
+				};
+			}
 		});
 	} 
 

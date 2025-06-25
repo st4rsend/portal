@@ -5,6 +5,7 @@
  		{"name": "Rank 2 B", "path": "test-test2"},
   	{"name": "test-svg", "svg": "test-testsvg"},
 		{"name": "test-firestore", "firestore": "gtYyNNazQ8P2GsFr136R"},
+		{"name": "test-plotly", "firestore": "kyE2BA7JXNsCP8Uwemtj"},
 		{"name": "test-katex", "firestore": "bPwzpib1Vs2UK1EvRwgq"}
  	]},
   {"name": "Introductions",
