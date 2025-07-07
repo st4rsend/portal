@@ -4,7 +4,11 @@
  		{"name": "Rank 2 A", "path": "test-test1"},
  		{"name": "Rank 2 B", "path": "test-test2"},
   	{"name": "test-svg", "svg": "test-testsvg"},
-		{"name": "test-firestore", "firestore": "gtYyNNazQ8P2GsFr136R"},
+		{"name": "firestore-introduction", "firestore": "prfzkiAsnts1K4ZJiGPu"},
+		{"name": "firestore-science-intro", "firestore": "Qh3Pqd5cPzOzuBdvjuhA"},
+		{"name": "firestore-gestion-dispo", "firestore": "VblO5saS72BDtcX1ewSA"},
+		{"name": "firestore-gestion-retention", "firestore": "m7M8LsGfeOEgV2ZI4Tls"},
+		{"name": "firestore-gestion-sauvegarde", "firestore": "gUISmau4V0ejFQn14nO5"},
 		{"name": "test-plotly", "firestore": "kyE2BA7JXNsCP8Uwemtj"},
 		{"name": "test-katex", "firestore": "bPwzpib1Vs2UK1EvRwgq"}
  	]},

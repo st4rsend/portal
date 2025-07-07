@@ -46,6 +46,7 @@ export class ProductionsComponent implements OnInit {
 			private route: ActivatedRoute,
 			private httpClient: HttpClient, 
 			private globalService: GlobalService,
+			private firestoreService: FirestoreService,
 			private authService: AuthService,
 		) { 
 		this.globalService.displayWish = true;
@@ -57,6 +58,7 @@ export class ProductionsComponent implements OnInit {
 		this.sub = this.route.params.subscribe(params => {
 			this.appTheme = params['theme'];
 		});
+
 		this.httpClient.get(this.assetsURL + environment.treeFile).subscribe(data => {
 			const cleanData = (nodes: any[]): TreeNode[] => {
 				return nodes.map(node => ({
@@ -91,9 +93,17 @@ export class ProductionsComponent implements OnInit {
       } else {
         console.log("logged");
       }
+			console.log("reading");
+			this.readTree();
+			console.log("tree loaded");
     });
+	}
 
-
+	async readTree() {
+		//const firestoreData : { [key: string]: FirestoreItem }
+		const firestoreData : any
+		= await this.firestoreService.asyncReadTree('tree');
+		console.log('tree: ', firestoreData);
 	}
 
 	expandNodes(node: TreeNode, expandedNodeIds: string[]) {

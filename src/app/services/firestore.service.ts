@@ -25,6 +25,7 @@ import {Firestore,
 export class FirestoreService {
 
 	convDBPath: string = '/Content/Xj2sEuNvzDtXlTkV2Xnp/Docs/';
+	treePath: string = '/Content/';
 
 	constructor(private firestore: Firestore) { }
 
@@ -32,6 +33,12 @@ export class FirestoreService {
 		const docRef = doc(this.firestore, `${this.convDBPath}`, id);
 		//const ret = await getDoc(docRef);
 		//return ret.data();
+		return firstValueFrom(docData(docRef));
+	}
+
+	async asyncReadTree(tree: string): Promise<any> {
+		const docRef = doc(this.firestore,`${this.treePath}`, tree);
+		console.log('docref: ', docRef);
 		return firstValueFrom(docData(docRef));
 	}
 }
