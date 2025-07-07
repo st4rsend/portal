@@ -5,6 +5,8 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { environment } from '../../environments/environment';
 
+import { Subscription } from 'rxjs';
+
 import { GlobalService } from '../global.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -34,6 +36,8 @@ export class ProductionsComponent implements OnInit {
 	public appTheme: string = "light-theme";
 	public treeControl = new NestedTreeControl<TreeNode>(node => node.children);
 	public dataSource = new MatTreeNestedDataSource<TreeNode>();
+	private fsSub: Subscription | null = null;
+	private httpSub: Subscription | null = null;
 
 	public linkType: boolean = false;
 	public content = false;
@@ -59,7 +63,8 @@ export class ProductionsComponent implements OnInit {
 			this.appTheme = params['theme'];
 		});
 
-		this.httpClient.get(this.assetsURL + environment.treeFile).subscribe(data => {
+		this.httpSub = this.httpClient.get(this.assetsURL + environment.treeFile).subscribe(data => {
+			console.log('http data:', data);
 			const cleanData = (nodes: any[]): TreeNode[] => {
 				return nodes.map(node => ({
 					name: node.name,
@@ -72,7 +77,8 @@ export class ProductionsComponent implements OnInit {
 
 			const cleanedData = cleanData(Object.values(data));
 			//console.log('Cleaned Data:', JSON.stringify(cleanedData, null, 2));
-			this.dataSource.data = cleanedData;
+			//this.dataSource.data = cleanedData;
+			this.dataSource.data = [...cleanedData, ...this.dataSource.data];
 
 			this.dataSource.data.forEach(node => {
 				this.expandNodes(node, this.globalService.expandedNodeIds);
@@ -93,17 +99,26 @@ export class ProductionsComponent implements OnInit {
       } else {
         console.log("logged");
       }
-			console.log("reading");
-			this.readTree();
-			console.log("tree loaded");
-    });
-	}
-
-	async readTree() {
-		//const firestoreData : { [key: string]: FirestoreItem }
-		const firestoreData : any
-		= await this.firestoreService.asyncReadTree('tree');
-		console.log('tree: ', firestoreData);
+			this.fsSub = this.firestoreService.readTree('tree').subscribe(data => {
+				const cleanData = (nodes: any[]): TreeNode[] => {
+					return nodes.map(node => ({
+						name: node.name,
+						path: node.path || undefined,
+						svg: node.svg || undefined,
+						firestore: node.ID || undefined,
+						children: Array.isArray(node.children) ? cleanData(node.children) : []
+					}));
+				};
+				const cleanedData = cleanData(Object.values(data));
+			
+				//this.dataSource.data = cleanedData;
+				this.dataSource.data = [...this.dataSource.data, ...cleanedData];
+				//console.log('Cleaned Data:', JSON.stringify(cleanedData, null, 2));
+				this.dataSource.data.forEach(node => {
+					this.expandNodes(node, this.globalService.expandedNodeIds);
+			});
+    	});
+		});
 	}
 
 	expandNodes(node: TreeNode, expandedNodeIds: string[]) {
@@ -134,5 +149,10 @@ export class ProductionsComponent implements OnInit {
 
 	onProductionClick() {
 		this.globalService.productionScrollPosition = {x: window.scrollX, y: window.scrollY};
+	}
+
+	ngOnDestroy(): void {
+		this.httpSub?.unsubscribe();
+		this.fsSub?.unsubscribe();
 	}
 }

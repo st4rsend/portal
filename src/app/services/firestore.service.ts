@@ -36,9 +36,8 @@ export class FirestoreService {
 		return firstValueFrom(docData(docRef));
 	}
 
-	async asyncReadTree(tree: string): Promise<any> {
+	readTree(tree: string): Observable<any> {
 		const docRef = doc(this.firestore,`${this.treePath}`, tree);
-		console.log('docref: ', docRef);
-		return firstValueFrom(docData(docRef));
+		return docData(docRef).pipe(map(data => data?.['tree']));
 	}
 }
