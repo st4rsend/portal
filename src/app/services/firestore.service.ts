@@ -25,7 +25,7 @@ import {Firestore,
 export class FirestoreService {
 
 	convDBPath: string = '/Content/Xj2sEuNvzDtXlTkV2Xnp/Docs/';
-	treePath: string = '/Content/';
+	treePath: string = '/Content/ZfCByH4STh5NQTEN6wYp/Trees/';
 
 	constructor(private firestore: Firestore) { }
 
@@ -38,6 +38,6 @@ export class FirestoreService {
 
 	readTree(tree: string): Observable<any> {
 		const docRef = doc(this.firestore,`${this.treePath}`, tree);
-		return docData(docRef).pipe(map(data => data?.['tree']));
+		return docData(docRef).pipe(map(data => data?.['Tree']));
 	}
 }

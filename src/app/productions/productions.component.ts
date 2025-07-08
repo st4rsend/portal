@@ -64,7 +64,6 @@ export class ProductionsComponent implements OnInit {
 		});
 
 		this.httpSub = this.httpClient.get(this.assetsURL + environment.treeFile).subscribe(data => {
-			console.log('http data:', data);
 			const cleanData = (nodes: any[]): TreeNode[] => {
 				return nodes.map(node => ({
 					name: node.name,
@@ -94,12 +93,13 @@ export class ProductionsComponent implements OnInit {
       this.userEnv = userEnv;
       //console.log("userEnv: ", this.userEnv);
       if (this.userEnv == null) {
-        console.log('logging');
         this.authService.signInAnonymously();
       } else {
         console.log("logged");
       }
-			this.fsSub = this.firestoreService.readTree('tree').subscribe(data => {
+			//this.fsSub = this.firestoreService.readTree(environment.treeFile).subscribe(data => {
+			this.fsSub = this.firestoreService.readTree('Test').subscribe(data => {
+				console.log(data);
 				const cleanData = (nodes: any[]): TreeNode[] => {
 					return nodes.map(node => ({
 						name: node.name,
