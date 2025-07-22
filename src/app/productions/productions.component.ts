@@ -77,7 +77,7 @@ export class ProductionsComponent implements OnInit {
 			const cleanedData = cleanData(Object.values(data));
 			//console.log('Cleaned Data:', JSON.stringify(cleanedData, null, 2));
 			//this.dataSource.data = cleanedData;
-			this.dataSource.data = [...cleanedData, ...this.dataSource.data];
+			this.dataSource.data = [...this.dataSource.data, ...cleanedData];
 
 			this.dataSource.data.forEach(node => {
 				this.expandNodes(node, this.globalService.expandedNodeIds);
@@ -112,7 +112,7 @@ export class ProductionsComponent implements OnInit {
 				const cleanedData = cleanData(Object.values(data));
 			
 				//this.dataSource.data = cleanedData;
-				this.dataSource.data = [...this.dataSource.data, ...cleanedData];
+				this.dataSource.data = [...cleanedData,...this.dataSource.data];
 				//console.log('Cleaned Data:', JSON.stringify(cleanedData, null, 2));
 				this.dataSource.data.forEach(node => {
 					this.expandNodes(node, this.globalService.expandedNodeIds);
