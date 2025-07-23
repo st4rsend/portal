@@ -4,6 +4,11 @@ src/environments/shadow.ts
 
 TO_PROD
 BACKUP
+# firebase
+.firebase/
+.firebase-debug.log
+.runtimeconfig.json
+
 # Compiled output
 /dist
 /tmp

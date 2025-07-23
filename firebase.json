@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "/var/local/publish/static/portal/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
