@@ -61,6 +61,7 @@ export class AuthService {
 
 	async signInAnonymously(): Promise<void> {
 		try {
+			console.log("signing in");
 			const userCredential = await signInAnonymously(this.auth);
 			console.log('Signed in anonymously:', userCredential.user);
 			this.userSubject.next(userCredential.user);

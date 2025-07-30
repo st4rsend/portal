@@ -6,9 +6,12 @@ import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { environment } from '../../environments/environment';
 
 import { Subscription } from 'rxjs';
-
 import { GlobalService } from '../global.service';
+
+
 import { HttpClient } from '@angular/common/http';
+import { getFunctions, httpsCallable } from 'firebase/functions';
+
 
 import { AuthService } from '../services/auth.service';
 import { FirestoreService } from '../services/firestore.service';
@@ -59,6 +62,11 @@ export class ProductionsComponent implements OnInit {
 	hasChild = (_: number, node: TreeNode) => !!node.children && node.children.length > 0;
 
 	ngOnInit() {
+
+
+
+
+
 		this.sub = this.route.params.subscribe(params => {
 			this.appTheme = params['theme'];
 		});
@@ -88,6 +96,23 @@ export class ProductionsComponent implements OnInit {
 			}, 0);
 		});
 
+
+    let subAuth = this.authService.getAuthState();
+    subAuth.subscribe((userEnv: UserEnv|null) => {
+      this.userEnv = userEnv;
+      //console.log("userEnv: ", this.userEnv);
+      if (this.userEnv == null) {
+        this.authService.signInAnonymously();
+      } else {
+        console.log("logged");
+				const functions = getFunctions(undefined, "europe-west6");
+				const helloWorld = httpsCallable(functions, "helloWorld");
+				helloWorld({}).then((res: any) => {
+					console.log(res.data?.message);
+				});
+      }
+		});
+/*
     let subAuth = this.authService.getAuthState();
     subAuth.subscribe((userEnv: UserEnv|null) => {
       this.userEnv = userEnv;
@@ -119,6 +144,7 @@ export class ProductionsComponent implements OnInit {
 			});
     	});
 		});
+*/
 	}
 
 	expandNodes(node: TreeNode, expandedNodeIds: string[]) {
