@@ -8,7 +8,7 @@ const WINDOW_MS = 60000;// par minute
 const SvcAccount =
  "cf-public-data-reader@gcp-learning-project-195511.iam.gserviceaccount.com";
 
-export const readContentDoc = onRequest(
+export const readContentTree = onRequest(
 	{
 		serviceAccount: SvcAccount,
 	}, async (req: any, res: any) => {
@@ -41,14 +41,13 @@ export const readContentDoc = onRequest(
 		res.status(405).json({error: "Method Not Allowed"});
 	}
 
-  // const docId = req.path.split("/").pop();
-  const docId = req.query.docid;
-	const docMaster = req.query.docmaster;
-  if (!docId) return res.status(400).send("Missing docId");
-  if (!docMaster) return res.status(400).send("Missing docMaster");
+  const treeId = req.query.treeid;
+  const treeMaster = req.query.treemaster;
+  if (!treeMaster) return res.status(400).send("Missing master tree ref");
+  if (!treeId) return res.status(400).send("Missing tree Id");
 
   try {
-    const doc = await db.doc(`Content/${docMaster}/Docs/${docId}`).get();
+    const doc = await db.doc(`Content/${treeMaster}/Trees/${treeId}`).get();
     if (!doc.exists) return res.status(404).send("Not found");
 
     res.setHeader("Cache-Control", "public, max-age=86400");

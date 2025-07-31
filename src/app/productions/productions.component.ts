@@ -3,18 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
-import { environment } from '../../environments/environment';
-
 import { Subscription } from 'rxjs';
-import { GlobalService } from '../global.service';
-
-
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { getFunctions, httpsCallable } from 'firebase/functions';
 
-
+import { environment } from '../../environments/environment';
+import { GlobalService } from '../global.service';
 import { AuthService } from '../services/auth.service';
-import { FirestoreService } from '../services/firestore.service';
 import { UserEnv } from '../interfaces';
 
 interface TreeNode {
@@ -31,6 +26,9 @@ interface TreeNode {
 })
 
 export class ProductionsComponent implements OnInit {
+
+	private treeMaster: string = "ZfCByH4STh5NQTEN6wYp";
+	private treeId: string = "Test";
 
 
 	private assetsURL: string = "assets/";
@@ -53,7 +51,6 @@ export class ProductionsComponent implements OnInit {
 			private route: ActivatedRoute,
 			private httpClient: HttpClient, 
 			private globalService: GlobalService,
-			private firestoreService: FirestoreService,
 			private authService: AuthService,
 		) { 
 		this.globalService.displayWish = true;
@@ -78,10 +75,7 @@ export class ProductionsComponent implements OnInit {
 			};
 
 			const cleanedData = cleanData(Object.values(data));
-			//console.log('Cleaned Data:', JSON.stringify(cleanedData, null, 2));
-			//this.dataSource.data = cleanedData;
 			this.dataSource.data = [...this.dataSource.data, ...cleanedData];
-
 			this.dataSource.data.forEach(node => {
 				this.expandNodes(node, this.globalService.expandedNodeIds);
 			});
@@ -91,73 +85,47 @@ export class ProductionsComponent implements OnInit {
 			}, 0);
 		});
 
-
     let subAuth = this.authService.getAuthState();
     subAuth.subscribe((userEnv: UserEnv|null) => {
       this.userEnv = userEnv;
-      //console.log("userEnv: ", this.userEnv);
       if (this.userEnv == null) {
         this.authService.signInAnonymously();
       } else {
-				const functions = getFunctions(undefined, "europe-west6");
-				const helloWorld = httpsCallable(functions, "helloWorld");
-				helloWorld({}).then((res: any) => {
-					console.log(res.data?.message);
-				});
-        //console.log("logged, Brearer:", this.authService.getBearerToken());
-
 				let bearer: string = this.authService.getBearerToken();
-				let url:string = "https://europe-west6-gcp-learning-project-195511.cloudfunctions.net/readContentDoc"
-				url = url + "?docid=hello"
+				let url:string = "https://europe-west6-gcp-learning-project-195511.cloudfunctions.net/readContentTree"
+				const params = new HttpParams()
+					.set("treemaster", this.treeMaster)
+					.set("treeid", this.treeId);
 				this.httpClient.get(url, {
 					headers: {
 						Authorization: `Bearer ${bearer}`,
 						'Accept': 'application/json'
-						}
-					}).subscribe({
-					next: (data) => console.log("Got data:", data),
-					error: (err) => console.log("Request failed:", err)
-				});
-				
-
-
-
-
-      }
+						},
+					params}).subscribe({
+						next:(data) => this.buildTree(data),
+						error:(err) => console.log("Request failed", err)
+					});
+      	}
 		});
-/*
-    let subAuth = this.authService.getAuthState();
-    subAuth.subscribe((userEnv: UserEnv|null) => {
-      this.userEnv = userEnv;
-      //console.log("userEnv: ", this.userEnv);
-      if (this.userEnv == null) {
-        this.authService.signInAnonymously();
-      } else {
-        console.log("logged");
-      }
-			//this.fsSub = this.firestoreService.readTree(environment.treeFile).subscribe(data => {
-			this.fsSub = this.firestoreService.readTree('Test').subscribe(data => {
-				console.log(data);
-				const cleanData = (nodes: any[]): TreeNode[] => {
-					return nodes.map(node => ({
-						name: node.name,
-						path: node.path || undefined,
-						svg: node.svg || undefined,
-						firestore: node.ID || undefined,
-						children: Array.isArray(node.children) ? cleanData(node.children) : []
-					}));
-				};
-				const cleanedData = cleanData(Object.values(data));
-			
-				//this.dataSource.data = cleanedData;
-				this.dataSource.data = [...cleanedData,...this.dataSource.data];
-				//console.log('Cleaned Data:', JSON.stringify(cleanedData, null, 2));
-				this.dataSource.data.forEach(node => {
-					this.expandNodes(node, this.globalService.expandedNodeIds);
-			});
-    	});
+	}
+
+	private buildTree(data: any){
+		console.log(data);
+		const cleanData = (nodes: any[]): TreeNode[] => {
+			return nodes.map(node => ({
+				name: node.name,
+				path: node.path || undefined,
+				svg: node.svg || undefined,
+				firestore: node.ID || undefined,
+				children: Array.isArray(node.children) ? cleanData(node.children) : []
+			}));
+		};
+		const cleanedData = cleanData(data.Tree);
+		//console.log('Cleaned Data:', JSON.stringify(cleanedData, null, 2));
+		this.dataSource.data = [...cleanedData,...this.dataSource.data];
+		this.dataSource.data.forEach(node => {
+			this.expandNodes(node, this.globalService.expandedNodeIds);
 		});
-*/
 	}
 
 	expandNodes(node: TreeNode, expandedNodeIds: string[]) {

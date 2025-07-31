@@ -1,8 +1,3 @@
-export interface FirebaseError {
-	code: string;
-	message: string;
-}
-
 export interface DecodedToken {
 	// Standard JWT claims
 	aud: string;

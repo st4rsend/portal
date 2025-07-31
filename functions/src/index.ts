@@ -3,3 +3,4 @@ setGlobalOptions({region: "europe-west6"});
 
 export {helloWorld} from "./helloWorld";
 export {readContentDoc} from "./readContentDoc";
+export {readContentTree} from "./readContentTree";
