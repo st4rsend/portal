@@ -1,0 +1,12 @@
+onCall HTTP error handling
+
+Firebase doc:
+https://firebase.google.com/docs/functions/callable?gen=2nd#handle_errors
+
+Semantic RFC:
+https://datatracker.ietf.org/doc/html/rfc7231#section-6
+
+gRPC status code matching firebase model inspiration:
+https://grpc.github.io/grpc/core/md_doc_statuscodes.html
+
+

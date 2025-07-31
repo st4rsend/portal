@@ -62,11 +62,6 @@ export class ProductionsComponent implements OnInit {
 	hasChild = (_: number, node: TreeNode) => !!node.children && node.children.length > 0;
 
 	ngOnInit() {
-
-
-
-
-
 		this.sub = this.route.params.subscribe(params => {
 			this.appTheme = params['theme'];
 		});
@@ -104,12 +99,30 @@ export class ProductionsComponent implements OnInit {
       if (this.userEnv == null) {
         this.authService.signInAnonymously();
       } else {
-        console.log("logged");
 				const functions = getFunctions(undefined, "europe-west6");
 				const helloWorld = httpsCallable(functions, "helloWorld");
 				helloWorld({}).then((res: any) => {
 					console.log(res.data?.message);
 				});
+        //console.log("logged, Brearer:", this.authService.getBearerToken());
+
+				let bearer: string = this.authService.getBearerToken();
+				let url:string = "https://europe-west6-gcp-learning-project-195511.cloudfunctions.net/readContentDoc"
+				url = url + "?docid=hello"
+				this.httpClient.get(url, {
+					headers: {
+						Authorization: `Bearer ${bearer}`,
+						'Accept': 'application/json'
+						}
+					}).subscribe({
+					next: (data) => console.log("Got data:", data),
+					error: (err) => console.log("Request failed:", err)
+				});
+				
+
+
+
+
       }
 		});
 /*

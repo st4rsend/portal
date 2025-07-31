@@ -19,6 +19,7 @@ import {UserEnv, DecodedToken} from '../interfaces';
 export class AuthService {
 	private userSubject = new BehaviorSubject<User | null>(null);
 	user$ = this.userSubject.asObservable();
+	private bearer: string = "";
 
 	constructor(private auth: Auth) {
 		this.auth.onAuthStateChanged(user => {
@@ -32,6 +33,7 @@ export class AuthService {
 				if (user) {
 					return user.getIdToken().then((token: any) => {
 						let userEnv = this.initUserEnv();
+						this.bearer = token;
 						const decodedToken = jwtDecode(token) as DecodedToken;
 						//console.log(decodedToken);
 						return <UserEnv>{
@@ -57,6 +59,9 @@ export class AuthService {
 		);
 	}
 
+	getBearerToken(): string {
+		return this.bearer;
+	}
 
 
 	async signInAnonymously(): Promise<void> {

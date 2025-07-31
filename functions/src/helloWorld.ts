@@ -1,9 +1,9 @@
-import {onCall} from "firebase-functions/v2/https";
+import {onCall, HttpsError} from "firebase-functions/v2/https";
 
 export const helloWorld = onCall((req: any) => {
 	const {data, auth} = req;
 	if (!auth) {
-		throw new Error("Not authenticated");
+		throw new HttpsError("unauthenticated", "Not authenticated");
 	}
 
 	return {
