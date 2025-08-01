@@ -2,6 +2,8 @@
 
 src/environments/shadow.ts
 
+src/assets/
+
 TO_PROD
 BACKUP
 # firebase
