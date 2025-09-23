@@ -82,6 +82,9 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+					"options": {
+						"allowedHosts": ["st4rsend.net"]
+					},
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
