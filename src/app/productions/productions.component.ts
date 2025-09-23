@@ -63,6 +63,7 @@ export class ProductionsComponent implements OnInit {
 			this.appTheme = params['theme'];
 		});
 
+/*
 		this.httpSub = this.httpClient.get(this.assetsURL + environment.treeFile).subscribe(data => {
 			const cleanData = (nodes: any[]): TreeNode[] => {
 				return nodes.map(node => ({
@@ -84,7 +85,7 @@ export class ProductionsComponent implements OnInit {
 				window.scrollTo(this.globalService.productionScrollPosition.x, this.globalService.productionScrollPosition.y);
 			}, 0);
 		});
-
+*/
     let subAuth = this.authService.getAuthState();
     subAuth.subscribe((userEnv: UserEnv|null) => {
       this.userEnv = userEnv;
