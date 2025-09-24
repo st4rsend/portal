@@ -95,13 +95,17 @@ export class ProductionsComponent implements OnInit {
 				let bearer: string = this.authService.getBearerToken();
 				let url:string = "https://europe-west6-gcp-learning-project-195511.cloudfunctions.net/readContentTree"
 				const params = new HttpParams()
-					.set("treemaster", this.treeMaster)
-					.set("treeid", this.treeId);
+					//.set("treemaster", this.treeMaster)
+					//.set("treeid", this.treeId);
+					.set("treemaster", environment.treeMaster)
+					.set("treeid", environment.treeId);
 				this.httpClient.get(url, {
 					headers: {
 						Authorization: `Bearer ${bearer}`,
-						'Accept': 'application/json'
-						},
+						'Accept': 'application/json',
+						'Cache-Control': 'no-cache',
+						'Pragma': 'no-cache',
+					},
 					params}).subscribe({
 						next:(data) => this.buildTree(data),
 						error:(err) => console.log("Request failed", err)
@@ -111,7 +115,7 @@ export class ProductionsComponent implements OnInit {
 	}
 
 	private buildTree(data: any){
-		console.log(data);
+		//console.log(JSON.stringify(data, null, 2));
 		const cleanData = (nodes: any[]): TreeNode[] => {
 			return nodes.map(node => ({
 				name: node.name,

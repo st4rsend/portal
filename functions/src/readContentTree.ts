@@ -14,7 +14,8 @@ export const readContentTree = onRequest(
 	}, async (req: any, res: any) => {
   // CORS (optional for dev — remove or restrict in prod)
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type");
+  res.setHeader("Access-Control-Allow-Headers",
+		"Authorization, Content-Type, Cache-Control, Pragma");
   // Handle preflight CORS request
   if (req.method === "OPTIONS") {
     res.status(204).send("");

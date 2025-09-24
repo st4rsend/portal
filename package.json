@@ -24,6 +24,8 @@
     "@types/dompurify": "^3.0.2",
     "dompurify": "^3.0.3",
     "firebase": "^11.4.0",
+    "firebase-admin": "^13.5.0",
+    "firebase-functions": "^6.4.0",
     "jwt-decode": "^4.0.0",
     "katex": "^0.16.21",
     "plotly.js-dist-min": "^3.0.1",

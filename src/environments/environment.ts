@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
 	baseURL: '/',
-	treeFile: 'test-tree.json',
+	//treeFile: 'test-tree.json',
+	treeId: 'Test',
+	// Common
+	treeMaster: 'ZfCByH4STh5NQTEN6wYp',
 };
 
 /*
