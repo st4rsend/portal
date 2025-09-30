@@ -14,9 +14,11 @@ import { TextComponent } from './text/text.component';
 import { KatexComponent } from './katex/katex.component';
 
 import { AuthService } from '../../services/auth.service';
+import { GlobalService } from '../../global.service';
+
 
 interface FirestoreItem {
-	name: string;
+	label: string;
 	selector: string;
 	raw_data: string;
 }
@@ -50,6 +52,7 @@ export class FirestoreComponent {
 	public showOverlay = false;
 
 	public docID: string = "";
+	public path: string = "";
 
 	private docMaster = "Xj2sEuNvzDtXlTkV2Xnp";
 
@@ -57,7 +60,8 @@ export class FirestoreComponent {
 		private route: ActivatedRoute,
 		private httpClient: HttpClient,
 		private authService: AuthService,
-		private resolver: ComponentFactoryResolver
+		private resolver: ComponentFactoryResolver,
+		private globalService: GlobalService,
 	) {}
 
 
@@ -68,10 +72,19 @@ export class FirestoreComponent {
 			this.docID = params['id'];
 			this.readDoc();
 		});
+
+		this.globalService.getStickyBottom().subscribe(
+			value => {
+				if (value) {
+					this.bottomStyle="bottom-fixed";
+				} else {
+					this.bottomStyle="bottom-scroll";
+				}
+			});
 	}
 
 	readDoc() {
-		console.log("Reading: ", this.docID);
+		//console.log("Reading: ", this.docID);
 		let bearer: string = this.authService.getBearerToken();
 		let url:string = "https://europe-west6-gcp-learning-project-195511.cloudfunctions.net/readContentDoc"
 		
@@ -96,6 +109,9 @@ export class FirestoreComponent {
 			.forEach(key => {
 				if(key=='0') {
 					//  console.log("Meta");
+					let meta = data[key] as unknown as {[key: string]: string};
+					this.path = meta['path'];
+					console.log(meta);
 				} else {
 					const comp = COMPONENT_MAP[data[key]['selector']];
 					if (!comp) {
