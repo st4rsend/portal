@@ -115,7 +115,7 @@ export class ProductionsComponent implements OnInit {
 	}
 
 	private buildTree(data: any){
-		//console.log(JSON.stringify(data, null, 2));
+		console.log(JSON.stringify(data, null, 2));
 		const cleanData = (nodes: any[]): TreeNode[] => {
 			return nodes.map(node => ({
 				name: node.name,

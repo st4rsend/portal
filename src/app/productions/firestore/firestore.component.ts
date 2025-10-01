@@ -108,10 +108,9 @@ export class FirestoreComponent {
 			.sort((a, b) => Number(a) - Number(b))
 			.forEach(key => {
 				if(key=='0') {
-					//  console.log("Meta");
 					let meta = data[key] as unknown as {[key: string]: string};
 					this.path = meta['path'];
-					console.log(meta);
+					//console.log(meta);
 				} else {
 					const comp = COMPONENT_MAP[data[key]['selector']];
 					if (!comp) {

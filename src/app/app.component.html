@@ -1,20 +1,22 @@
 <!-- <div [ngClass]="appTheme" [ngClass]="menuStyle"> -->
 
 <div [ngClass]="appTheme" class="container">
-	<div class="button-home card-container">
-		<a class="card" routerLink="/home">Intelligences Artificielles</a>
-	</div>
-	<div class="title">
+	<div [ngClass]="panelDisplay ? 'title-panel' : 'title-no-panel'">
 		<img src="assets/St4rsend_logo_20220803-Text.png">
 	</div>
-	<div class="button-contact card-container">
+	<div class="card-container" [ngClass]="panelDisplay ? 'button-contact-panel' : 'button-contact-no-panel'">
 		<a class="card" routerLink="/contacts">Contacts</a>
 	</div>
-	<div class="button-intro card-container">
-		<a class="card" [routerLink]="['/intro', appTheme]">Stratégie</a>
-	</div>
-	<div class="button-productions card-container">
-		<a class="card" [routerLink]="['/productions', appTheme]">Contenu</a>
+	<div [ngClass]="panelDisplay ? 'buttons-panel' : 'buttons-no-panel'">
+		<div class="card-container">
+			<a class="card" routerLink="/home">Intelligences Artificielles</a>
+		</div>
+		<div class="card-container">
+			<a class="card" [routerLink]="['/intro', appTheme]">Stratégie</a>
+		</div>
+		<div class="card-container">
+			<a class="card" [routerLink]="['/productions', appTheme]">Contenu</a>
+		</div>
 	</div>
 	<div class="menu-container">
 		<div [ngClass]="[appTheme, menuStyle]">

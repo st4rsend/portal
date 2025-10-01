@@ -31,8 +31,8 @@ img
 	z-index: 10
 	width: 100%
 
-.title 
-	grid-column-start: 3
+.title-panel 
+	grid-column-start: 2
 	grid-column-end: 5
 	grid-row-start: 1
 	grid-row-end: 2
@@ -41,8 +41,28 @@ img
 	justify-content: center
 	z-index: 2
 
-.button-contact
+.title-no-panel
+	grid-column-start: 2
+	grid-column-end: 6
+	grid-row-start: 1
+	grid-row-end: 2
+	display: flex
+	align-items: center
+	justify-content: center
+	z-index: 2
+
+.button-contact-panel
 	grid-column-start: 5
+	grid-column-end: 6
+	grid-row-start: 1
+	grid-row-end: 2
+	z-index: 2
+	display: flex
+	justify-content: center
+	width: 100%
+
+.button-contact-no-panel
+	grid-column-start: 6
 	grid-column-end: 7
 	grid-row-start: 1
 	grid-row-end: 2
@@ -69,25 +89,20 @@ img
 	margin-top: 1rem
 	margin-left: 0.1rem
 
-.button-home
-	grid-column-start: 2
+.buttons-panel
+	grid-column-start: 1
 	grid-column-end: 6
 	grid-row-start: 2
-	grid-row-end: 3
-	z-index: 2
-
-.button-intro
-	grid-column-start: 2
-	grid-column-end: 6
-	grid-row-start: 3
-	grid-row-end: 4
-	z-index: 2
-
-.button-productions
-	grid-column-start: 2
-	grid-column-end: 6
-	grid-row-start: 4
 	grid-row-end: 5
+	padding: 0 20% 0 20%
+	z-index: 2
+
+.buttons-no-panel
+	grid-column-start: 1
+	grid-column-end: 7
+	grid-row-start: 2
+	grid-row-end: 5
+	padding: 0 20% 0 20%
 	z-index: 2
 
 .main-body
