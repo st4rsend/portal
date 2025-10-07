@@ -63,29 +63,6 @@ export class ProductionsComponent implements OnInit {
 			this.appTheme = params['theme'];
 		});
 
-/*
-		this.httpSub = this.httpClient.get(this.assetsURL + environment.treeFile).subscribe(data => {
-			const cleanData = (nodes: any[]): TreeNode[] => {
-				return nodes.map(node => ({
-					name: node.name,
-					path: node.path || undefined,
-					svg: node.svg || undefined,
-					firestore: node.firestore || undefined,
-					children: Array.isArray(node.children) ? cleanData(node.children) : []
-				}));
-			};
-
-			const cleanedData = cleanData(Object.values(data));
-			this.dataSource.data = [...this.dataSource.data, ...cleanedData];
-			this.dataSource.data.forEach(node => {
-				this.expandNodes(node, this.globalService.expandedNodeIds);
-			});
-
-			setTimeout(() => {
-				window.scrollTo(this.globalService.productionScrollPosition.x, this.globalService.productionScrollPosition.y);
-			}, 0);
-		});
-*/
     let subAuth = this.authService.getAuthState();
     subAuth.subscribe((userEnv: UserEnv|null) => {
       this.userEnv = userEnv;
@@ -95,8 +72,6 @@ export class ProductionsComponent implements OnInit {
 				let bearer: string = this.authService.getBearerToken();
 				let url:string = "https://europe-west6-gcp-learning-project-195511.cloudfunctions.net/readContentTree"
 				const params = new HttpParams()
-					//.set("treemaster", this.treeMaster)
-					//.set("treeid", this.treeId);
 					.set("treemaster", environment.treeMaster)
 					.set("treeid", environment.treeId);
 				this.httpClient.get(url, {
@@ -115,7 +90,7 @@ export class ProductionsComponent implements OnInit {
 	}
 
 	private buildTree(data: any){
-		console.log(JSON.stringify(data, null, 2));
+		//console.log(JSON.stringify(data, null, 2));
 		const cleanData = (nodes: any[]): TreeNode[] => {
 			return nodes.map(node => ({
 				name: node.name,
