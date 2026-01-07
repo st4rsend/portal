@@ -1,53 +1,54 @@
 <div class="container">
 
-<H1>Contacts</H1>
-<p>Site Internet de l'entreprise St4rsend</p>
-<p><i>Version prototype</i></p>
-<p>E-mail: st4rsend&#64;gmail.com</p>
-<div class="card-container">
-	<div class="card link" (click)="aproposClick()">
-		A propos
-	</div>
-</div>
+  <H1>Contacts</H1>
+  <p>Site Internet de l'entreprise St4rsend</p>
+  <p><i>Version prototype</i></p>
+  <p>E-mail: st4rsend&#64;gmail.com</p>
+  <div class="card-container">
+    <div class="card link" (click)="aproposClick()">
+      A propos
+    </div>
+  </div>
 
-<div *ngIf="apropos">
-	<H2>Statut</H2>
-	<p>St4rsend est le nom commercial de l'Entreprise Individuelle Vincent Dumetz.<p>
-	<p>Siren: 948456413</p>
-	<H2>Equipe</H2>
-	<p>Administrateur: Vincent Dumetz</p>
-	<p>Parcours:
-	<a href="assets/CV_VincentDumetz.pdf" target="_blank">CV au format pdf</a>
-	</p>
-	<p>Repo GIT:
-		<a href="https://github.com/st4rsend"  target="_blank">github</a>
-	</p>
-<p></p>
-<H1>St4rsend accompagne les entreprises sur le chemin des IA.</H1>
-<H2>Dans un monde en voie de numérisation</H2>
-<H3>Moult données informatiques</H3>
-<p>
-Les relations hommes machines sont omniprésentes dans les sociétés industrialisées.
-</p><p>Les acteurs des échelles locales sont assaillis de flux d'informations  et contraints à devenir moteur au risque de se trouver relégués au rôle de spectateur.
-</p>
-<H2>Un monde où l'information se dilue dans le virtuel</H2>
-<H3>Authenticité questionnée</H3>
-<p>Quelle est la réalité d'une information? Hier raison d'être des universités ou de machines spécialisées, aujourd'hui déclenchées par simple intéraction avec un smartphone.
-</p><p>
-Ces affirmations de réalités tributaires du porteur seront-elles opportunes ou destinées à l'oubli?
-</p>
-<H2>Un monde où les informations prétendent orienter le quotidien</H2>
-<H3>Utilité ou fardeau ?</H3>
-<p>
-Machines pourvues de capteurs multiples, vêtements, accessoires dits intelligents prêts à vous submerger de leurs mesures et suggestions associées.
-</p>
-<H2>Vos données deviennent votre challenge !</H2>
-	<div class="image">
-		<img src="https://www.st4rsend.net/medias/St4rsend_maps_Tech-2024.svg" width="100%">
-	</div>
-	<p></p>
-	<div class="image">
-		<img src="https://www.st4rsend.net/medias/St4rsend_maps_Tech-2021.svg" width="100%">
-</div>
-
-</div>
+  @if (apropos) {
+    <div>
+      <H2>Statut</H2>
+      <p>St4rsend est le nom commercial de l'Entreprise Individuelle Vincent Dumetz.<p>
+        <p>Siren: 948456413</p>
+        <H2>Equipe</H2>
+        <p>Administrateur: Vincent Dumetz</p>
+        <p>Parcours:
+          <a href="assets/CV_VincentDumetz.pdf" target="_blank">CV au format pdf</a>
+        </p>
+        <p>Repo GIT:
+          <a href="https://github.com/st4rsend"  target="_blank">github</a>
+        </p>
+        <p></p>
+        <H1>St4rsend accompagne les entreprises sur le chemin des IA.</H1>
+        <H2>Dans un monde en voie de numérisation</H2>
+        <H3>Moult données informatiques</H3>
+        <p>
+          Les relations hommes machines sont omniprésentes dans les sociétés industrialisées.
+        </p><p>Les acteurs des échelles locales sont assaillis de flux d'informations  et contraints à devenir moteur au risque de se trouver relégués au rôle de spectateur.
+      </p>
+      <H2>Un monde où l'information se dilue dans le virtuel</H2>
+      <H3>Authenticité questionnée</H3>
+      <p>Quelle est la réalité d'une information? Hier raison d'être des universités ou de machines spécialisées, aujourd'hui déclenchées par simple intéraction avec un smartphone.
+      </p><p>
+      Ces affirmations de réalités tributaires du porteur seront-elles opportunes ou destinées à l'oubli?
+    </p>
+    <H2>Un monde où les informations prétendent orienter le quotidien</H2>
+    <H3>Utilité ou fardeau ?</H3>
+    <p>
+      Machines pourvues de capteurs multiples, vêtements, accessoires dits intelligents prêts à vous submerger de leurs mesures et suggestions associées.
+    </p>
+    <H2>Vos données deviennent votre challenge !</H2>
+    <div class="image">
+      <img src="https://www.st4rsend.net/medias/St4rsend_maps_Tech-2024.svg" width="100%">
+    </div>
+    <p></p>
+    <div class="image">
+      <img src="https://www.st4rsend.net/medias/St4rsend_maps_Tech-2021.svg" width="100%">
+    </div>
+  </div>
+}

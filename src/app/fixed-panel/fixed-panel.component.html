@@ -1,11 +1,13 @@
 <div class="fixed-panel">
-	<div class="menu-off logo-filter">
-		<img src="assets/St4rsend_logo_large_1.svg" height="100%">
-	</div>
-	<div class="items">
-		<div class="item" *ngIf="cartpole">
-			<app-cartpole>
-			</app-cartpole>
-		</div>
-	</div>
+  <div class="menu-off logo-filter">
+    <img src="assets/St4rsend_logo_large_1.svg" height="100%">
+  </div>
+  <div class="items">
+    @if (cartpole) {
+      <div class="item">
+        <app-cartpole>
+        </app-cartpole>
+      </div>
+    }
+  </div>
 </div>
