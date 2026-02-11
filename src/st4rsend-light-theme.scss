@@ -47,7 +47,7 @@ $light-theme: mat.m2-define-light-theme((
 		color: mat.m2-get-color-from-palette($light-foreground,800);
 	}
 	H2 {
-		background-image: linear-gradient(to right, $foreground-color, 62%, $background-color 95%);
+		background-image: linear-gradient(to right, $foreground-color, 75%, $background-color 90%);
 		color: mat.m2-get-color-from-palette($light-background,50);
 	}
 	H3 {
