@@ -17,6 +17,7 @@ import { AuthService } from '../../services/auth.service';
 import { GlobalService } from '../../global.service';
 
 
+/*
 interface FirestoreItem {
 	label: string;
 	selector: string;
@@ -25,6 +26,26 @@ interface FirestoreItem {
 
 interface FirestoreData {
 	[key: string]: FirestoreItem;
+}
+*/
+interface ApiRow {
+  id: string;
+  label: string;
+  selector: string;
+  raw_data: string;
+}
+
+
+interface ApiMeta {
+  name?: string;
+  path?: string;
+  idx?: number;
+  extra?: any;
+}
+
+interface ApiDoc {
+  meta: ApiMeta | null;
+  rows: ApiRow[];
 }
 
 const COMPONENT_MAP: { [key: string]: Type<any> } = {
@@ -54,7 +75,8 @@ export class FirestoreComponent {
 	public docID: string = "";
 	public path: string = "";
 
-	private docMaster = "Xj2sEuNvzDtXlTkV2Xnp";
+	//private docMaster = "Xj2sEuNvzDtXlTkV2Xnp";
+	private docMaster = "04pTxuGC4yp8qxh1gm2i";
 
 	constructor(
 		private route: ActivatedRoute,
@@ -86,12 +108,13 @@ export class FirestoreComponent {
 	readDoc() {
 		//console.log("Reading: ", this.docID);
 		let bearer: string = this.authService.getBearerToken();
-		let url:string = "https://europe-west6-gcp-learning-project-195511.cloudfunctions.net/readContentDoc"
+		let url:string = "https://europe-west6-gcp-learning-project-195511.cloudfunctions.net/readContentDocV2"
 		
 		const params = new HttpParams()
 			.set("docmaster", this.docMaster)
 			.set("docid", this.docID);
-		this.httpClient.get<FirestoreData>(url, {
+		//this.httpClient.get<FirestoreData>(url, {
+		this.httpClient.get<ApiDoc>(url, {
 			headers: {
 				Authorization: `Bearer ${bearer}`,
 				'Accept': 'application/json'
@@ -102,7 +125,25 @@ export class FirestoreComponent {
 			});
 		}
 
-	formatDoc(data: FirestoreData) {
+	formatDoc(doc: ApiDoc) {
+
+		this.viewContainerRef.clear();
+
+		console.log(doc);
+
+		if (doc.meta?.path) this.path = doc.meta.path;
+
+		for (const row of doc.rows) {
+			const comp = COMPONENT_MAP[row.selector];
+			if (!comp) {
+				console.warn(`Unknown selector "${row.selector}" for unit ${row.id}`);
+				continue;
+			}
+			const compRef = this.viewContainerRef.createComponent(comp);
+			compRef.instance.data = row.raw_data;
+  }
+
+/*
 		Object.keys(data)
 			.sort((a, b) => Number(a) - Number(b))
 			.sort((a, b) => Number(a) - Number(b))
@@ -122,6 +163,7 @@ export class FirestoreComponent {
 					}	
 				}
 			});
+*/
 	}
 
 	buttonTop() {

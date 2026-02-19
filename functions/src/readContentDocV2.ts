@@ -8,7 +8,7 @@ const WINDOW_MS = 60000;// par minute
 const SvcAccount =
  "cf-public-data-reader@gcp-learning-project-195511.iam.gserviceaccount.com";
 
-export const readContentDoc = onRequest(
+export const readContentDocV2 = onRequest(
 	{
 		serviceAccount: SvcAccount,
 	}, async (req: any, res: any) => {
@@ -51,8 +51,29 @@ export const readContentDoc = onRequest(
     const doc = await db.doc(`Content/${docMaster}/Docs/${docId}`).get();
     if (!doc.exists) return res.status(404).send("Not found");
 
+    const raw = doc.data() as any;
+    if (!raw) return res.status(200).json({meta: null, rows: []});
+
+    const meta = raw.meta ?? null;
+    const unitsOrder: string[] = Array.isArray(raw.units_order) ?
+      raw.units_order : [];
+    const units: Record<string, any> = raw.units &&
+      typeof raw.units === "object" ? raw.units : {};
+
+    const rows = unitsOrder
+      .filter((id) => typeof id === "string" && id in units)
+      .map((id) => {
+        const u = units[id] ?? {};
+        return {
+          id,
+          label: u.label ?? "",
+          selector: u.selector ?? "text",
+          raw_data: u.raw_data ?? "",
+        };
+      });
+
     res.setHeader("Cache-Control", "public, max-age=86400");
-    res.status(200).json(doc.data());
+    return res.status(200).json({meta, rows});
   } catch (e) {
 			console.error("Firestore access failed:", JSON.stringify(e, null, 2));
 			res.status(500).send("Server Error");
