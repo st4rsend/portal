@@ -16,25 +16,12 @@ import { KatexComponent } from './katex/katex.component';
 import { AuthService } from '../../services/auth.service';
 import { GlobalService } from '../../global.service';
 
-
-/*
-interface FirestoreItem {
-	label: string;
-	selector: string;
-	raw_data: string;
-}
-
-interface FirestoreData {
-	[key: string]: FirestoreItem;
-}
-*/
 interface ApiRow {
   id: string;
   label: string;
   selector: string;
   raw_data: string;
 }
-
 
 interface ApiMeta {
   name?: string;
@@ -75,7 +62,6 @@ export class FirestoreComponent {
 	public docID: string = "";
 	public path: string = "";
 
-	//private docMaster = "Xj2sEuNvzDtXlTkV2Xnp";
 	private docMaster = "04pTxuGC4yp8qxh1gm2i";
 
 	constructor(
@@ -102,18 +88,17 @@ export class FirestoreComponent {
 				} else {
 					this.bottomStyle="bottom-scroll";
 				}
-			});
+			}
+		);
 	}
 
 	readDoc() {
-		//console.log("Reading: ", this.docID);
 		let bearer: string = this.authService.getBearerToken();
 		let url:string = "https://europe-west6-gcp-learning-project-195511.cloudfunctions.net/readContentDocV2"
 		
 		const params = new HttpParams()
 			.set("docmaster", this.docMaster)
 			.set("docid", this.docID);
-		//this.httpClient.get<FirestoreData>(url, {
 		this.httpClient.get<ApiDoc>(url, {
 			headers: {
 				Authorization: `Bearer ${bearer}`,
@@ -126,13 +111,9 @@ export class FirestoreComponent {
 		}
 
 	formatDoc(doc: ApiDoc) {
-
 		this.viewContainerRef.clear();
 
-		console.log(doc);
-
 		if (doc.meta?.path) this.path = doc.meta.path;
-
 		for (const row of doc.rows) {
 			const comp = COMPONENT_MAP[row.selector];
 			if (!comp) {
@@ -141,29 +122,7 @@ export class FirestoreComponent {
 			}
 			const compRef = this.viewContainerRef.createComponent(comp);
 			compRef.instance.data = row.raw_data;
-  }
-
-/*
-		Object.keys(data)
-			.sort((a, b) => Number(a) - Number(b))
-			.sort((a, b) => Number(a) - Number(b))
-			.forEach(key => {
-				if(key=='0') {
-					let meta = data[key] as unknown as {[key: string]: string};
-					this.path = meta['path'];
-					//console.log(meta);
-				} else {
-					const comp = COMPONENT_MAP[data[key]['selector']];
-					if (!comp) {
-						console.warn(`Unknown selector "${data[key]['selector']}"`);
-					} else {
-						const factory = this.resolver.resolveComponentFactory(comp);
-						const compRef = this.viewContainerRef.createComponent(factory);
-						compRef.instance.data = data[key]['raw_data'];
-					}	
-				}
-			});
-*/
+  	}
 	}
 
 	buttonTop() {
