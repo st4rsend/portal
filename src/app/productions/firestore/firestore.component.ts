@@ -5,7 +5,7 @@ import {
   Input,
   ViewChild,
   ViewContainerRef,
-  ComponentFactoryResolver,
+//  ComponentFactoryResolver,
   Type,
   ChangeDetectionStrategy
 } from '@angular/core';
@@ -71,7 +71,7 @@ export class FirestoreComponent {
 		private route: ActivatedRoute,
 		private httpClient: HttpClient,
 		private authService: AuthService,
-		private resolver: ComponentFactoryResolver,
+//		private resolver: ComponentFactoryResolver,
 		private globalService: GlobalService,
 	) {}
 
