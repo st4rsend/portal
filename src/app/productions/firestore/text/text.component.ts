@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import DOMPurify from 'dompurify'
 
@@ -7,6 +7,7 @@ import DOMPurify from 'dompurify'
   selector: 'app-text',
   imports: [],
   templateUrl: './text.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './text.component.sass'
 })
 export class TextComponent {

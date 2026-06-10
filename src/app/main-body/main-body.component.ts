@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { GlobalService } from '../global.service';
@@ -7,6 +7,7 @@ import { GlobalService } from '../global.service';
     selector: 'app-main-body',
     templateUrl: './main-body.component.html',
     styleUrls: ['./main-body.component.sass'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

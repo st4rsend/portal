@@ -1,12 +1,14 @@
 import {
-	Component,
-	AfterViewInit,
-	ElementRef,
-	Input,
-	ViewChild,
-	ViewContainerRef,
-	ComponentFactoryResolver,
-	Type, } from '@angular/core';
+  Component,
+  AfterViewInit,
+  ElementRef,
+  Input,
+  ViewChild,
+  ViewContainerRef,
+  ComponentFactoryResolver,
+  Type,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { PlotlyComponent } from './plotly/plotly.component';
@@ -45,6 +47,7 @@ const COMPONENT_MAP: { [key: string]: Type<any> } = {
   selector: 'app-firestore',
   templateUrl: './firestore.component.html',
   styleUrl: './firestore.component.sass',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	standalone: false
 })
 export class FirestoreComponent {

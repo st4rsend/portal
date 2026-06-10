@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '../global.service';
 
@@ -6,6 +6,7 @@ import { GlobalService } from '../global.service';
     selector: 'app-introduction',
     templateUrl: './introduction.component.html',
     styleUrls: ['./introduction.component.sass'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class IntroductionComponent implements OnInit {

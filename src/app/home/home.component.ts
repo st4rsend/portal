@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '../global.service';
 
@@ -6,6 +6,7 @@ import { GlobalService } from '../global.service';
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.sass'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

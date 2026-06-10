@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
@@ -6,6 +6,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
     selector: 'app-science',
     templateUrl: './science.component.html',
     styleUrls: ['./science.component.sass'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ScienceComponent implements OnInit {

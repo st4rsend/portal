@@ -1,11 +1,13 @@
 import {
-	Component,
-	AfterViewInit,
-	ElementRef,
-	ViewChild,
-	Input,
-	OnChanges,
-	SimpleChanges } from '@angular/core';
+  Component,
+  AfterViewInit,
+  ElementRef,
+  ViewChild,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import DOMPurify from 'dompurify';
 import * as Plotly from 'plotly.js-dist-min';
 import { Data, Layout, Config } from 'plotly.js-dist-min';
@@ -22,6 +24,7 @@ interface SafeConfig extends Partial<Config> {
   selector: 'app-plotly',
   imports: [],
   templateUrl: './plotly.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './plotly.component.sass'
 })
 export class PlotlyComponent implements OnChanges, AfterViewInit {

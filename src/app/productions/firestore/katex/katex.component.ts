@@ -1,10 +1,11 @@
-import { Component, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import katex from 'katex';
 
 @Component({
   selector: 'app-katex',
   imports: [],
   templateUrl: './katex.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './katex.component.sass'
 })
 export class KatexComponent implements AfterViewInit {

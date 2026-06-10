@@ -1,4 +1,4 @@
-import {Inject, Component, OnInit, HostListener} from '@angular/core';
+import {Inject, Component, OnInit, HostListener, ChangeDetectionStrategy} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {Router, NavigationEnd} from '@angular/router';
 import {Subscription} from 'rxjs';
@@ -13,6 +13,7 @@ import { GlobalService } from './global.service';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.sass'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AppComponent implements OnInit {

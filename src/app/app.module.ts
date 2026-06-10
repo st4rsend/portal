@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -70,7 +70,7 @@ import {api} from '../environments/shadow';
 		providers: [
 			{ provide: APP_BASE_HREF, useValue: environment.baseURL },
 			{ provide: Window, useValue: window },
-			provideHttpClient(withInterceptorsFromDi()),
+			provideHttpClient(withXhr(), withInterceptorsFromDi()),
 			provideFirebaseApp(() => initializeApp(api.firebase)),
 			provideAuth(() => getAuth()),
 			provideFirestore(() => getFirestore()),

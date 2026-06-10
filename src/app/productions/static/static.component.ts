@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked, ElementRef, SecurityContext } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ElementRef, SecurityContext, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -25,6 +25,7 @@ declare var MathJax: any;
     selector: 'app-static',
     templateUrl: './static.component.html',
     styleUrls: ['./static.component.sass'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class StaticComponent implements OnInit {

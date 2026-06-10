@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { GlobalService } from '../global.service';
@@ -7,6 +7,7 @@ import { GlobalService } from '../global.service';
     selector: 'app-fixed-panel',
     templateUrl: './fixed-panel.component.html',
     styleUrls: ['./fixed-panel.component.sass'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class FixedPanelComponent implements OnInit {

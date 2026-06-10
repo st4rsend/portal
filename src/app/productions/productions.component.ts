@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -22,6 +22,7 @@ interface TreeNode {
     selector: 'app-productions',
     templateUrl: './productions.component.html',
     styleUrls: ['./productions.component.sass'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 
